@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <title>求助信息</title>
+    <link rel=stylesheet type=text/css href="helpDetail.css">
+
+</head>
+<body>
+<!--
+<div class="user-img-wrapper">
+    <div class="wrapper">
+        <img data-id="user-img" class="user-img" src="2.jpg">
+    </div>
+    <div class="request-text-wrapper">
+        <p id="request-content" class="">这张图片里有什么？我该怎么走？这张图片里有什么？我该怎么走？这张图片里有什么？我该怎么走？这张图片里有什么？我该怎么走？</p>
+    </div>
+    <div style=" clear:both "></div>
+
+</div>
+<div class="user-img-wrapper">
+    <div class="wrapper">
+        <img data-id="user-img" class="user-img" src="2.jpg">
+    </div>
+    <div class="request-img-wrapper">
+        <img id="request-img" class="request-img" src="1.jpg">
+    </div>
+    <div style=" clear:both "></div>
+</div>
+
+<div class="user-img-wrapper">
+    <div class="response-wrapper">
+        <img data-id="user-img" class="user-img" src="3.jpg">
+    </div>
+    <div class="response-text-wrapper">
+        <p id="response-content" class="">这张图片里有道路，你该向左走。</p>
+    </div>
+    <div style=" clear:both "></div>
+</div>
+
+<div class="user-img-wrapper">
+    <div class="wrapper">
+        <img data-id="user-img" class="user-img" src="2.jpg">
+    </div>
+    <div class="content-img-wrapper">
+        <img id="content-img1" class="content-img" src="3.jpg">
+    </div>
+    <div style=" clear:both "></div>
+</div>
+-->
+<div class="input-wrapper">
+    <input type=text id="input-text" class="input-text" placeholder="请帮助盲人朋友">
+    <div class="submit-button" id="submit-button">发送</div>
+    <div style=" clear:both "></div>
+</div>
+<script type="text/javascript" src="zepto.js"></script>
+<script>
+    $(function () {
+        //动态设置viewport的scale
+        var scale = 1 / devicePixelRatio;
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+
+        //动态计算html的font-size
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+
+        //布局的时候，各元素的css尺寸=设计稿标注尺寸/设计稿横向分辨率/10
+        var btn = document.getElementById("submit-button");
+        btn.ontouchstart = function () {
+            this.className = "submit-button submit-button-touch";
+        }
+        btn.onfocus = function () {
+            var _this = this;
+            setTimeout(function () {
+                _this.scrollIntoView(true);
+            }, 300);
+        }
+        btn.ontouchend = function () {
+            this.className = "submit-button";
+        }
+
+        if (window.location.href.indexOf("?") != -1) {
+            var helpId = window.location.href.split("=")[1];
+        }else{
+            var helpId="59";
+        }
+function getTime(today) {
+    var year = today.getFullYear();
+    var month = today.getMonth() + 1;
+    var day = today.getDate();
+    var hour = today.getHours();
+    var min = today.getMinutes();
+    var sec = today.getSeconds();
+    var time=year+"-"+month+"-"+day+" "+hour+min+sec;//"2018-5-18 09:56:13";
+    return time;
+}
+        var formid,blindman_open_id,volunteernickname,supplyhelpcontent,askforhelpcontent;
+        $.ajax({
+            type: 'get',
+            url: "https://www.bemyeyes.com.cn/weapp/supplyhelp/supplybindmanhelp",
+            data: {
+                helpId: helpId
+            },
+            dataType: 'json',
+            success: function (data) {
+                console.log(data);
+                if(data.code===0){
+                    var message = data.data;
+                    if (message != null) {
+                        formid=message.formid;
+                        blindman_open_id=message.blindman_open_id;
+                        volunteernickname=message.volunteernickname;
+                        askforhelpcontent=message.askforhelpcontent;
+
+                        var blindmannickname = message.blindmannickname;
+                        document.title=blindmannickname+"-求助信息";
+                    }
+                    var body = $("body");
+
+                    var node1 = '<div class="user-img-wrapper">' +
+                        '<div class="wrapper">' +
+                        '<img data-id="user-img" class="user-img" src=' + message.blindmanavatarurl + '>' +
+                        '</div>' +
+                        '<div class="request-text-wrapper">' +
+                        ' <p id="request-content" class="">' + message.askforhelpcontent + '</p>' +
+                        '</div>' +
+                        '<div style=" clear:both "></div>' +
+                        '</div>';
+                    body.append(node1);
+                    var node2 = '<div class="user-img-wrapper">' +
+                        '<div class="wrapper">' +
+                        '<img data-id="user-img" class="user-img" src=' + message.blindmanavatarurl + '>' +
+                        '</div>' +
+                        '<div class="request-img-wrapper">' +
+                        '<img id="request-img" class="request-img" src=' + message.imgurl + '>' +
+                        '</div>' +
+                        '<div style=" clear:both "></div>' +
+                        '</div>';
+                    body.append(node2);
+                }
+            },
+            error: function (data) {
+                console.log("获取求助者内容失败！");
+            },
+        })
+
+        $("#submit-button").click(function () {
+            var input = $("#input-text").val();
+            supplyhelpcontent=input;
+            var now=new Date();
+            supplyhelptime=getTime(now);
+            if(formid&&blindman_open_id&&volunteernickname&&supplyhelpcontent&&askforhelpcontent){
+                var params={
+                    "formid":formid,
+                    "blindman_open_id":blindman_open_id,
+                    "volunteernickname":volunteernickname,
+                    "supplyhelpcontent":supplyhelpcontent,
+                    "supplyhelptime":supplyhelptime,
+                    "askforhelpcontent":askforhelpcontent
+                }
+            }
+            $("#input-text").val("");
+            $.ajax({
+                type: 'post',
+                url: 'https://www.bemyeyes.com.cn/weapp/supplyhelp',//'response.json',
+                data: params,
+                dataType: 'json',
+                success: function (data) {
+                    console.log(data);
+                    var message=data.data;
+                    if (message.errcode == '0' && input != "") {
+                        var node2 = '<div class="user-img-wrapper">' +
+                            '<div class="response-wrapper">' +
+                            '<img data-id="user-img" class="user-img" src=' + "2.jpg" + '>' +
+                            '</div>' +
+                            '<div class="response-text-wrapper">' +
+                            '<p id="response-content" class="">' + input + '</p>' +
+                            '</div>' +
+                            '<div style=" clear:both "></div>' +
+                            '</div>'
+                        var body = $("body");
+                        body.append(node2);
+                    }else {
+                        if(input != ""){
+                            var node2 = '<div class="user-img-wrapper">' +
+                                '<div class="response-wrapper">' +
+                                '<img data-id="user-img" class="user-img" src=' + "2.jpg" + '>' +
+                                '</div>' +
+                                '<div class="response-text-wrapper">' +
+                                '<p id="response-content" class="">' + input + '</p>' +
+                                '</div>' +
+                                '<div style=" clear:both "></div>' +
+                                '</div>'
+                            var body = $("body");
+                            body.append(node2);
+                        }
+                    }
+                },
+                error: function (data) {
+                    console.log("获取志愿者内容失败！");
+                },
+            })
+        })
+    });
+
+</script>
+</body>
+</html>

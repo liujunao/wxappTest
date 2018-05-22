@@ -1,0 +1,20 @@
+{
+  "pages": [
+    "pages/start/start",
+    "pages/index/index",
+    "pages/picture/picture",
+    "pages/addCgi/addCgi",
+    "pages/chat/chat",
+    "pages/mine/mine",
+    "pages/video/video",
+    "pages/voiceDemo/voiceDemo",
+    "vendor/modelMsg/modelMsg"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "我是你的眼",
+    "navigationBarTextStyle": "black"
+  }
+}

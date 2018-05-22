@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  </head>
+  <body>
+    <div style="margin-top:15%; text-align:center; font-size:32px;">
+      This is 3rd party plugin of xtpl for koa2 written by {{name}}.
+    </div>
+  </body>
+</html>

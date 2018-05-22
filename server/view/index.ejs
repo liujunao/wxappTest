@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title><%= title %></title>
+    <link rel="stylesheet" href="/output/dist/css/index.css">
+</head>
+<body>
+    <form method="POST" action="/weapp/help?helpId=34"  >
+        <p><%= nickName %></p>
+        <p>求助内容: <%= help  %></p>
+        <p>求助图片</p>
+        <image src=  <%= imgUrl %> class="image" ></image>
+        <p>我的回复</p>
+        <input name="reply" /><br/>
+        <button type="submit">发送</button>
+    </form>
+    <div id="app"></div>
+    <script src="/output/dist/js/vendor.js"></script>
+    <script src="/output/dist/js/index.js"></script>
+</body>
+</html>

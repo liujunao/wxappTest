@@ -1,0 +1,79 @@
+const        request = require('request'),
+                post = require('../request/post'),
+                  fs = require('fs'), //引入 fs 模块
+     accessTokenJson = require('../../wxserver/access_token'),
+  tmplateMessageJson = require('../template_message');
+const { mysql: config } = require('../config')
+module.exports = function (ctx, next) {
+  //let postData = parsePostData( ctx )
+  //ctx.body = postData
+  console.log('postdata: '+ JSON.stringify(ctx.request.body))
+  fs.writeFile('./forhelp.json',JSON.stringify(ctx.request.body), function (err){
+	if(err) throw err;
+	console.log('saved!');
+  }
+  );
+  var blindman_open_id = ctx.request.body.data.openid
+  var ask_for_help_time = ctx.request.body.data.time
+  var blindman_nickname = ctx.request.body.data.nickName
+  var ask_for_help_content = ctx.request.body.data.help
+  var img_url = ctx.request.body.data.imgurl
+  var formid = ctx.request.body.data.formid
+  // 构建入库sql
+  const DB = require('knex')({
+    client: 'mysql',
+    connection: {
+        host: config.host,
+        port: config.port,
+        user: config.user,
+        password: config.pass,
+        database: config.db,
+        charset: config.char,
+        multipleStatements: true
+    }
+  })
+  const cnt = DB.insert({
+    volunteer_open_id: 'adff',
+    blindman_open_id: blindman_open_id,
+    blindman_nickname: blindman_nickname,
+    volunteer_nickname: '痕',
+    supply_help_content: 'help',
+    ask_for_help_content: ask_for_help_content,
+    img_url: img_url,
+    formid: formid
+  }).into('helpInfo').returning('*').toString()
+  DB.raw(cnt).then(res => {
+    console.log('入库成功')
+    console.log(res)
+console.log(Object.values(res[0]))
+console.log(Object.values(res[0])[2])
+    global.helpId = Object.values(res[0])[2]
+  //  process.exit(0)
+  }, err => {
+    throw new Error(err)
+  })
+  // 求助者昵称
+  tmplateMessageJson.data.keyword1.value = blindman_nickname
+  // 求助内容
+  tmplateMessageJson.data.keyword3.value = ctx.request.body.data.help
+  // 求助时间
+  tmplateMessageJson.data.keyword4.value = ctx.request.body.data.time
+  tmplateMessageJson.url = tmplateMessageJson.url + global.helpId
+console.log('msg: '+ JSON.stringify(tmplateMessageJson))
+  request({
+  	url: 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='+accessTokenJson.access_token,
+  	method: "POST",
+  	json: true,
+  	headers: {
+    		"content-type": "application/json",
+  	},
+  	body: tmplateMessageJson
+  }, function (error, response, body) {
+  	if (!error && response.statusCode == 200) {
+		console.log(error)
+		console.log(accessTokenJson.access_token)
+    		console.log(body);
+  	}
+  });
+  ctx.state.data = { msg: '发送求助模板消息成功'}
+};

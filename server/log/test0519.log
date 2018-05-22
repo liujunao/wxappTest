@@ -1,0 +1,664 @@
+nohup: 忽略输入
+[ '1oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '2oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '3oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '4oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '5oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+[ '3oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '4oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '5oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+{ accessTokenApi: '%scgi-bin/token?grant_type=client_credential&appid=%s&secret=%s',
+  templateMessageApi: '%scgi-bin/message/template/send?access_token=%s' }
+https://api.weixin.qq.com/cgi-bin/token?grant_type=client_credential&appid=wx0f5b1a78e6acfa49&secret=ae4ecd76ffabc2e30449b207a1609e28
+x: 1
+length5
+[ '5oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '2oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '3oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '4oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '1oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+x: 1
+length5
+[ '4oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '2oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '3oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '5oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '1oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+x: 1
+length5
+[ '3oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '2oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '4oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '5oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '1oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+[ '4oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '5oUkCajhHYh4NOH25tXNq95WnhGMk',
+  '1oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+Got response: 200
+{"access_token":"9_efVBfO_wY1YlM2LGFO-w_ilg_oDFFX9OWtbjq9Vm-URezuOq_j0X28-3xUCysKDP9Q18_YbdiOc8N_15ykRMjxw4RKDnVxbsGMa2YtdESa4S8ddk26q8Z8Yw4vkUCLcABAOWF","expires_in":7200}(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+120
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+hi
+1526739771284
+o1hj947I0cVguv61myMdJ2cafrbs
+{ data: 
+   { blindman_open_id: 'o1hj947I0cVguv61myMdJ2cafrbs',
+     blindmannickname: '周江南',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '是什么',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526739727616-H1Ozm3aCG.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyb9zsXpTX8J4gfa6M9v4hUsKW6ZJazXp6TEQxOj44vJiczxPdkuzqAMyWkwOibHShemuzicwSzqlXw/132',
+     formid: '1526739771284' } }
+here
+120
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+hi
+1526739771284
+o1hj947I0cVguv61myMdJ2cafrbs
+{ data: 
+   { blindman_open_id: 'o1hj947I0cVguv61myMdJ2cafrbs',
+     blindmannickname: '周江南',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '是什么',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526739727616-H1Ozm3aCG.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTLyb9zsXpTX8J4gfa6M9v4hUsKW6ZJazXp6TEQxOj44vJiczxPdkuzqAMyWkwOibHShemuzicwSzqlXw/132',
+     formid: '1526739771284' } }
+here
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test succ
+test succ
+test succ
+test succ
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745189641-HkCPOTTAG.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"什么","formid":"a88d96c321625d6eeb9e73d667862c53","time":"5/19/2018, 11:53:26 PM","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_eI5RIZkFANSkbMTTtSJkLVDQT-LlicW9n7o5-lmtuhwqEQKyAtzT3aZyyshrN23-Op7NocokLYxO-KKtnIciHqNv72-srzc3MqsPiyNF1N8litNzLPFr0lLrVhwFnf407AKwk--oD29ZLldWCFWbADAHKB
+a_t: 9_eI5RIZkFANSkbMTTtSJkLVDQT-LlicW9n7o5-lmtuhwqEQKyAtzT3aZyyshrN23-Op7NocokLYxO-KKtnIciHqNv72-srzc3MqsPiyNF1N8litNzLPFr0lLrVhwFnf407AKwk--oD29ZLldWCFWbADAHKB
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('什么', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'a88d96c321625d6eeb9e73d667862c53', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745189641-HkCPOTTAG.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 121,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 121, 2, 0, '', true, 0 ]
+121
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=121
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=121","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"什么","color":"#173177"},"keyword4":{"value":"5/19/2018, 11:53:26 PM","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 287778513447305200 }
+121
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+hi
+a88d96c321625d6eeb9e73d667862c53
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '什么',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745189641-HkCPOTTAG.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: 'a88d96c321625d6eeb9e73d667862c53' } }
+here
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+{"formid":"a88d96c321625d6eeb9e73d667862c53","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"错开潮","supplyhelptime":"2018-5-19 235344","askforhelpcontent":"什么"}
+hi post!
+{"formid":"a88d96c321625d6eeb9e73d667862c53","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"错开潮","supplyhelptime":"2018-5-19 235344","askforhelpcontent":"什么"}
+access_token: 9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+200
+{ errcode: 0, errmsg: 'ok' }
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"","formid":"fdcff99f16acd51d574d921652b5e8ee","time":"5/19/2018, 11:55:06 PM","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_eI5RIZkFANSkbMTTtSJkLVDQT-LlicW9n7o5-lmtuhwqEQKyAtzT3aZyyshrN23-Op7NocokLYxO-KKtnIciHqNv72-srzc3MqsPiyNF1N8litNzLPFr0lLrVhwFnf407AKwk--oD29ZLldWCFWbADAHKB
+a_t: 9_eI5RIZkFANSkbMTTtSJkLVDQT-LlicW9n7o5-lmtuhwqEQKyAtzT3aZyyshrN23-Op7NocokLYxO-KKtnIciHqNv72-srzc3MqsPiyNF1N8litNzLPFr0lLrVhwFnf407AKwk--oD29ZLldWCFWbADAHKB
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'fdcff99f16acd51d574d921652b5e8ee', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 122,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 122, 2, 0, '', true, 0 ]
+122
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=122
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=122","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"","color":"#173177"},"keyword4":{"value":"5/19/2018, 11:55:06 PM","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 287780192695631870 }
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"哇(σﾟ∀ﾟ)σ哇","formid":"677f8e3d3ba6897b04796e3b9579b11c","time":"5/19/2018, 11:55:09 PM","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_eI5RIZkFANSkbMTTtSJkLVDQT-LlicW9n7o5-lmtuhwqEQKyAtzT3aZyyshrN23-Op7NocokLYxO-KKtnIciHqNv72-srzc3MqsPiyNF1N8litNzLPFr0lLrVhwFnf407AKwk--oD29ZLldWCFWbADAHKB
+a_t: 9_eI5RIZkFANSkbMTTtSJkLVDQT-LlicW9n7o5-lmtuhwqEQKyAtzT3aZyyshrN23-Op7NocokLYxO-KKtnIciHqNv72-srzc3MqsPiyNF1N8litNzLPFr0lLrVhwFnf407AKwk--oD29ZLldWCFWbADAHKB
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('哇(σﾟ∀ﾟ)σ哇', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', '677f8e3d3ba6897b04796e3b9579b11c', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 123,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 123, 2, 0, '', true, 0 ]
+123
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=123
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=123","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"哇(σﾟ∀ﾟ)σ哇","color":"#173177"},"keyword4":{"value":"5/19/2018, 11:55:09 PM","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 287780244654669820 }
+123
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+hi
+677f8e3d3ba6897b04796e3b9579b11c
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '哇(σﾟ∀ﾟ)σ哇',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: '677f8e3d3ba6897b04796e3b9579b11c' } }
+here
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+{"formid":"677f8e3d3ba6897b04796e3b9579b11c","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"好","supplyhelptime":"2018-5-19 235521","askforhelpcontent":"哇(σﾟ∀ﾟ)σ哇"}
+hi post!
+{"formid":"677f8e3d3ba6897b04796e3b9579b11c","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"好","supplyhelptime":"2018-5-19 235521","askforhelpcontent":"哇(σﾟ∀ﾟ)σ哇"}
+access_token: 9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+200
+{ errcode: 0, errmsg: 'ok' }
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+{}
+hi post!
+{}
+access_token: 9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+200
+{ errcode: 40003,
+  errmsg: 'invalid openid hint: [CnCp50322ge32]' }
+123
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+hi
+677f8e3d3ba6897b04796e3b9579b11c
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '哇(σﾟ∀ﾟ)σ哇',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: '677f8e3d3ba6897b04796e3b9579b11c' } }
+here
+123
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+hi
+677f8e3d3ba6897b04796e3b9579b11c
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '哇(σﾟ∀ﾟ)σ哇',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: '677f8e3d3ba6897b04796e3b9579b11c' } }
+here
+123
+9_FqCX9qVcmIlWXjHA0Feb9pICSc9Ojd6AzOEYrLlnbFBWaAy-h8bh7pmRL34-eQ5pVqbm2nCksmsX8-q_Ln2t9cMnMDdWM3EAkVO2BcJIPl5tdpt8GaZKqkNb0AaEs3r8q1iXwNwuLfEor8wEVNDeAGAPHX
+hi
+677f8e3d3ba6897b04796e3b9579b11c
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '哇(σﾟ∀ﾟ)σ哇',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: '677f8e3d3ba6897b04796e3b9579b11c' } }
+here
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test succ
+test succ
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526747691122-SJXVzRT0f.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"是","formid":"be255c8c1ed28ee07837810feb239180","time":"2018/5/20 上午12:35:30","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_lw7babO131FCP_LNT5dRZUuFEa6DMnsV0fSbErZGr66SscYcnnTlqvc6xhL-7f45icgp0SR9MorKchljpayu9DVU_ft51QVrFEXNW-uginl7_kv3jQ_i7aBwoRs8MqrPqDLGdpEQOIhRSYZJLVDeABAZJR
+a_t: 9_lw7babO131FCP_LNT5dRZUuFEa6DMnsV0fSbErZGr66SscYcnnTlqvc6xhL-7f45icgp0SR9MorKchljpayu9DVU_ft51QVrFEXNW-uginl7_kv3jQ_i7aBwoRs8MqrPqDLGdpEQOIhRSYZJLVDeABAZJR
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('是', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'be255c8c1ed28ee07837810feb239180', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526747691122-SJXVzRT0f.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 124,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 124, 2, 0, '', true, 0 ]
+124
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=124
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=124","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"是","color":"#173177"},"keyword4":{"value":"2018/5/20 上午12:35:30","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 287820861220864000 }
+124
+9_GooY5jiAE4dXvqymh2r1b688gUMPBOr9nM-Fz1zsXAlFkQH54pnJ_i1_PyajFeHVWhOpUjoyS_aQRp2xdw83r0c2n0pC0CpUaS-UR6z9eZfmCcfTUiwmrEwyVsntQmPnZ8v3y3wYIq4TNL_BDGGaADAILL
+hi
+be255c8c1ed28ee07837810feb239180
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '是',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526747691122-SJXVzRT0f.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: 'be255c8c1ed28ee07837810feb239180' } }
+here
+124
+9_ApMoEY8W69tEHcsSg5u2dO58fOopSPXwC4yCLhypnIL74drNiI7RGu8vfiV8dcJFJl46KFygc5T-c2Q20gnHdg7uQ1gSXsAi5DDAwvTMKlF7QRFtjK4P0ggDLAxQ9kDQjpR0e8_2BqUnzSD4YNBiACAUJX
+hi
+be255c8c1ed28ee07837810feb239180
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '是',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526747691122-SJXVzRT0f.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: 'be255c8c1ed28ee07837810feb239180' } }
+here
+123
+9_ApMoEY8W69tEHcsSg5u2dO58fOopSPXwC4yCLhypnIL74drNiI7RGu8vfiV8dcJFJl46KFygc5T-c2Q20gnHdg7uQ1gSXsAi5DDAwvTMKlF7QRFtjK4P0ggDLAxQ9kDQjpR0e8_2BqUnzSD4YNBiACAUJX
+hi
+677f8e3d3ba6897b04796e3b9579b11c
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '哇(σﾟ∀ﾟ)σ哇',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526745291098-SymC_6TCM.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: '677f8e3d3ba6897b04796e3b9579b11c' } }
+here
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+124
+9_ApMoEY8W69tEHcsSg5u2dO58fOopSPXwC4yCLhypnIL74drNiI7RGu8vfiV8dcJFJl46KFygc5T-c2Q20gnHdg7uQ1gSXsAi5DDAwvTMKlF7QRFtjK4P0ggDLAxQ9kDQjpR0e8_2BqUnzSD4YNBiACAUJX
+hi
+be255c8c1ed28ee07837810feb239180
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '是',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526747691122-SJXVzRT0f.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: 'be255c8c1ed28ee07837810feb239180' } }
+here
+124
+9_ApMoEY8W69tEHcsSg5u2dO58fOopSPXwC4yCLhypnIL74drNiI7RGu8vfiV8dcJFJl46KFygc5T-c2Q20gnHdg7uQ1gSXsAi5DDAwvTMKlF7QRFtjK4P0ggDLAxQ9kDQjpR0e8_2BqUnzSD4YNBiACAUJX
+hi
+be255c8c1ed28ee07837810feb239180
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '是',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526747691122-SJXVzRT0f.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: 'be255c8c1ed28ee07837810feb239180' } }
+here
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526775682967-HyoKJBACM.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"OK","formid":"9b310dcc00dd979efcd97c68cd8c6485","time":"2018/5/20 上午8:21:32","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_WZmviFEt4NYRou2cjqXLM60Z3GSP-at9SgeGmEQL-bHtltFZQJAYdYSgXCq5UV10QwSGpH30JIdGZZaFWI3iLN6iNboi9VZugIZsuRZ5RPNSwKWg77T69Rt-7uzveunlFsfY4IYJ0Fg-Bpw3LOLiAAAADA
+a_t: 9_WZmviFEt4NYRou2cjqXLM60Z3GSP-at9SgeGmEQL-bHtltFZQJAYdYSgXCq5UV10QwSGpH30JIdGZZaFWI3iLN6iNboi9VZugIZsuRZ5RPNSwKWg77T69Rt-7uzveunlFsfY4IYJ0Fg-Bpw3LOLiAAAADA
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('OK', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', '9b310dcc00dd979efcd97c68cd8c6485', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526775682967-HyoKJBACM.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 125,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 125, 2, 0, '', true, 0 ]
+125
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=125
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=125","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"OK","color":"#173177"},"keyword4":{"value":"2018/5/20 上午8:21:32","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 288289987143942140 }
+125
+9_ApMoEY8W69tEHcsSg5u2dO58fOopSPXwC4yCLhypnIL74drNiI7RGu8vfiV8dcJFJl46KFygc5T-c2Q20gnHdg7uQ1gSXsAi5DDAwvTMKlF7QRFtjK4P0ggDLAxQ9kDQjpR0e8_2BqUnzSD4YNBiACAUJX
+hi
+9b310dcc00dd979efcd97c68cd8c6485
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: 'OK',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526775682967-HyoKJBACM.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: '9b310dcc00dd979efcd97c68cd8c6485' } }
+here
+9_ApMoEY8W69tEHcsSg5u2dO58fOopSPXwC4yCLhypnIL74drNiI7RGu8vfiV8dcJFJl46KFygc5T-c2Q20gnHdg7uQ1gSXsAi5DDAwvTMKlF7QRFtjK4P0ggDLAxQ9kDQjpR0e8_2BqUnzSD4YNBiACAUJX
+{"formid":"9b310dcc00dd979efcd97c68cd8c6485","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"催","supplyhelptime":"2018-5-20 82147","askforhelpcontent":"OK"}
+hi post!
+{"formid":"9b310dcc00dd979efcd97c68cd8c6485","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"催","supplyhelptime":"2018-5-20 82147","askforhelpcontent":"OK"}
+access_token: 9_ApMoEY8W69tEHcsSg5u2dO58fOopSPXwC4yCLhypnIL74drNiI7RGu8vfiV8dcJFJl46KFygc5T-c2Q20gnHdg7uQ1gSXsAi5DDAwvTMKlF7QRFtjK4P0ggDLAxQ9kDQjpR0e8_2BqUnzSD4YNBiACAUJX
+200
+{ errcode: 0, errmsg: 'ok' }
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526779997304-HJHwgI0CM.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"OK","formid":"bc6ab2261d4b23ff2f443899f7d0cc69","time":"2018/5/20 上午9:33:25","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+a_t: 9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('OK', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'bc6ab2261d4b23ff2f443899f7d0cc69', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526779997304-HJHwgI0CM.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 126,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 126, 2, 0, '', true, 0 ]
+126
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=126
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=126","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"OK","color":"#173177"},"keyword4":{"value":"2018/5/20 上午9:33:25","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 288362338334294000 }
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+126
+9_XL32TEIMiqNOysopMvmo2tD4Ndqu4m1skV0pu1dEOf1Px9miPjj9LkB6Ju2ORikBhOLxhJGjSErAbk8NyxYzo-m5tFcEpKYgjxl7tebE6rSsCE7pbkrf4fqaIv0OVXaAHACJL
+hi
+bc6ab2261d4b23ff2f443899f7d0cc69
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: 'OK',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526779997304-HJHwgI0CM.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: 'bc6ab2261d4b23ff2f443899f7d0cc69' } }
+here
+9_XL32TEIMiqNOysopMvmo2tD4Ndqu4m1skV0pu1dEOf1Px9miPjj9LkB6Ju2ORikBhOLxhJGjSErAbk8NyxYzo-m5tFcEpKYgjxl7tebE6rSsCE7pbkrf4fqaIv0OVXaAHACJL
+{"formid":"bc6ab2261d4b23ff2f443899f7d0cc69","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"嗯","supplyhelptime":"2018-5-20 9349","askforhelpcontent":"OK"}
+hi post!
+{"formid":"bc6ab2261d4b23ff2f443899f7d0cc69","blindman_open_id":"o1hj944tYN69a9eQPaDKTYT_ARLY","volunteernickname":"周宽宁","supplyhelpcontent":"嗯","supplyhelptime":"2018-5-20 9349","askforhelpcontent":"OK"}
+access_token: 9_XL32TEIMiqNOysopMvmo2tD4Ndqu4m1skV0pu1dEOf1Px9miPjj9LkB6Ju2ORikBhOLxhJGjSErAbk8NyxYzo-m5tFcEpKYgjxl7tebE6rSsCE7pbkrf4fqaIv0OVXaAHACJL
+200
+{ errcode: 0, errmsg: 'ok' }
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526779997304-HJHwgI0CM.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"OK","formid":"c375cffa4d0a5c388fb7c47a793add24","time":"2018/5/20 上午9:35:20","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+a_t: 9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('OK', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'c375cffa4d0a5c388fb7c47a793add24', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526779997304-HJHwgI0CM.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 127,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 127, 2, 0, '', true, 0 ]
+127
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=127
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=127","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"OK","color":"#173177"},"keyword4":{"value":"2018/5/20 上午9:35:20","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 288364269609959400 }
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526781139186-rJsAEUAAG.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"","formid":"the formId is a mock one","time":"2018/5/20 上午9:52:44","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+a_t: 9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'the formId is a mock one', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526781139186-rJsAEUAAG.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 128,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 128, 2, 0, '', true, 0 ]
+128
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=128
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=128","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"","color":"#173177"},"keyword4":{"value":"2018/5/20 上午9:52:44","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 288381785879101440 }
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526781428795-HkpeU8RAz.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"90","formid":"the formId is a mock one","time":"2018/5/20 上午9:57:18","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+a_t: 9_ktN1n7YoIdBkgdeI4TVZEeeimbRIWxGwogNVK5Z1Lz2HGENpfAe41iLxXGJhZ0BMXXODrriox4IR8N9vOh37JQqv2M1VaBLwmSQuBs6D5tzm1HX8jMANaYE51rqFrf-jZc3-lAbapsDtOGmtDPSaAHAJVY
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('90', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'the formId is a mock one', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526781428795-HkpeU8RAz.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 129,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 129, 2, 0, '', true, 0 ]
+129
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=129
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=129","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"90","color":"#173177"},"keyword4":{"value":"2018/5/20 上午9:57:18","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 288386375655637000 }
+129
+9_XL32TEIMiqNOysopMvmo2tD4Ndqu4m1skV0pu1dEOf1Px9miPjj9LkB6Ju2ORikBhOLxhJGjSErAbk8NyxYzo-m5tFcEpKYgjxl7tebE6rSsCE7pbkrf4fqaIv0OVXaAHACJL
+hi
+the formId is a mock one
+o1hj944tYN69a9eQPaDKTYT_ARLY
+{ data: 
+   { blindman_open_id: 'o1hj944tYN69a9eQPaDKTYT_ARLY',
+     blindmannickname: '痕',
+     volunteernickname: '周宽宁',
+     askforhelpcontent: '90',
+     imgurl: 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526781428795-HkpeU8RAz.jpg',
+     blindmanavatarurl: 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132',
+     formid: 'the formId is a mock one' } }
+here
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+test
+warning: AppId has been deprecated, Please put it at the end of parameter Bucket(E.g: "test-1250000000").
+(node:28899) [DEP0013] DeprecationWarning: Calling an asynchronous function without callback is deprecated.
+rnd: 1
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+openids: 
+
+[ 'oUkCajhHYh4NOH25tXNq95WnhGMk' ]
+postdata: {"data":{"imgurl":"https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526789543422-HkkhSu0Cf.jpg","openid":"o1hj944tYN69a9eQPaDKTYT_ARLY","help":"ok","formid":"the formId is a mock one","time":"2018/5/20 下午12:12:32","nickName":"痕","avatarurl":"https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132"}}
+9_mD8dYKbVic2-Sd2PEdJYe2lyKnQ-xolb3qCx3RgS7Dnji3xt79cX2eDxKvtRHj9cQ4vA5JzcPSK8wApkC5vqCfqZeOQOzQjxqMeLgtoyhEyWHW1gbJuIRB46rE0HyqBgRp05nQViJ4ZnIfN8COBhAAAHTG
+a_t: 9_mD8dYKbVic2-Sd2PEdJYe2lyKnQ-xolb3qCx3RgS7Dnji3xt79cX2eDxKvtRHj9cQ4vA5JzcPSK8wApkC5vqCfqZeOQOzQjxqMeLgtoyhEyWHW1gbJuIRB46rE0HyqBgRp05nQViJ4ZnIfN8COBhAAAHTG
+https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132
+insert into `helpInfo` (`ask_for_help_content`, `blindman_avatar_url`, `blindman_nickname`, `blindman_open_id`, `formid`, `img_url`, `supply_help_content`, `volunteer_nickname`, `volunteer_open_id`) values ('ok', 'https://wx.qlogo.cn/mmopen/vi_32/Q0j4TwGTfTIP7sLib0sicleL3ibOky2BFY3MnexydbUC6K0FE9ibFiaMRgpW5vXlafiaW1yicQqlAtiakGv5afVOf7W5FQ/132', '痕', 'o1hj944tYN69a9eQPaDKTYT_ARLY', 'the formId is a mock one', 'https://wximg-1256074910-1256074910.cos.ap-guangzhou.myqcloud.com/./wxapp/1526789543422-HkkhSu0Cf.jpg', '', '周宽宁', 'oUkCajhHYh4NOH25tXNq95WnhGMk')
+入库成功
+[ OkPacket {
+    fieldCount: 0,
+    affectedRows: 1,
+    insertId: 130,
+    serverStatus: 2,
+    warningCount: 0,
+    message: '',
+    protocol41: true,
+    changedRows: 0 },
+  undefined ]
+[ 0, 1, 130, 2, 0, '', true, 0 ]
+130
+url: http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=130
+msg: {"touser":"oUkCajhHYh4NOH25tXNq95WnhGMk","template_id":"702uhQuejg1vbaRXDpn3wWCv4yqSWT7iDBX2o6xXokg","url":"http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId=130","topcolor":"#FF0000","data":{"first":{"value":"有盲人朋友指定求助您，请您帮助","color":"#173177"},"keyword1":{"value":"痕","color":"#173177"},"keyword2":{"value":"拍照求助","color":"#173177"},"keyword3":{"value":"ok","color":"#173177"},"keyword4":{"value":"2018/5/20 下午12:12:32","color":"#173177"},"remark":{"value":"本条求助指定您帮助，请帮助他吧","color":"#173177"}}}
+openid: oUkCajhHYh4NOH25tXNq95WnhGMk
+null
+9_1TV8gibEBMS3vBCp4YdZyLBCirRaDwldy4lg5ZHf2fWbxMWlzEo_S_bYRJrXC3LpcAlDuePr4OLkETids8fT9lr_JjGVaL9jBMRs1GP8kIQYt3-znWiy8dTh6AId3zy4td2Pj2YCPN4AkgdfTMKbAJAGZX
+{ errcode: 0, errmsg: 'ok', msgid: 288522521169641500 }

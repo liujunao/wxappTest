@@ -1,0 +1,181 @@
+const request = require('request'),
+gethelpinformastionJson = require('/home/wza/server/gethelpinformastion'),
+weappaccessTokenJson = require('./weappaccess_token'),
+fs = require('fs'), //引入 fs 模块
+helpinfoJson = require('../forhelp');
+const { mysql: config } = require('../config')
+
+
+var mysql  = require('mysql'); 
+var connection = mysql.createConnection({    
+  host     : config.host,      
+  user     : config.user,             
+  password : config.pass,      
+  port: config.port,                  
+  database: config.db,
+});
+connection.connect();
+var  userGetSql = 'SELECT * FROM helpInfo';
+//查 query
+connection.query(userGetSql,function (err, result) {
+        if(err){
+          console.log('[SELECT ERROR] - ',err.message);
+          return;
+        }       
+       console.log('---------------SELECT----------------');
+       console.log(result);       
+       console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$'); 
+});
+connection.end();
+
+module.exports = function (ctx, next) {
+// 构建select sql语句
+  const DB = require('knex')({
+    client: 'mysql',
+    connection: {
+        host: config.host,
+        port: config.port,
+        user: config.user,
+        password: config.pass,
+        database: config.db,
+        charset: config.char,
+        multipleStatements: true
+    }
+  })
+console.log('hi')
+console.log(helpinfoJson)
+var mysql  = require('mysql');
+var connection = mysql.createConnection({
+  host     : config.host,
+  user     : config.user,
+  password : config.pass,
+  port: config.port,
+  database: config.db,
+});
+connection.connect();
+const cnt = DB.select('img_url', 'formid', 'blindman_open_id', 'blindman_nickname', 'supply_help_content', 'supply_help_time').where({id: 2}).from('helpInfo').toString()
+var  userGetSql = cnt;
+//查 query
+connection.query(userGetSql,function (err, result) {
+        if(err){
+          console.log('[SELECT ERROR] - ',err.message);
+          return;
+        }
+       console.log('---------------SELECT----------------');
+       console.log(result);
+       console.log('$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$$');
+});
+connection.end();
+/*
+request({
+      url: "https://www.bemyeyes.com.cn/weapp/selectHelpInfo",
+      method: "POST",
+      json: true,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: {"x": "daf"},
+    }, function (error, response, body) {
+console.log(body)
+      if (!error && response.statusCode == 200) {
+        console.log(error)
+        console.log(gethelpinformastionJson)
+        console.log(body);
+      }
+    });
+*/
+  var cn = 'select * from `helpInfo`'
+/*
+  DB.raw(cn).then(res => {
+    console.log('数据库初始化成功！')
+    console.log(res)
+    process.exit(0)
+  }, err => {
+   console.log('hi')
+    throw new Error(err)
+  })
+*/
+  DB.select('img_url', 'formid', 'blindman_open_id', 'blindman_nickname', 'supply_help_content', 'ask_help_time', 'formid')
+  .where({id : 3})
+  .from('helpInfo')
+  .on('query-response', function(response, obj, builder) {
+  // ...
+  //console.log(JSON.parse(Object.values(response[0])))
+  console.log(Object.values(response[0]))
+  console.log(Object.values(response[0])[2])
+  global.imgUrl = Object.values(response[0])[0]
+  let nickName = Object.values(response[0])[3]
+  let help = Object.values(response[0])[4]
+  let time = Object.values(response[0])[5]
+  let formid = Object.values(response[0])[6] 
+  gethelpinformastionJson.form_id = formid
+console.log(formid)
+})
+.then(function(response) {
+  // Same response as the emitted event
+})
+.catch(function(error) { });
+console.log('here')
+//process.exit(0)
+/*
+  let imgUrl = Object.values(response[0])[0]
+  let nickName = Object.values(response[0])[3]
+  let help = Object.values(response[0])[4]
+  let time = Object.values(response[0])[5]
+  let formid = Object.values(response[0])[6]
+*/
+  //gethelpinformastionJson.form_id = formid
+
+  //更新本地存储的
+  fs.writeFile('./gethelpinformastion.json',JSON.stringify(gethelpinformastionJson), function (err){
+        if(err) throw err;
+        console.log('saved!');
+  }
+  );
+console.log(global.imgUrl)
+  if ( ctx.request.url === '/weapp/help' && ctx.request.method === 'GET' ) {
+    // 当GET请求时候返回表单页面
+    let html = `
+      <form method="POST" action="/weapp/help">
+	<p>求助者: `+ nickName+`</p>
+        <p>求助内容: `+ help +`</p>
+        <p>求助图片</p>
+	<image src= `+imgUrl+` class="image" ></image>
+        <p>我的回复</p>
+        <input name="reply" /><br/>
+        <button type="submit">发送</button>
+      </form>
+    `
+    ctx.body = html
+  } else if ( ctx.url === '/weapp/help' && ctx.request.method === 'POST' ) {
+    // 当POST请求的时候，解析POST表单里的数据，并显示出来
+    console.log(JSON.stringify(ctx.request.body))
+    gethelpinformastionJson.data.keyword1.value = ctx.request.body.reply
+    gethelpinformastionJson.data.keyword2.value = nickName
+    gethelpinformastionJson.data.keyword5.value = help
+    gethelpinformastionJson.data.keyword4.value = time
+    request({
+      url: 'https://api.weixin.qq.com/cgi-bin/message/wxopen/template/send?access_token='+weappaccessTokenJson.access_token,
+      method: "POST",
+      json: true,
+      headers: {
+        "content-type": "application/json",
+      },
+      body: gethelpinformastionJson,
+    }, function (error, response, body) {
+console.log(gethelpinformastionJson)
+      if (!error && response.statusCode == 200) {
+        console.log(error)
+        console.log(gethelpinformastionJson)
+        console.log(body);
+      }
+    }); 
+    //let postData = parsePostData( ctx )
+    ctx.body = JSON.stringify(ctx.request.body)
+  } else {
+    // 其他请求显示404
+    ctx.body = '<h1>404！！！ o(╯□╰)o</h1>'
+  }
+
+  ctx.state.data = { msg: '发送求助模板消息成功'}
+};

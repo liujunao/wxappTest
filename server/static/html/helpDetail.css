@@ -1,0 +1,130 @@
+body {
+    word-wrap: break-word;
+    font: 0.457143rem/1.5 Helvetica, Arial;
+    /*这里是设置字体，Helvetica字体在移动端各系统都支持（都不支持微软雅黑）*/
+    color: #333;
+    -webkit-text-size-adjust: none;
+    /*设置文本不会放大，普通网页在移动端打开文本是会跟随网页结构缩放的*/
+    background-color: #ebebeb;
+    padding-top: 0.571429rem;
+    padding-bottom: 1.428571rem;
+}
+body *{
+    -webkit-tap-highlight-color: transparent;
+    /*在一些手机上，如iphone，点击按钮等元素会出现点击态的背景色，设置为透明就看不出来了*/
+    -webkit-user-select:text;
+    /*设置元素内的文字及其子元素将不会被选中*/
+}
+.user-img-wrapper{
+    width: 100%;
+    /*height: 1.714286rem;*/
+    /*height: auto;*/
+    margin-bottom: 0.571429rem;
+}
+/*求助者头像外*/
+.wrapper{
+    width: 1.114286rem;
+    height: 1.114286rem;
+    margin-right: 0.285714rem;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    float: left;
+}
+
+/*回复头像外*/
+.response-wrapper{
+    width: 1.114286rem;
+    height: 1.114286rem;
+    margin-left: 0.285714rem;
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    float: right;
+}
+
+.user-img{
+    border-radius:50%;
+    -webkit-border-radius:50%;
+    -moz-border-radius:50%;
+    width:100%;
+    height:100%;
+}
+/*求助者文字*/
+.request-text-wrapper{
+    max-width: 80%;
+    padding-left: 0.142857rem;
+    border-radius:0.142857rem;
+    -webkit-border-radius:0.142857rem;
+    -moz-border-radius:0.142857rem;
+    background-color: #ffffff;
+    float: left;
+}
+/*回复文字*/
+.response-text-wrapper{
+    max-width: 80%;
+    padding-left: 0.142857rem;
+    border-radius:0.142857rem;
+    -webkit-border-radius:0.142857rem;
+    -moz-border-radius:0.142857rem;
+    background-color: #a0e959;
+    float: right;
+}
+.user-name{
+    float: left;
+    margin-top: 0.285714rem;
+    margin-left: 0.142857rem;
+}
+.request-img-wrapper{
+    width: 7.257143rem;
+    /*height: 9.371429rem;*/
+    float: left;
+}
+.request-img{
+    /*width: auto;*/
+    /*height: auto;*/
+    max-width: 100%;
+    max-height: 100%;
+    vertical-align: middle;
+}
+.input-wrapper{
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 1.6rem;
+    background-color: #ffffff;
+    padding-left: 0.142857rem;
+    padding-top: 0.142857rem
+}
+.input-text{
+    font-size: 25px;
+    width: 6.857143rem;
+    height: 1.114286rem;
+    border: 0.028571rem solid #888888;
+    border-radius:0.142857rem;
+    -webkit-border-radius:0.142857rem;
+    -moz-border-radius:0.142857rem;
+    float: left;
+}
+.input-text:focus{
+    border: 0.028571rem solid #1eaa1e;
+}
+.submit-button{
+    font-size: 25px;
+    width: 2.085714rem;
+    height:1.228571rem;
+    line-height:1.228571rem;
+    text-align:center;
+    border: 0.028571rem solid #999999;
+    border-radius:0.142857rem;
+    -webkit-border-radius:0.142857rem;
+    -moz-border-radius:0.142857rem;
+    float: left;
+    background-color: #999999;
+    margin-left: 0.142857rem
+}
+.submit-button-touch{
+    /*border-color: aqua;*/
+    background-color: #e5e5e5;
+}

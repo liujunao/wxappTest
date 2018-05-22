@@ -1,0 +1,6 @@
+<!--vendor/modelMsg/modelMsg.wxml-->
+
+<view bindtap='getToken'>获取token</view>
+
+<view bindtap='getToken2'>获取</view>
+

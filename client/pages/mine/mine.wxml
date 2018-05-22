@@ -1,0 +1,91 @@
+<!--pages/mine/mine.wxml-->
+
+
+<!--pages/mine/index/index.wxml-->
+
+<view class="container">
+  <!-- 用户登录测试 -->
+  <view class="userinfo" style='background: white;'>
+    <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}" background-size="cover"></image>
+    <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>  -->
+    <view>
+      <text bindtap='login' style='bottom: 40rpx;color: #007AFF;'>{{logged ? userInfo.nickName : '点击登录'}}</text>
+      <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+    </view>
+    <view>
+      <button type='primary' style='left: 50rpx;width: 350rpx;height: 100rpx; bottom: 7rpx;'>我的名片</button>
+    </view>
+  </view>
+
+  <view style='background: #FFFF66;width: 750rpx;height: 150rpx;'>
+    <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>个人信息</text>
+    <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
+      <view style='float: left;'>进入</view>
+      <icon type='success_no_circle' color='#C0C0C0' style='right: 50rpx;' />
+    </view>
+  </view>
+
+  <view style='background: #FF6600;width: 750rpx;height: 150rpx;'>
+    <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>设置</text>
+    <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
+      <view style='float: left;'>进入</view>
+      <icon type='success_no_circle' color='#C0C0C0' style='right: 50rpx;' />
+    </view>
+  </view>
+
+  <view style=' background: #FF3300;width: 750rpx;height: 150rpx;'>
+    <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>帮助</text>
+    <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
+      <view style='float: left;'>进入</view>
+      <icon type='success_no_circle' color='#C0C0C0' style='right: 50rpx;' />
+    </view>
+  </view>
+
+  <view style='background: #CC0000;width: 750rpx;height: 150rpx;'>
+    <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>设备管理</text>
+    <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
+      <view style='float: left;'>进入</view>
+      <icon type='success_no_circle' color='#C0C0C0' style='right: 50rpx;' />
+    </view>
+  </view>
+
+
+  <!-- 信道连接测试 -->
+  <!-- <view class="tunnel">
+    <view class="tunnel-text uploader-text">
+      <text bindtap="doRequest">请求（是否带有登陆态）</text>
+      <switch class="tunnel-switch" bindchange="switchRequestMode" color="#007AFF" />
+    </view>
+    <view class="tunnel-text" wx:if="{{requestResult}}">
+      <text class="request-text">{{' 请求结果： ' + requestResult}}</text>
+    </view>
+  </view> -->
+
+  <!-- 信道连接测试 -->
+  <!-- <view class="tunnel">
+    <view class="tunnel-text">
+      <text>信道</text>
+      <switch class="tunnel-switch" bindchange="switchChange" color="#007AFF" />
+    </view>
+    <view class="tunnel-text {{ tunnelStatus && tunnelStatus === 'connected ' ? 'active ' : 'disable ' }}" bindtap="sendMessage">
+      <text>发送消息</text>
+    </view>
+  </view> -->
+
+  <!-- 上传图片测试 -->
+  <!-- <view class="uploader">
+    <navigator url="../addCgi/addCgi" open-type="navigate" class="uploader-text">
+      <text>快速增加 CGI</text>
+    </navigator>
+  </view> -->
+</view>
+
+<view>
+  <form bindsubmit="formSubmit" report-submit="true">
+    <input name="input" class="input" placeholder="please input here" />
+    <button formType="submit">Submit</button>
+    <button formType="reset">Reset</button>
+  </form>
+</view>
+
+<navigator url='../../vendor/modelMsg/modelMsg' open-type='navigate'>跳转</navigator>
