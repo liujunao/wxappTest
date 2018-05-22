@@ -132,7 +132,6 @@ Page({
           }
         })
         
-        
         //console.log(res)
         wx.navigateTo({
           url: '../chat/chat?imgUrl=' + filePath + '&indexSet=' + that.data.indexSet,

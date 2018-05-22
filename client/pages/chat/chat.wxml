@@ -1,5 +1,5 @@
 <!--pages/chat/chat.wxml-->
-<!--
+
 <view style='height: 65rpx;'>
   <view bindtap='doIdCardIdentify' style='position: absolute;width: 20%;height: 150rpx;left: 0%;bottom: 87%;'>ID</view>
   <view bindtap='doCardIndentity' style='position: absolute;width: 20%;height: 150rpx;left: 10%;bottom: 87%;'>银行卡</view>
@@ -7,9 +7,9 @@
   <view bindtap='doWordIndentify' style='position: absolute;width: 20%;height: 150rpx;left: 42%;bottom: 87%;'>ocr</view>
   <view bindtap='doTxtToRecord' style='position: absolute;width: 20%;height: 150rpx;left: 55%;bottom: 87%;'>语音</view>
   <view bindtap='doConIndentity' style='position: absolute;width: 20%;height: 150rpx;left: 70%;bottom: 87%;'>内容</view>
-  <view bindtap='submitInfo' style='position: absolute;width: 20%;height: 150rpx;left: 50%;bottom: 87%;'>求助志愿者</view>
+  <!-- <view bindtap='submitInfo' style='position: absolute;width: 20%;height: 150rpx;left: 50%;bottom: 87%;'>求助志愿者</view> -->
 </view>
--->
+
 <view style='position: absolute;width: 100%;height: 3rpx;background-color: black;bottom: 100%;'></view>
 
 <view class="container">
