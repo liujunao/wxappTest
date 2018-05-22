@@ -1,5 +1,5 @@
 const request = require('request'),
-gethelpinformastionJson = require('/home/wza/server/gethelpinformastion'),
+gethelpinformastionJson = require('../gethelpinformastion'),
 weappaccessTokenJson = require('./weappaccess_token'),
 fs = require('fs'), //引入 fs 模块
 helpinfoJson = require('../forhelp');
