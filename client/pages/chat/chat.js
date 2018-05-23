@@ -165,7 +165,6 @@ Page({
   //印刷体识别
   doWordIndentify: function () {
     let that = this
-
     that.setDa(that);
 
     // 选择图片和上传图片
@@ -179,7 +178,6 @@ Page({
       config.service.ciUrl + '?action=general',
       // 调用成功
       function (res) {
-        console.log(res)
         util.showSuccess('识别成功')
         var data = JSON.parse(res.data)
 
@@ -599,7 +597,7 @@ Page({
             console.log('time: ' + time)
             console.log(that.data.openId)
             wx.request({
-              url: 'https://www.bemyeyes.com.cn/weapp/sendhelpinformation',
+              url: config.service.sendhelpinformation,
               data: {
                 data: {
                   imgurl: that.data.imgUrl,

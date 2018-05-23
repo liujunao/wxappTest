@@ -63,7 +63,6 @@ Page({
           filePath: res.tempImagePath,
         });
         var filePath = res.tempImagePath
-        console.log('filepath: ' + filePath)
         wx.uploadFile({
           url: that.data.uploadUrl,
           filePath: filePath,
@@ -72,7 +71,6 @@ Page({
             util.showSuccess('上传图片成功')
             console.log(res.data)
             res = JSON.parse(res.data)
-            console.log(res)
             that.setData({
               imgUrl: res.data.imgUrl
             })
@@ -86,7 +84,6 @@ Page({
             console.error(e)
           }
         })
-        console.log(res.tempImagePath)
         wx.navigateTo({
           url: '../chat/chat?imgUrl=' + res.tempImagePath + '&indexSet=' + that.data.indexSet,
         })
