@@ -35,7 +35,5 @@
       <!-- cover-image src='../image/video.png' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 65%;bottom: 10%;'></cover-image -->
 
     </camera>
-    <!-- <view>预览</view>
-  <image mode="widthFix" src="{{src}}"></image>   -->
   </view>
 </view>
