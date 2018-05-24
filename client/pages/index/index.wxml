@@ -5,31 +5,27 @@
 
     <camera device-position="{{device}}" flash="auto" binderror="error" style="width: 100%; height: 100%;">
       <!-- <navigator url='../mine/mine' open-type='reLaunch'>  -->
-      <cover-image src='../image/mine.png' bindtap='toMine' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 0;bottom: 87%;'></cover-image>
-      <cover-view style='position: absolute;width: 20%;left: 3%;bottom: 84%;color: white'>我的</cover-view>
+      <cover-image src='../image/mine.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 0;bottom: 87%;'></cover-image>
+      <cover-view class='title-text' style='left: -1%;'bindtap='toMine'>我的页面</cover-view>
       <!-- </navigator>  -->
 
       <cover-image src='../image/more.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 16%;bottom: 87%;'></cover-image>
-      <cover-view style='position: absolute;width: 20%;left: 19%;bottom: 85%;color: white;'>发现</cover-view>
-      <cover-view style='position: absolute;width: 20%;left: 19%;bottom: 82%;color: white;'>更多</cover-view>
+      <cover-view class='title-text' style='left: 14.5%;'>发现更多</cover-view>
 
-      <cover-image src='../image/ocr.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 32%;bottom: 87%;' bindtap='indexSet1'></cover-image>
-      <cover-view style='position: absolute;width: 20%;left: 35%;bottom: 85%;color: white;'>通用</cover-view>
-      <cover-view style='position: absolute;width: 20%;left: 35%;bottom: 82%;color: white;'>ocr</cover-view>
+      <cover-image src='../image/ocr.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 32%;bottom: 87%;'></cover-image>
+      <cover-view class='title-text' style='left: 30%;' bindtap='indexSet1'>印刷体识别</cover-view>
 
-      <cover-image src='../image/imgtotext.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 48%;bottom: 87%;' bindtap='indexSet2'></cover-image>
-      <cover-view style='position: absolute;width: 20%;left: 51%;bottom: 85%;color: white;'>语音</cover-view>
-      <cover-view style='position: absolute;width: 20%;left: 51%;bottom: 82%;color: white;'>识图</cover-view>
+      <cover-image src='../image/imgtotext.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 48%;bottom: 87%;'></cover-image>
+      <cover-view class='title-text' style='left: 46%;' bindtap='indexSet2'>语音识图</cover-view>
 
-      <cover-image src='../image/content.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 64%;bottom: 87%;' bindtap='indexSet3'></cover-image>
-      <cover-view style='position: absolute;width: 20%;left: 67%;bottom: 85%;color: white;'>内容</cover-view>
-      <cover-view style='position: absolute;width: 20%;left: 67%;bottom: 82%;color: white;'>识别</cover-view>
+      <cover-image src='../image/content.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 64%;bottom: 87%;'></cover-image>
+      <cover-view class='title-text' style='left: 62%;' bindtap='indexSet3'>图片内容识别</cover-view>
 
-      <cover-image src='../image/camera.png' bindtap='checkDevice' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 80%;bottom: 87%;'></cover-image>
-      <cover-view style='position: absolute;width: 20%;left: 83%;bottom: 85%;color: white;'>切换</cover-view>
-      <cover-view style='position: absolute;width: 20%;left: 83%;bottom: 82%;color: white;'>像头</cover-view>
+      <cover-image src='../image/camera.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 80%;bottom: 87%;'></cover-image>
+      <cover-view class='title-text' style='left: 78%;' bindtap='checkDevice'>切换摄像头</cover-view>
+
       <cover-image src='../image/album.png'  mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 15%;bottom: 10%;'></cover-image>
-      <cover-view class="camera-text" style='position: absolute;width: 40%;hight:300rpx;left:7%;bottom: 12%;color: white' bindtap='doUpload'>相机</cover-view>
+      <cover-view class="camera-text" style='position: absolute;width: 40%;hight:300rpx;left:7%;bottom: 12%;color: white' bindtap='doUpload'>相册</cover-view>
       <cover-image src='../image/photograph.png' bindtap='takePhoto' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 56%;bottom: 10%;' alt="拍照">klll</cover-image>
       <cover-view class="camera-text" style='position: absolute;width: 40%; hight:400rpx; left: 48%;bottom: 12%;color: white' bindtap='takePhoto'>拍照</cover-view>
       <!-- cover-image src='../image/video.png' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 65%;bottom: 10%;'></cover-image -->

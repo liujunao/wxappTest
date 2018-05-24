@@ -12,8 +12,6 @@ var speakerInterval;
 var imgTmp;
 var indexSet;
 
-
-
 Page({
   data: {
     defaultCorpus: '你都会什么',
