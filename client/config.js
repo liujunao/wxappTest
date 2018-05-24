@@ -3,8 +3,8 @@
  */
 
 // 此处主机域名修改成腾讯云解决方案分配的域名
-var host = 'https://ye2wtane.qcloud.la';
-// var host = 'https://www.bemyeyes.com.cn';
+// var host = 'https://y64vqmhe.qcloud.la';
+var host = 'https://www.bemyeyes.com.cn';
 
 var config = {
 
@@ -30,7 +30,8 @@ var config = {
         //消息模板发送接口
         model: `${host}/weapp/model`,
 
-        demo: `${host}/weapp/demo`
+        //发送请求到微信公众号
+        sendhelpinformation: `${host}/weapp/sendhelpinformation`
 
     }
 };
