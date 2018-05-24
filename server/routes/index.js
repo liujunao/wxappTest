@@ -52,6 +52,4 @@ router.get('/view-test', function *(){
   yield this.html('test', {"title": "xtemplate demo"})
 })
 */
-router.get('/test', controllers.test)
-
 module.exports = router

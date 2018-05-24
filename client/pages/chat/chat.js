@@ -166,14 +166,16 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
-        var data = JSON.parse(res.data)
+        console.log(res)
+        // var data = JSON.parse(res.data)
+        var data = res.data
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败')
           return
         }
 
@@ -207,7 +209,8 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
-        var data = JSON.parse(res.data)
+        // var data = JSON.parse(res.data)
+        var data = res.data
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
@@ -249,7 +252,8 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
-        var data = JSON.parse(res.data)
+        // var data = JSON.parse(res.data)
+        var data = res.data
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
@@ -291,7 +295,8 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
-        var data = JSON.parse(res.data)
+        // var data = JSON.parse(res.data)
+        var data = res.data
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
@@ -333,7 +338,8 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
-        var data = JSON.parse(res.data)
+        // var data = JSON.parse(res.data)
+        var data = res.data
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
@@ -374,26 +380,6 @@ Page({
       fail: function (err) {
         console.log('record fail: ' + err);
       }
-    })
-  },
-
-  /**
-   * 统一封装选择图片和上传图片的 API
-   * @param {Function} beforUpload 开始上传图片之前执行的函数
-   * @param {Function} success     调用成功时执行的函数
-   * @param {Function} fail        调用失败时执行的函数
-   */
-  _chooseImgAndUpload(beforUpload, url, success, fail) {
-    var filePath = imgTmp;
-    beforUpload(filePath)
-    util.showBusy('正在识别')
-    // 上传图片
-    wx.uploadFile({
-      url: url,
-      filePath: filePath,
-      name: 'file',
-      success: success,
-      fail: fail
     })
   },
 
