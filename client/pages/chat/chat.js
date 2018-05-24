@@ -85,19 +85,6 @@ Page({
     that = this;
     imgTmp = options.imgUrl;
     indexSet = options.indexSet;
-    // 获取用户登录信息
-    // wx.getStorage({
-    //   key: 'loginMsg',
-    //   success: function (res) {
-    //     console.log('test')
-    //     console.log(typeof JSON.parse(res.data))
-    //     that.setData({
-    //       nickName: JSON.parse(res.data).nickName,
-    //       openId: JSON.parse(res.data).openId,
-    //       avatarUrl: JSON.parse(res.data).avatarUrl
-    //     })
-    //   }
-    // })
     app.getUserInfo(function (userInfo) {
       var aUrl = userInfo.avatarUrl;
       if (aUrl != null) {
@@ -109,12 +96,12 @@ Page({
     });
     that.addChat('', 'p');
 
-    if(indexSet){
-      if (indexSet == 'indexSet1_ocr'){
+    if (indexSet) {
+      if (indexSet == 'indexSet1_ocr') {
         that.doWordIndentify();
-      } else if (indexSet == 'indexSet2_rec'){
+      } else if (indexSet == 'indexSet2_rec') {
         that.doTxtToRecord();
-      } else if (indexSet == 'indexSet3_con'){
+      } else if (indexSet == 'indexSet3_con') {
         that.doConIndentity();
       }
     }
@@ -151,14 +138,14 @@ Page({
   },
 
   //一次性设置全 false
-  setDa(that){
+  setDa(that) {
     that.setData({
       showOcrResult: false,
       showResult: false,
       showidResult: false,
       showConResult: false,
-      showCardInfo:false,
-      showRecord:false
+      showCardInfo: false,
+      showRecord: false
     })
   },
 
@@ -166,70 +153,66 @@ Page({
   doWordIndentify: function () {
     let that = this
     that.setDa(that);
-
-    // 选择图片和上传图片
-    this._chooseImgAndUpload(
-      // 上传图片之前
-      function (filePath) {
-        that.setData({
-          ocrImgUrl: filePath
-        })
+    let img = wx.getStorageSync('imgUrl')
+    wx.request({
+      url: config.service.ciUrl,
+      data: {
+        'action': 'general',
+        'imgUrl': img
       },
-      config.service.ciUrl + '?action=general',
-      // 调用成功
-      function (res) {
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
         util.showSuccess('识别成功')
         var data = JSON.parse(res.data)
-
         if (data.code !== 0) {
-          util.showModel('识别失败，请重试或更换识别方式')
+          util.showModel('识别失败')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败，请重试或更换识别方式')
+          util.showModel('识别失败' + info.message)
           return
         }
+
         that.setData({
           showOcrResult: true,
           ocrResult: info.data.items
         })
         that.addChat('<<<', 'l');
       },
-      // 调用失败
-      function (e) {
+      fail: function (res) {
         console.log(e)
         util.showModel('识别失败，请重试或更换识别方式')
       }
-    );
+    })
   },
 
   //身份证识别
   doIdCardIdentify: function () {
     var that = this
     that.setDa(that);
-
-    // 选择图片和上传图片
-    this._chooseImgAndUpload(
-      // 上传图片之前
-      function (filePath) {
-        that.setData({
-          imgUrl: filePath
-        })
+    let img = wx.getStorageSync('imgUrl')
+    wx.request({
+      url: config.service.ciUrl,
+      data: {
+        'action': 'idcard',
+        'imgUrl': img
       },
-      config.service.ciUrl + '?action=idcard',
-      // 调用成功
-      function (res) {
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
         util.showSuccess('识别成功')
         var data = JSON.parse(res.data)
-
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
         }
-
         var info = data.data[0]
-
         if (info.code !== 0) {
           util.showModel('识别失败' + info.message)
           return
@@ -241,44 +224,37 @@ Page({
         })
         that.addChat('<<<', 'l');
       },
-      // 调用失败
-      function (e) {
+      fail: function (res) {
+        console.log(e)
         util.showModel('识别失败' + e.message)
       }
-    )
+    })
   },
-  
+
   //名片识别
   doIdIndentify: function () {
     var that = this
 
     that.setDa(that);
-
-    // 选择图片和上传图片
-    this._chooseImgAndUpload(
-      // 上传图片之前
-      function (filePath) {
-        that.setData({
-          idImgUrl: filePath
-        })
+    let img = wx.getStorageSync('imgUrl')
+    wx.request({
+      url: config.service.ciUrl,
+      data: {
+        'action': 'idName',
+        'imgUrl': img
       },
-
-      config.service.ciUrl + '?action=idName',
-
-      // 调用成功
-      function (res) {
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
         util.showSuccess('识别成功')
-        console.log(res.data)
         var data = JSON.parse(res.data)
-
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
         }
-
         var info = data.data[0]
-        console.log('data: ' + info)
-
         if (info.code !== 0) {
           util.showModel('识别失败' + info.message)
           return
@@ -290,11 +266,11 @@ Page({
         })
         that.addChat('<<<', 'l');
       },
-      // 调用失败
-      function (e) {
+      fail: function (res) {
+        console.log(e)
         util.showModel('识别失败' + e.message)
       }
-    )
+    })
   },
 
   //识别图片内容信息，并以标签的形式显示
@@ -302,24 +278,20 @@ Page({
     var that = this
 
     that.setDa(that);
-
-    // 选择图片和上传图片
-    this._chooseImgAndUpload(
-      // 上传图片之前
-      function (filePath) {
-        that.setData({
-          conImgUrl: filePath
-        })
+    let img = wx.getStorageSync('imgUrl')
+    wx.request({
+      url: config.service.ciUrl,
+      data: {
+        'action': 'idContent',
+        'imgUrl':img
       },
-
-      config.service.ciUrl + '?action=idContent',
-
-      // 调用成功
-      function (res) {
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
         util.showSuccess('识别成功')
-        console.log('res: ' + res.data)
         var data = JSON.parse(res.data)
-
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
@@ -336,12 +308,11 @@ Page({
         })
         that.addChat('<<<', 'l');
       },
-      // 调用失败
-      function (e) {
+      fail: function (res) {
         console.log(e)
         util.showModel('识别失败' + e.message)
       }
-    )
+    })
   },
 
   //银行卡识别
@@ -349,24 +320,20 @@ Page({
     var that = this
 
     that.setDa(that);
-
-    // 选择图片和上传图片
-    this._chooseImgAndUpload(
-      // 上传图片之前
-      function (filePath) {
-        that.setData({
-          cardImgUrl: filePath
-        })
+    let img = wx.getStorageSync('imgUrl')
+    wx.request({
+      url: config.service.ciUrl,
+      data: {
+        'action': 'card',
+        'imgUrl': img
       },
-
-      config.service.ciUrl + '?action=card',
-
-      // 调用成功
-      function (res) {
+      method: 'POST',
+      header: {
+        'content-type': 'application/json' // 默认值
+      },
+      success: function (res) {
         util.showSuccess('识别成功')
-        console.log('res: ' + res.data)
         var data = JSON.parse(res.data)
-
         if (data.code !== 0) {
           util.showModel('识别失败')
           return
@@ -383,29 +350,28 @@ Page({
         })
         that.addChat('<<<', 'l');
       },
-      // 调用失败
-      function (e) {
+      fail: function (res) {
         console.log(e)
         util.showModel('识别失败' + e.message)
       }
-    )
+    })
   },
 
   //语音合成
-  doTxtToRecord: function(){
+  doTxtToRecord: function () {
     var that = this
 
     that.setDa(that);
     wx.request({
       url: config.service.ciUrl + '?action=record',
-      data:{
+      data: {
         // text: that.data.textRec
         text: '你好啊你好啊'
       },
-      success: function(res){
+      success: function (res) {
         console.log(res.data)
       },
-      fail:function(err){
+      fail: function (err) {
         console.log('record fail: ' + err);
       }
     })
@@ -522,7 +488,7 @@ Page({
   // 发送语料到语义平台
   sendChat: function (e) {
     let word = e.detail.value.ask_word ? e.detail.value.ask_word : e.detail.value;
-    console.log('word: '+ word)
+    console.log('word: ' + word)
     // that.addChat(word, 'r');
     that.setData({
       askWord: word,
@@ -564,13 +530,13 @@ Page({
       });
     }, 300);
   },
-  
+
   /*
    * 通过“我能帮帮忙”服务号向志愿者发送模板消息
   */
 
   submitInfo: function (e) {
-    var that = this 
+    var that = this
     that.addChat(that.data.askWord, 'r');
     wx.getStorage({
       key: 'loginMsg',
@@ -621,7 +587,7 @@ Page({
             })
           }
         })
-        
+
       }
     })
     // console.log(e.detail.formId);

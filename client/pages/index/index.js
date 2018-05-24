@@ -10,7 +10,6 @@ Page({
    */
   data: {
     text: '从相机中选择',
-    uploadUrl: config.service.uploadUrl,
     imgUrl: '',
     //摄像头为前置还是后置
     device: 'back',
@@ -64,12 +63,12 @@ Page({
         });
         var filePath = res.tempImagePath
         wx.uploadFile({
-          url: that.data.uploadUrl,
+          url: config.service.uploadUrl,
           filePath: filePath,
           name: 'file',
           success: function (res) {
             util.showSuccess('上传图片成功')
-            console.log(res.data)
+            console.log('take' + res.data)
             res = JSON.parse(res.data)
             that.setData({
               imgUrl: res.data.imgUrl
@@ -82,6 +81,9 @@ Page({
 
           fail: function (e) {
             console.error(e)
+          },
+          complete:function(){
+            console.log('index: ' + that.data.imgUrl)
           }
         })
         wx.navigateTo({
@@ -108,7 +110,7 @@ Page({
         var filePath = res.tempFilePaths[0]
         //跳转到聊天室页面
         wx.uploadFile({
-          url: that.data.uploadUrl,
+          url: config.service.uploadUrl,
           filePath: filePath,
           name: 'file',
           success: function (res) {
