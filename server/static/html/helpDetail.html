@@ -81,7 +81,11 @@
         }
 
         if (window.location.href.indexOf("?") != -1) {
-            var helpId = window.location.href.split("=")[1];
+            var data=window.location.href.split("?")[1];//helpId=**&volunteerAvatarUrl=***&volunteernickname=***
+            var data_arr=data.split("&");//[,,]
+            var helpId = data_arr[0].split("=")[1];
+            var volunteerAvatarUrl=data_arr[1].split("=")[1];
+            var volunteernickname=decodeURI(data_arr[2].split("=")[1]);
         }else{
             var helpId="59";
         }
@@ -95,7 +99,7 @@ function getTime(today) {
     var time=year+"-"+month+"-"+day+" "+hour+min+sec;//"2018-5-18 09:56:13";
     return time;
 }
-        var formid,blindman_open_id,volunteernickname,supplyhelpcontent,askforhelpcontent;
+        var formid,blindman_open_id,supplyhelpcontent,askforhelpcontent;
         $.ajax({
             type: 'get',
             url: "https://www.bemyeyes.com.cn/weapp/supplyhelp/supplybindmanhelp",
@@ -110,7 +114,6 @@ function getTime(today) {
                     if (message != null) {
                         formid=message.formid;
                         blindman_open_id=message.blindman_open_id;
-                        volunteernickname=message.volunteernickname;
                         askforhelpcontent=message.askforhelpcontent;
 
                         var blindmannickname = message.blindmannickname;
@@ -157,7 +160,7 @@ function getTime(today) {
                     "volunteernickname":volunteernickname,
                     "supplyhelpcontent":supplyhelpcontent,
                     "supplyhelptime":supplyhelptime,
-                    "askforhelpcontent":askforhelpcontent
+                    "askforhelpcontent":askforhelpcontent,
                 }
             }
             $("#input-text").val("");
@@ -172,7 +175,7 @@ function getTime(today) {
                     if (message.errcode == '0' && input != "") {
                         var node2 = '<div class="user-img-wrapper">' +
                             '<div class="response-wrapper">' +
-                            '<img data-id="user-img" class="user-img" src=' + "2.jpg" + '>' +
+                            '<img data-id="user-img" class="user-img" src=' + volunteerAvatarUrl + '>' +
                             '</div>' +
                             '<div class="response-text-wrapper">' +
                             '<p id="response-content" class="">' + input + '</p>' +
@@ -185,7 +188,7 @@ function getTime(today) {
                         if(input != ""){
                             var node2 = '<div class="user-img-wrapper">' +
                                 '<div class="response-wrapper">' +
-                                '<img data-id="user-img" class="user-img" src=' + "2.jpg" + '>' +
+                                '<img data-id="user-img" class="user-img" src=' + volunteerAvatarUrl + '>' +
                                 '</div>' +
                                 '<div class="response-text-wrapper">' +
                                 '<p id="response-content" class="">' + input + '</p>' +
