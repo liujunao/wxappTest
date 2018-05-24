@@ -68,7 +68,6 @@ Page({
           name: 'file',
           success: function (res) {
             util.showSuccess('上传图片成功')
-            console.log('take' + res.data)
             res = JSON.parse(res.data)
             that.setData({
               imgUrl: res.data.imgUrl
@@ -81,9 +80,6 @@ Page({
 
           fail: function (e) {
             console.error(e)
-          },
-          complete:function(){
-            console.log('index: ' + that.data.imgUrl)
           }
         })
         wx.navigateTo({

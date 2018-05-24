@@ -1,15 +1,10 @@
 const request = require('request'),
   post = require('../request/post'),
   fs = require('fs') //引入 fs 模块
-//     accessTokenJson = require('../../wxserver/access_token');
-//var  tmplateMessageJson = require('../template_message');
-//const helpUrl = 'https://www.bemyeyes.com.cn/weapp/help?helpId='
-const helpUrl = 'http://wxserver.bemyeyes.com.cn/helpDetail.html?helpId='
+const helpUrl = 'https://www.bemyeyes.com.cn/helpDetail.html?helpId='
 const { mysql: config } = require('../config')
 const volunteerOpenId = 'oUkCajhHYh4NOH25tXNq95WnhGMk'
-//const volunteerOpenId = 'oUkCajhHYh4NOH25tXNq95WnhGMk'
 const { query } = require('../model/async-db')
-
 
 async function selectAllData(sql) {
   let dataList = await query(sql)
@@ -66,15 +61,10 @@ module.exports = async function (ctx, next) {
     "oUkCajh7RzYqZfzyHYVgNXuwRFGc",
     "oUkCajrAZqlqhW2eFb8D2KHyisQE"
   ]
-  // var volunteerOpenIdList = ["oUkCajhHYh4NOH25tXNq95WnhGMk",  "oUkCajh7RzYqZfzyHYVgNXuwRFGc", "oUkCajpr5S3MjyXN1Ey0Pu95ID_8"]
-  //var volunteerOpenIdList = ["oUkCajpr5S3MjyXN1Ey0Pu95ID_8", "oUkCajh7RzYqZfzyHYVgNXuwRFGc"]
   const length = volunteerOpenIdList.length
   var volunteerOpenIds = await getVolunteerIds(num, count, volunteerOpenIdList, length)
   console.log("openids: \n")
   console.log(volunteerOpenIds)
-  //process.exit()
-  //let postData = parsePostData( ctx )
-  //ctx.body = postData
   console.log('postdata: ' + JSON.stringify(ctx.request.body))
   // 获取发送模板消息的微信服务号access_token
   var access_token = await getAccessToken();
@@ -147,7 +137,6 @@ module.exports = async function (ctx, next) {
       }, function (error, response, body) {
         if (!error && response.statusCode == 200) {
           console.log(error)
-          console.log(accessTokenJson.access_token)
           console.log(body);
         }
       });

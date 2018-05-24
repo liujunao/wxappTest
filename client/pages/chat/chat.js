@@ -166,16 +166,15 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
-        console.log(res)
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
 
@@ -187,7 +186,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败，请重试或更换识别方式')
+        util.showModel('识别失败','请更换识别方式或人工识别')
       }
     })
   },
@@ -212,12 +211,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
         var info = data.data[0]
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
 
@@ -229,7 +228,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败' + e.message)
+        util.showModel('识别失败','请更换识别方式或人工识别')
       }
     })
   },
@@ -255,12 +254,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
         var info = data.data[0]
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
 
@@ -272,7 +271,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败' + e.message)
+        util.showModel('识别失败','请更换识别方式或人工识别')
       }
     })
   },
@@ -298,12 +297,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
 
@@ -315,7 +314,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败' + e.message)
+        util.showModel('识别失败','请更换识别方式或人工识别')
       }
     })
   },
@@ -341,12 +340,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败','请更换识别方式或人工识别')
           return
         }
 
@@ -358,7 +357,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败' + e.message)
+        util.showModel('识别失败','请更换识别方式或人工识别')
       }
     })
   },

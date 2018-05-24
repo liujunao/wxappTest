@@ -33,9 +33,8 @@ var showModel = (title, content) => {
     wx.hideToast();
 
     wx.showModal({
-        title,
-        content: JSON.stringify(content),
-        showCancel: false
+        title: title,
+        content:content
     })
 }
 
