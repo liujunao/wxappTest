@@ -21,7 +21,7 @@
         <view id="roll{{index + 1}}" class="chat-left" wx:if="{{item.orientation == 'l' && item.text == '<<<'}}">
           <image class="avatar-img" src="../image/chat_logo.png" alt="头像" ></image>
           <!-- ocr == 通用印刷体识别 -->
-          <view wx:if="{{showOcrResult}}">
+          <view wx:if="{{showOcrResult}}" class='text-box'>
             <text wx:for="{{ocrResult}}" wx:for-item="item" wx:for-index="idx" class='chat-text-left'>
              {{idx}}：{{item.itemstring}}
             </text>
@@ -66,16 +66,20 @@
               <image src='../image/speaker6.png' mode='aspectFit'></image>
             </view>
           </view>
+          <!-- 用户头像 -->
+          <image class="avatar-img" src="{{userLogoUrl}}"></image>
           <!-- 图片 -->
           <view wx:if="{{item.orientation == 'p'}}">
-            <image src='{{imgUrl}}' mode='aspectFit'></image>
+            <view class='request-img-wrapper'>
+              <image src='{{imgUrl}}' mode='aspectFit' class="request-img"></image>
+            </view>
           </view>
+          
+          
           <!-- 文本输入 -->
           <view class='chat-text-right' wx:if="{{item.orientation == 'r'}}">
             <text>{{item.text}}{{item.url}}</text>
           </view>
-          <!-- 用户头像 -->
-          <image class="avatar-img" src="{{userLogoUrl}}"></image>
         </view>
       </block>
     </view>

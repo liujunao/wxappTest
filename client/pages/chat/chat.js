@@ -37,7 +37,7 @@ Page({
     //录音文件地址
     filePath: null,
     contactFlag: true,
-    imgUrl: null,
+    imgUrl: "../image/user_default.png",
 
     /////////
     // 印刷体识别
