@@ -37,7 +37,7 @@ Page({
     //录音文件地址
     filePath: null,
     contactFlag: true,
-    imgUrl: null,
+    imgUrl: "../image/user_default.png",
 
     /////////
     // 印刷体识别
@@ -45,13 +45,14 @@ Page({
     ocrResult: [],
     showOcrResult: false,
 
+    
     // 身份证识别
-    imgUrl: '',
+    IDimgUrl: '../image/album.png',
     idCardInfo: {},
     showResult: false,
 
     //名片识别
-    idImgUrl: '',
+    idImgUrl: '../image/camera.png',
     idInfo: [],
     showidResult: false,
 
@@ -166,15 +167,16 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
+        console.log(res)
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败')
           return
         }
 
@@ -186,7 +188,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败','请更换识别方式或人工识别')
+        util.showModel('识别失败，请重试或更换识别方式')
       }
     })
   },
@@ -211,12 +213,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败')
           return
         }
         var info = data.data[0]
         if (info.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败' + info.message)
           return
         }
 
@@ -228,7 +230,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败','请更换识别方式或人工识别')
+        util.showModel('识别失败' + e.message)
       }
     })
   },
@@ -254,12 +256,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败')
           return
         }
         var info = data.data[0]
         if (info.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败' + info.message)
           return
         }
 
@@ -271,7 +273,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败','请更换识别方式或人工识别')
+        util.showModel('识别失败' + e.message)
       }
     })
   },
@@ -297,12 +299,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败' + info.message)
           return
         }
 
@@ -314,7 +316,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败','请更换识别方式或人工识别')
+        util.showModel('识别失败' + e.message)
       }
     })
   },
@@ -340,12 +342,12 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败','请更换识别方式或人工识别')
+          util.showModel('识别失败' + info.message)
           return
         }
 
@@ -357,7 +359,7 @@ Page({
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败','请更换识别方式或人工识别')
+        util.showModel('识别失败' + e.message)
       }
     })
   },
