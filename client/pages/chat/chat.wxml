@@ -1,16 +1,16 @@
 <!--pages/chat/chat.wxml-->
 
-<view style='height: 65rpx;'>
-  <view bindtap='doIdCardIdentify' style='position: absolute;width: 20%;height: 150rpx;left: 0%;bottom: 87%;'>ID</view>
-  <view bindtap='doCardIndentity' style='position: absolute;width: 20%;height: 150rpx;left: 10%;bottom: 87%;'>银行卡</view>
-  <view bindtap='doIdIndentify' style='position: absolute;width: 20%;height: 150rpx;left: 30%;bottom: 87%;'>卡片</view>
-  <view bindtap='doWordIndentify' style='position: absolute;width: 20%;height: 150rpx;left: 42%;bottom: 87%;'>ocr</view>
-  <view bindtap='doTxtToRecord' style='position: absolute;width: 20%;height: 150rpx;left: 55%;bottom: 87%;'>语音</view>
-  <view bindtap='doConIndentity' style='position: absolute;width: 20%;height: 150rpx;left: 70%;bottom: 87%;'>内容</view>
+<view class='bottom-content'>
+  <image bindtap='doIdCardIdentify' class='bottom-item' src="{{IDimgUrl}}"></image>
+  <image bindtap='doCardIndentity' class='bottom-item' src="{{idImgUrl}}"></image>
+  <view bindtap='doIdIndentify' class='bottom-item'>卡片</view>
+  <view bindtap='doWordIndentify' class='bottom-item'>ocr</view>
+  <view bindtap='doTxtToRecord' class='bottom-item'>语音</view>
+  <view bindtap='doConIndentity' class='bottom-item'>内容</view>
   <!-- <view bindtap='submitInfo' style='position: absolute;width: 20%;height: 150rpx;left: 50%;bottom: 87%;'>求助志愿者</view> -->
 </view>
 
-<view style='position: absolute;width: 100%;height: 3rpx;background-color: black;bottom: 100%;'></view>
+<!-- <view style='position: absolute;width: 100%;height: 3rpx;background-color: black;bottom: 100%;'></view> -->
 
 <view class="container">
   <scroll-view class="scrool-view" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrolltop}}" enable-back-to-top="true">
@@ -19,9 +19,9 @@
 
         <!-- 回复输出 -->
         <view id="roll{{index + 1}}" class="chat-left" wx:if="{{item.orientation == 'l' && item.text == '<<<'}}">
-          <image class="avatar-img" src="../image/chat_logo.png" alt="头像" ></image>
+          <image class="avatar-img" src="../image/chat_logo.png" alt="头像"></image>
           <!-- ocr == 通用印刷体识别 -->
-          <view wx:if="{{showOcrResult}}">
+          <view wx:if="{{showOcrResult}}" class='text-box'>
             <text wx:for="{{ocrResult}}" wx:for-item="item" wx:for-index="idx" class='chat-text-left'>
              {{idx}}：{{item.itemstring}}
             </text>
@@ -66,38 +66,32 @@
               <image src='../image/speaker6.png' mode='aspectFit'></image>
             </view>
           </view>
+          <!-- 用户头像 -->
+          <image class="avatar-img" src="{{userLogoUrl}}"></image>
           <!-- 图片 -->
           <view wx:if="{{item.orientation == 'p'}}">
-            <image src='{{imgUrl}}' mode='aspectFit'></image>
+            <view class='request-img-wrapper'>
+              <image src='{{imgUrl}}' mode='aspectFit' class="request-img"></image>
+            </view>
           </view>
+
+
           <!-- 文本输入 -->
           <view class='chat-text-right' wx:if="{{item.orientation == 'r'}}">
             <text>{{item.text}}{{item.url}}</text>
           </view>
-          <!-- 用户头像 -->
-          <image class="avatar-img" src="{{userLogoUrl}}"></image>
         </view>
       </block>
     </view>
   </scroll-view>
 
-
-  <!--form bindsubmit="sendChat" -->
-  <!--form bindsubmit="sendChat">
-    <view class="ask-input-word" style='left: 10rpx;'>
-      <input class="input-big" confirm-type="send" name="ask_word" type="text" bindconfirm="sendChat" bindinput="Typing" value="{{askWord}}" ></input>
-      <form bindsubmit="submitInfo" report-submit='true' >
-        <button form-type="submit" type="primary" class="button-send" >求助志愿者</button>
-      </form>
-    </view>
-  </form-->
 </view>
 <form bindsubmit="sendChat">
-<view class="ask-input-word" style='left: 10rpx;'>
-      <input class="input-big" confirm-type="send" name="ask_word" type="text" bindconfirm="sendChat" bindinput="Typing" placeholder="请点击此处输入文字" value="{{askWord}}" focus='true' ></input>
-      <form bindsubmit="submitInfo" report-submit='true' >
-        <button form-type="submit" type="primary" class="button-send" >求助志愿者</button>
-      </form>
-</view>
+  <view class="ask-input-word" style='left: 10rpx;'>
+    <input class="input-big" confirm-type="send" name="ask_word" type="text" bindconfirm="sendChat" bindinput="Typing" placeholder="请点击此处输入文字" value="{{askWord}}" focus='true'></input>
+    <form bindsubmit="submitInfo" report-submit='true'>
+      <button form-type="submit" class="button-send">求助志愿者</button>
+    </form>
+  </view>
 </form>
 <image class="speaker" hidden="{{!isSpeaking}}" src="{{speakerUrl}}"></image>
