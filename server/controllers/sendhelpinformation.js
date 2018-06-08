@@ -1,12 +1,9 @@
 const        request = require('request'),
                 post = require('../request/post'),
                   fs = require('fs'); //引入 fs 模块
-//var  tmplateMessageJson = require('../template_message');
-//const helpUrl = 'https://www.bemyeyes.com.cn/weapp/help?helpId='
-const helpUrl = 'https://www.bemyeyes.com.cn/helpDetail.html?helpId='
+//const helpUrl = 'https://www.bemyeyes.com.cn/helpDetail.html?helpId='
+const helpUrl = 'http://192.168.0.149:3000/helpDetail.html?helpId='
 const { mysql: config } = require('../config')
-const volunteerOpenId = 'oUkCajhHYh4NOH25tXNq95WnhGMk'
-//const volunteerOpenId = 'oUkCajhHYh4NOH25tXNq95WnhGMk'
 const { query } = require('../model/async-db')
 
 
@@ -162,7 +159,8 @@ function send(i, tmplateMessageJson, access_token, volunteerOpenIds, helpUrl, he
              let volunteerNickName = info.nickname
              //获取志愿者头像
              let volunteerAvatarUrl = info.headimgurl
-             tmplateMessageJson.url = helpUrl + helpId + '&volunteerAvatarUrl='+volunteerAvatarUrl+'&volunteernickname='+volunteerNickName
+             let volunteerOpenid = volunteerOpenIds[i].openid
+             tmplateMessageJson.url = helpUrl + helpId + '&volunteerAvatarUrl='+volunteerAvatarUrl+'&volunteernickname='+volunteerNickName + '&volunteerOpenid=' + volunteerOpenid 
              tmplateMessageJson.touser = volunteerOpenIds[i].openid
              console.log('点击服务号模板消息跳转的url: '+  tmplateMessageJson.url)
              console.log("openid: " + tmplateMessageJson.touser)
@@ -202,23 +200,21 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
 			      "oUkCajrAZqlqhW2eFb8D2KHyisQE"
 			] 
 */
-  // var volunteerOpenIdList = ["oUkCajhHYh4NOH25tXNq95WnhGMk",  "oUkCajh7RzYqZfzyHYVgNXuwRFGc", "oUkCajpr5S3MjyXN1Ey0Pu95ID_8"]
-  //var volunteerOpenIdList = ["oUkCajpr5S3MjyXN1Ey0Pu95ID_8", "oUkCajh7RzYqZfzyHYVgNXuwRFGc"]
-  //var volunteerOpenIdList = [ "oUkCajpr5S3MjyXN1Ey0Pu95ID_8"]
   var sql = "SELECT openid FROM volunteerInfo WHERE id >= round((SELECT MAX(id) FROM volunteerInfo)-(SELECT MIN(id) FROM volunteerInfo)+1) * RAND() + (SELECT MIN(id) FROM volunteerInfo)-0.5 AND is_volunteer = 1 LIMIT 2" 
+  var volunteerOpenIdsJson = {}
   volunteerOpenIds = await selectVolunteerOpenid( sql, num ).then(function(res){
+
     for(var i = 0; i < res.length; i++ ){
+        volunteerOpenIdsJson[res[i].openid] = 0;
         console.log(res[i].openid)
     }
+    console.log(volunteerOpenIdsJson)
     return res
   })
   const length = volunteerOpenIds.length
   // 随机取出num名志愿者发送模板消息
-
-  //var volunteerOpenIds = await getVolunteerIds( num, count, volunteerOpenIdList, length)
   console.log("OpenidList: \n") // ----------debug--------
   console.log(volunteerOpenIds) // ----------debug--------
-  // process.exit()
   console.log('postdata: '+ JSON.stringify(ctx.request.body))
   // 获取用于发送模板消息的微信服务号access_token
   var access_token = await getAccessToken();
@@ -239,6 +235,7 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
   var img_url = ctx.request.body.data.imgurl
   var formid = ctx.request.body.data.formid
   var blindman_avatar_url = ctx.request.body.data.avatarurl
+  var volunteers = JSON.stringify(volunteerOpenIdsJson)
   // 引入sql构建器：knex模块
   const DB = require('knex')({
     client: 'mysql',
@@ -254,7 +251,7 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
   })
   // 构建入库sql语句
   const cnt = DB.insert({
-    volunteer_open_id: JSON.stringify(volunteerOpenIds),
+    volunteer_open_id: '',
     blindman_open_id: blindman_open_id,
     blindman_nickname: blindman_nickname,
     volunteer_nickname: '',
@@ -263,8 +260,11 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
     img_url: img_url,
     formid: formid,
     blindman_avatar_url: blindman_avatar_url,
+    volunteers: volunteers,
+    status: 0,
   }).into('helpInfo').returning('*').toString()
   console.log("insert helpInfo sql: " + cnt)// ------debug-------
+
   DB.raw(cnt).then(async function(res) {
     console.log('入库成功')
     console.log(res)
@@ -289,5 +289,6 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
   }, err => {
     throw new Error(err)
   })
+
   ctx.state.data = { msg: '发送求助模板消息成功'}
 };
