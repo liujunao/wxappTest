@@ -40,22 +40,19 @@ Page({
     /////////
     caremaImg: '../image/camera.png',
     picImg: '../image/album.png',
+    ocrImg: '../image/ocr.png',
+    conImg: '../image/content.png',
+    descImg: '../image/describe.png',
+    mineIng: '../image/mine.png',
 
     // 印刷体识别
     ocrImgUrl: '',
     ocrResult: [],
-    // 身份证识别
-    IDimgUrl: '',
-    idCardInfo: {},
-    //名片识别
-    idImgUrl: '',
-    idInfo: [],
     //识别图片内容信息，并以标签的形式显示
     conImgUrl: '',
     conResult: [],
-    //银行卡识别
-    cardImgUrl: '',
-    cardResult: [],
+    //图片描述识别
+
     //语音合成
     recordUrl: '',
     showRecord: false,
@@ -104,14 +101,14 @@ Page({
 
   //打开相机,实际是回到主页面
   openCamera: function () {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '../index/index',
     })
   },
 
   // 选择图片
   checkPic: function () {
-    wx.navigateTo({
+    wx.reLaunch({
       url: '../index/index?tmp=picTmp',
     })
   },
@@ -135,6 +132,7 @@ Page({
   //印刷体识别
   doWordIndentify: function () {
     let that = this
+    that.addChat('印刷体识别', 'a');
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -176,94 +174,10 @@ Page({
     })
   },
 
-  //身份证识别
-  doIdCardIdentify: function () {
-    var that = this
-    let img = wx.getStorageSync('imgUrl')
-    wx.request({
-      url: config.service.ciUrl,
-      data: {
-        'action': 'idcard',
-        'imgUrl': img
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        util.showSuccess('识别成功')
-        // var data = JSON.parse(res.data)
-        var data = res.data
-        if (data.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
-          return
-        }
-        var info = data.data[0]
-        if (info.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
-          return
-        }
-
-        that.setData({
-          idCardInfo: info.data
-        })
-        that.addChat('<<<', 'l');
-      },
-      fail: function (res) {
-        console.log(e)
-        util.showModel('识别失败', '请检查网络状态或更换识别方式')
-      }
-    })
-  },
-
-  //名片识别
-  doIdIndentify: function () {
-    var that = this
-    let img = wx.getStorageSync('imgUrl')
-    wx.request({
-      url: config.service.ciUrl,
-      data: {
-        'action': 'idName',
-        'imgUrl': img
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        util.showSuccess('识别成功')
-        // var data = JSON.parse(res.data)
-        var data = res.data
-        if (data.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
-          return
-        }
-        var info = data.data[0]
-        if (info.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
-          return
-        }
-
-        that.setData({
-          idInfo: info.data
-        })
-        let des = that.data.idInfo
-        let tmp = []
-        for (let i = 0; i < des.length; i++) {
-          tmp.push(des[i].value)
-        }
-        that.addChat(tmp, 'l');
-      },
-      fail: function (res) {
-        console.log(e)
-        util.showModel('识别失败', '请检查网络状态或更换识别方式')
-      }
-    })
-  },
-
   //识别图片内容信息，并以标签的形式显示
   doConIndentity: function () {
     var that = this
+    that.addChat('图片标签识别', 'a');
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -307,23 +221,15 @@ Page({
     })
   },
 
-  //语音合成
-  doTxtToRecord: function () {
-    var that = this
+  //图片描述
+  doDescribe: function () {
+    util.showModel('提示','该功能正在开发，敬请期待')
+  },
 
-    that.setDa(that);
-    wx.request({
-      url: config.service.ciUrl + '?action=record',
-      data: {
-        // text: that.data.textRec
-        text: '你好啊你好啊'
-      },
-      success: function (res) {
-        console.log(res.data)
-      },
-      fail: function (err) {
-        console.log('record fail: ' + err);
-      }
+  //转到我的页面
+  doMine: function(){
+    wx.navigateTo({
+      url: '../mine/mine',
     })
   },
 

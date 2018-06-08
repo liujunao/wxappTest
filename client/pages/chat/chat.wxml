@@ -1,12 +1,24 @@
 <!--pages/chat/chat.wxml-->
 
 <view class='bottom-content'>
-  <image bindtap='checkPic' class='bottom-item' src="{{picImg}}"></image>
-  <image bindtap='openCamera' class='bottom-item' src="{{caremaImg}}"></image>
-  <view bindtap='doIdIndentify' class='bottom-item'>卡片</view>
-  <view bindtap='doWordIndentify' class='bottom-item'>ocr</view>
-  <view bindtap='doTxtToRecord' class='bottom-item'>语音</view>
-  <view bindtap='doConIndentity' class='bottom-item'>内容</view>
+  <!--相册-->
+  <image class='bottom-item' src="{{picImg}}">相册</image>
+  <cover-view class='bottom-view' style='left: 3%' bindtap='checkPic'>相册</cover-view>
+  <!-- 相机 -->
+  <image class='bottom-item' src="{{caremaImg}}">相机</image>
+  <cover-view class='bottom-view' style='left: 18%' bindtap='openCamera'>相机</cover-view>
+  <!-- ocr -->
+  <image class='bottom-item' src='{{ocrImg}}'>印刷体识别</image>
+  <cover-view class='bottom-view' style='left: 33%' bindtap='doWordIndentify'>印刷体识别</cover-view>
+  <!-- 图片描述 -->
+  <image class='bottom-item' src='{{descImg}}'>图片描述</image>
+  <cover-view class='bottom-view' style='left: 48%' bindtap='doDescribe'>图片描述</cover-view>
+  <!-- 图片内容 -->
+  <image class='bottom-item' src='{{conImg}}'>图片内容</image>
+  <cover-view class='bottom-view' style='left: 63%' bindtap='doConIndentity'>图片内容</cover-view>
+  <!-- 我的页面 -->
+  <image class='bottom-item' src='{{mineImg}}'>我的页面</image>
+  <cover-view class='bottom-view' style='left: 78%' bindtap='doMine'>我的页面</cover-view>
 </view>
 
 <view class="container">
@@ -30,6 +42,14 @@
               <image src='../image/speaker6.png' mode='aspectFit'></image>
             </view>
           </view>
+          <!-- 点击识别方式按钮自动打印提示 -->
+          <view class='chat-text-right' wx:if="{{item.orientation == 'a'}}">
+            <!-- 用户头像 -->
+            <image class="avatar-img-right" src="{{userLogoUrl}}"></image>
+            <view class='chat-text-right'>
+              <text>{{item.text}}</text>
+            </view>
+          </view>
           <!-- 图片 -->
           <view wx:if="{{item.orientation == 'p'}}">
             <!-- 用户头像 -->
@@ -39,10 +59,12 @@
             </view>
           </view>
           <!-- 文本输入 -->
-          <view class='chat-text-right-right' wx:if="{{item.orientation == 'r'}}">
+          <view class='chat-text-right' wx:if="{{item.orientation == 'r'}}">
             <!-- 用户头像 -->
-            <image class="avatar-img" src="{{userLogoUrl}}"></image>
-            <text>{{item.text}}{{item.url}}</text>
+            <image class="avatar-img-right" src="{{userLogoUrl}}"></image>
+            <view class='chat-text-right'>
+              <text>{{item.text}}</text>
+            </view>
           </view>
         </view>
       </block>
