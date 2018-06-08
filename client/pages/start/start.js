@@ -22,19 +22,9 @@ Page({
     avatarUrl: '',
   },
 
-  demo:function(){
-    wx.request({
-      url: config.service.demo,
-      success:function(res){
-        console.log(JSON.stringify(res))
-      }
-    })
-  },
-
   // 用户登录示例
   login: function () {
     if (this.data.logged) return
-
     util.showBusy('正在登录')
     var that = this
 
@@ -47,10 +37,8 @@ Page({
             userInfo: result,
             logged: true
           })
-          // app.loginMsg = JSON.stringify(that.data.userInfo);
           //将登陆信息存入缓存中
-          wx.setStorageSync('loginMsg', JSON.stringify(that.data.userInfo));
-          console.log('loginfo: ' + JSON.stringify(that.data.userInfo))
+          wx.setStorageSync('loginMsg', that.data.userInfo);
         } else {
           // 如果不是首次登录，不会返回用户信息，请求用户信息接口获取
           qcloud.request({
@@ -65,12 +53,10 @@ Page({
               // app.loginMsg = JSON.stringify(that.data.userInfo);
               //将登陆信息存入缓存中
               wx.setStorageSync('loginMsg', JSON.stringify(that.data.userInfo));
-              console.log('loginfo: ' + JSON.stringify(that.data.userInfo))
             },
 
             fail(error) {
               util.showModel('请求失败1', error)
-              console.log('request fail', error)
             }
           })
         }
@@ -81,7 +67,6 @@ Page({
 
       fail(error) {
         util.showModel('登录失败2', error)
-        console.log('登录失败', error)
       }
     })
   },
@@ -125,7 +110,6 @@ Page({
       },
       fail(error) {
         util.showModel('请求失败', error);
-        console.log('request fail', error);
       }
     }
     //登陆后直接将相关信息存入数据库
@@ -157,35 +141,29 @@ Page({
     // 监听信道内置消息，包括 connect/close/reconnecting/reconnect/error
     tunnel.on('connect', () => {
       util.showSuccess('信道已连接')
-      console.log('WebSocket 信道已连接')
       this.setData({ tunnelStatus: 'connected' })
     })
 
     tunnel.on('close', () => {
       util.showSuccess('信道已断开')
-      console.log('WebSocket 信道已断开')
       this.setData({ tunnelStatus: 'closed' })
     })
 
     tunnel.on('reconnecting', () => {
-      console.log('WebSocket 信道正在重连...')
       util.showBusy('正在重连')
     })
 
     tunnel.on('reconnect', () => {
-      console.log('WebSocket 信道重连成功')
       util.showSuccess('重连成功')
     })
 
     tunnel.on('error', error => {
       util.showModel('信道发生错误', error)
-      console.error('信道发生错误：', error)
     })
 
     // 监听自定义消息（服务器进行推送）
     tunnel.on('speak', speak => {
       util.showModel('信道消息', speak)
-      console.log('收到说话消息：', speak)
     })
 
     // 打开信道

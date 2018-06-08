@@ -6,7 +6,7 @@
     <camera device-position="{{device}}" flash="auto" binderror="error" style="width: 100%; height: 100%;">
       <!-- <navigator url='../mine/mine' open-type='reLaunch'>  -->
       <cover-image src='../image/mine.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 0;bottom: 87%;'></cover-image>
-      <cover-view class='title-text' style='left: -1%;'bindtap='toMine'>我的页面</cover-view>
+      <cover-view class='title-text' style='left: -1%;' bindtap='toMine'>我的页面</cover-view>
       <!-- </navigator>  -->
 
       <cover-image src='../image/more.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 16%;bottom: 87%;'></cover-image>
@@ -24,11 +24,14 @@
       <cover-image src='../image/camera.png' mode='aspectFit' style='position: absolute;width: 20%;height: 150rpx;left: 80%;bottom: 87%;'></cover-image>
       <cover-view class='title-text' style='left: 78%;' bindtap='checkDevice'>切换摄像头</cover-view>
 
-      <cover-image src='../image/album.png'  mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 15%;bottom: 10%;'></cover-image>
+      <cover-image src='../image/album.png' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 15%;bottom: 10%;'></cover-image>
       <cover-view class="camera-text" style='position: absolute;width: 40%;hight:300rpx;left:7%;bottom: 12%;color: white' bindtap='doUpload'>相册</cover-view>
-      <cover-image src='../image/photograph.png' bindtap='takePhoto' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 56%;bottom: 10%;' alt="拍照">klll</cover-image>
-      <cover-view class="camera-text" style='position: absolute;width: 40%; hight:400rpx; left: 48%;bottom: 12%;color: white' bindtap='takePhoto'>拍照</cover-view>
-      <!-- cover-image src='../image/video.png' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 65%;bottom: 10%;'></cover-image -->
+
+      <cover-image src='../image/photograph.png' bindtap='takePhoto' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 56%;bottom: 10%;' alt="拍照"></cover-image>
+      <cover-view class="camera-text" style='position: absolute;width: 40%; hight:400rpx; left: 38%;bottom: 12%;color: white' bindtap='takePhoto'>拍照</cover-view>
+
+      <cover-image src='../image/video.png' mode='aspectFit' style='position: absolute;width: 30%;height: 225rpx;left: 65%;bottom: 10%;'></cover-image>
+      <cover-view class="camera-text" style='position: absolute;width: 40%; hight:400rpx; left: 68%;bottom: 12%;color: white' bindtap='takePhoto'>视频</cover-view>
 
     </camera>
   </view>

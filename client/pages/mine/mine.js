@@ -24,22 +24,13 @@ Page({
    */
   onLoad: function (options) {
     let code = wx.getStorageSync('code')
+    let val = wx.getStorageSync('loginMsg');
     this.setData({
-      code: code
+      userInfo: val,
+      code: code,
+      logged: true
     })
   },
-
-  // onLoad: function (options) {
-  //   let val = wx.getStorageSync('loginMsg');
-  //   if(val){
-  //     this.setData({
-  //       userInfo: val,
-  //       logged: true
-  //     })
-  //   }
-  //   console.log('userInfo: ' + this.data.userInfo);
-  //   console.log('logged: ' + this.data.logged);
-  // },
 
   //实现绑定的formSubmit 将formId传给服务器
   formSubmit: function (e) {

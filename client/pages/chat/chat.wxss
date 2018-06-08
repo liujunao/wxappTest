@@ -96,7 +96,14 @@ image{
   max-width: 75%;
 }
 
-.avatar-img {
+.avatar-img-left {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 70rpx;
+  float: left
+}
+
+.avatar-img-right {
   width: 70rpx;
   height: 70rpx;
   border-radius: 70rpx;

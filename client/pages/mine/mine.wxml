@@ -4,7 +4,6 @@
   <!-- 用户登录测试 -->
   <view class="userinfo" style='background: white;'>
     <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}" background-size="cover"></image>
-    <!-- <image class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>  -->
     <view>
       <text bindtap='login' style='bottom: 40rpx;color: #007AFF;'>{{logged ? userInfo.nickName : '点击登录'}}</text>
       <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>

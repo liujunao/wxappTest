@@ -7,9 +7,7 @@ var app = getApp();
 var that;
 //要发送的对话列表
 var chatListData = [];
-//
 var speakerInterval;
-var imgTmp;
 var indexSet;
 
 Page({
@@ -37,43 +35,32 @@ Page({
     //录音文件地址
     filePath: null,
     contactFlag: true,
-    imgUrl: "../image/user_default.png",
-    imgUrls: [],
+    imgUrl: "",
 
     /////////
+    caremaImg: '../image/camera.png',
+    picImg: '../image/album.png',
+
     // 印刷体识别
     ocrImgUrl: '',
     ocrResult: [],
-    showOcrResult: false,
-
-
     // 身份证识别
-    IDimgUrl: '../image/album.png',
+    IDimgUrl: '',
     idCardInfo: {},
-    showResult: false,
-
     //名片识别
-    idImgUrl: '../image/camera.png',
+    idImgUrl: '',
     idInfo: [],
-    showidResult: false,
-
     //识别图片内容信息，并以标签的形式显示
     conImgUrl: '',
     conResult: [],
-    showConResult: false,
-
     //银行卡识别
     cardImgUrl: '',
     cardResult: [],
-    showCardInfo: false,
-
     //语音合成
     recordUrl: '',
     showRecord: false,
 
     textRec: '',
-    /////////
-
     voice: '',
 
     //求助志愿者
@@ -85,7 +72,6 @@ Page({
 
   onLoad: function (options) {
     that = this;
-    imgTmp = options.imgUrl;
     indexSet = options.indexSet;
     app.getUserInfo(function (userInfo) {
       var aUrl = userInfo.avatarUrl;
@@ -96,8 +82,15 @@ Page({
         });
       }
     });
-    that.addChat('', 'p');
-
+    that.addChat(options.imgUrl, 'p');
+    //自动进行内容识别
+    util.showCon()
+    setTimeout(function(){
+      let AIRes = wx.getStorageSync('AiRes')
+      console.log('chat: ' + AIRes)
+      that.addChat(AIRes, 'l')
+    },500)
+    
     if (indexSet) {
       if (indexSet == 'indexSet1_ocr') {
         that.doWordIndentify();
@@ -139,22 +132,9 @@ Page({
     })
   },
 
-  //一次性设置全 false
-  setDa(that) {
-    that.setData({
-      showOcrResult: false,
-      showResult: false,
-      showidResult: false,
-      showConResult: false,
-      showCardInfo: false,
-      showRecord: false
-    })
-  },
-
   //印刷体识别
   doWordIndentify: function () {
     let that = this
-    that.setDa(that);
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -168,28 +148,30 @@ Page({
       },
       success: function (res) {
         util.showSuccess('识别成功')
-        console.log(res)
-        // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
 
         that.setData({
-          showOcrResult: true,
           ocrResult: info.data.items
         })
-        that.addChat('<<<', 'l');
+        let des = that.data.ocrResult
+        let tmp = []
+        for (let i = 0; i < des.length; i++) {
+          tmp.push(des[i].itemstring)
+        }
+        that.addChat(tmp, 'l');
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败，请重试或更换识别方式')
+        util.showModel('识别失败', '请检查网络状态或更换识别方式')
       }
     })
   },
@@ -197,7 +179,6 @@ Page({
   //身份证识别
   doIdCardIdentify: function () {
     var that = this
-    that.setDa(that);
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -214,24 +195,23 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
         var info = data.data[0]
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
 
         that.setData({
-          showResult: true,
           idCardInfo: info.data
         })
         that.addChat('<<<', 'l');
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败' + e.message)
+        util.showModel('识别失败', '请检查网络状态或更换识别方式')
       }
     })
   },
@@ -239,8 +219,6 @@ Page({
   //名片识别
   doIdIndentify: function () {
     var that = this
-
-    that.setDa(that);
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -257,24 +235,28 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
         var info = data.data[0]
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
 
         that.setData({
-          showidResult: true,
           idInfo: info.data
         })
-        that.addChat('<<<', 'l');
+        let des = that.data.idInfo
+        let tmp = []
+        for (let i = 0; i < des.length; i++) {
+          tmp.push(des[i].value)
+        }
+        that.addChat(tmp, 'l');
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败' + e.message)
+        util.showModel('识别失败', '请检查网络状态或更换识别方式')
       }
     })
   },
@@ -282,8 +264,6 @@ Page({
   //识别图片内容信息，并以标签的形式显示
   doConIndentity: function () {
     var that = this
-
-    that.setDa(that);
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -300,67 +280,29 @@ Page({
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败')
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
+          util.showModel('识别失败', '请检查网络状态或更换识别方式')
           return
         }
 
         that.setData({
-          showConResult: true,
           conResult: info.tags
         })
-        that.addChat('<<<', 'l');
+        let des = that.data.conResult
+        let tmp = []
+        for (let i = 0; i < des.length; i++) {
+          let con = des[i].tag_name + "正确率为百分之" + des[i].tag_confidence
+          tmp.push(con)
+        }
+        that.addChat(tmp, 'l');
       },
       fail: function (res) {
         console.log(e)
-        util.showModel('识别失败' + e.message)
-      }
-    })
-  },
-
-  //银行卡识别
-  doCardIndentity: function () {
-    var that = this
-
-    that.setDa(that);
-    let img = wx.getStorageSync('imgUrl')
-    wx.request({
-      url: config.service.ciUrl,
-      data: {
-        'action': 'card',
-        'imgUrl': img
-      },
-      method: 'POST',
-      header: {
-        'content-type': 'application/json' // 默认值
-      },
-      success: function (res) {
-        util.showSuccess('识别成功')
-        // var data = JSON.parse(res.data)
-        var data = res.data
-        if (data.code !== 0) {
-          util.showModel('识别失败')
-          return
-        }
-        var info = data.data
-        if (info.code !== 0) {
-          util.showModel('识别失败' + info.message)
-          return
-        }
-
-        that.setData({
-          showCardInfo: true,
-          cardResult: info.data.items
-        })
-        that.addChat('<<<', 'l');
-      },
-      fail: function (res) {
-        console.log(e)
-        util.showModel('识别失败' + e.message)
+        util.showModel('识别失败', '请检查网络状态或更换识别方式')
       }
     })
   },
@@ -476,8 +418,6 @@ Page({
   // 发送语料到语义平台
   sendChat: function (e) {
     let word = e.detail.value.ask_word ? e.detail.value.ask_word : e.detail.value;
-    console.log('word: ' + word)
-    // that.addChat(word, 'r');
     that.setData({
       askWord: word,
       sendButtDisable: true,
@@ -522,10 +462,16 @@ Page({
   /*
    * 通过“我能帮帮忙”服务号向志愿者发送模板消息
   */
-
   submitInfo: function (e) {
     var that = this
+    if (!that.data.askWord) {
+      util.showModel('提示', '不能发送空消息，请重试')
+      return
+    }
     that.addChat(that.data.askWord, 'r');
+    that.setData({
+      askWord: ''
+    })
     wx.getStorage({
       key: 'loginMsg',
       success: function (res) {
@@ -540,16 +486,8 @@ Page({
             that.setData({
               imgUrl: res.data
             })
-            console.log('test')
-            //console.log(typeof JSON.parse(res.data))
-            console.log(e.detail.formId);
-            console.log(that.data.nickName);
-            console.log(that.data.imgUrl);
-            console.log("formId: " + e.detail.formId)
             var mytime = new Date()
             var time = mytime.toLocaleString()
-            console.log('time: ' + time)
-            console.log(that.data.openId)
             wx.request({
               url: config.service.sendhelpinformation,
               data: {
@@ -568,47 +506,14 @@ Page({
               },
               method: "POST",
               success: function (res) {
-                console.log("res: " + JSON.stringify(res.data));
+                // console.log("res: " + JSON.stringify(res.data));
                 //console.log(this.data.imgUrl);
                 //console.log(this.data.inputValue);
               }
             })
           }
         })
-
       }
     })
-    // console.log(e.detail.formId);
-    // console.log(this.data.nickName);
-    // console.log(this.data.imgUrl);
-    // console.log("formId: " + e.detail.formId)
-    // var mytime = new Date()
-    // var time = mytime.toLocaleString()
-    // console.log('time: ' + time)
-    // console.log(that.data.openId)
-    // wx.request({
-    //   url: 'https://www.bemyeyes.com.cn/weapp/sendhelpinformation',
-    //   data: {
-    //     data: {
-    //       imgurl: this.data.imgUrl,
-    //       openid: this.data.openId,
-    //       help: this.data.askWord,
-    //       formid: e.detail.formId,
-    //       time: time,
-    //       nickName: this.data.nickName,
-    //       avatarurl: this.data.avatarUrl,
-    //     },
-    //   },
-    //   header: {
-    //     'content-type': 'application/json'
-    //   },
-    //   method: "POST",
-    //   success: function (res) {
-    //     console.log("res: " + JSON.stringify(res.data));
-    //     //console.log(this.data.imgUrl);
-    //     //console.log(this.data.inputValue);
-    //   }
-    // })
   }
-
 })

@@ -10,5 +10,3 @@
     </view>
   </view>
 </view>
-
-<button bindtap='demo'>测试</button>
