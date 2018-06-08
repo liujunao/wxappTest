@@ -27,6 +27,16 @@ router.post('/help', controllers.help)
 
 router.get('/supplyhelp/supplybindmanhelp', controllers.supplyhelp.supplybindmanhelp)
 router.post('/supplyhelp', controllers.supplyhelp.post)
+router.post('/gethelpinformation', controllers.gethelpinformation.gethelpinformation)
+
+// 当前志愿者未完成帮助后，取消等待状态，其他志愿者可以查看进行帮助
+router.post('/cancelwait', controllers.cancelwait.post)
+
+// 获取完成帮助的志愿者积分和时间银行奖励
+router.post('/gettimebankandpoint', controllers.gettimebankandpoint.post)
+
+// 增加志愿者的积分和时间银行
+router.post('/timebankandpointincr', controllers.timebankandpointincr.post)
 
 // --- 信道服务接口 Demo --- //
 // GET  用来响应请求信道地址的 /weapp/tunnel
@@ -46,10 +56,4 @@ router.post('/message', controllers.message.post)
 // POST 用来处理微信转发过来的客服消息
 router.post('/ci', controllers.ci)
 
-// xtemplate模板引擎
-/*
-router.get('/view-test', function *(){
-  yield this.html('test', {"title": "xtemplate demo"})
-})
-*/
 module.exports = router

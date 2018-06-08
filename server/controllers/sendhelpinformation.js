@@ -1,14 +1,22 @@
 const        request = require('request'),
                 post = require('../request/post'),
                   fs = require('fs'); //引入 fs 模块
-const helpUrl = 'https://www.bemyeyes.com.cn/helpDetail.html?helpId='
+//const helpUrl = 'https://www.bemyeyes.com.cn/helpDetail.html?helpId='
+const helpUrl = 'http://192.168.0.149:3000/helpDetail.html?helpId='
 const { mysql: config } = require('../config')
-const volunteerOpenId = 'oUkCajhHYh4NOH25tXNq95WnhGMk'
 const { query } = require('../model/async-db')
 
 
 async function selectAllData( sql ) {
   let dataList = await query( sql )
+  return dataList
+}
+
+async function selectVolunteerOpenid( sql, num ){
+  let dataList = await query( sql )
+  while( dataList.length < num){
+      dataList = await query( sql )
+  }
   return dataList
 }
 
@@ -100,9 +108,9 @@ function getVolunteerWeChatInfoBy(openId, access_token, url, callback){
          reject( "error --")
        }
      });
-    }).then(result => {
+    }).then(async function(result) {
        //rtn = JSON.parse(result)
-       callback(JSON.parse(result))
+       await callback(JSON.parse(result))
     }).catch(err => {
        console.log("getVolunteerNickName erro: " + err)
        callback(err)
@@ -113,8 +121,9 @@ function getVolunteerWeChatInfoBy(openId, access_token, url, callback){
 
 // 向志愿者发送模板消息
 function  sendMsg(access_token, templatemsg){
-  var rtn = ''
+  //var rtn = ''
    new Promise(async (resolve, reject) => {
+//        let rtn = ''
        request({
           url: 'https://api.weixin.qq.com/cgi-bin/message/template/send?access_token='+access_token,
           method: "POST",
@@ -127,7 +136,7 @@ function  sendMsg(access_token, templatemsg){
           if (!error && response.statusCode == 200) {
                 console.log(error)
                 console.log(body);
-                rtn = body
+                //rtn = body
           }
         });
        }).then( async function(res) {
@@ -136,12 +145,43 @@ function  sendMsg(access_token, templatemsg){
        console.log("sendMsg erro: " + err)
        rtn = err
     }) 
+  //return rtn
+}
+
+
+// 发送求助模板消息
+function send(i, tmplateMessageJson, access_token, volunteerOpenIds, helpUrl, helpId){
+     url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token="+access_token+"&openid="+volunteerOpenIds[i].openid
+           getVolunteerWeChatInfoBy(tmplateMessageJson.touser, access_token, url, async function(result){
+             var promise = new Promise(function(resolve, reject) {
+             var info = result
+             //获取志愿者昵称
+             let volunteerNickName = info.nickname
+             //获取志愿者头像
+             let volunteerAvatarUrl = info.headimgurl
+             let volunteerOpenid = volunteerOpenIds[i].openid
+             tmplateMessageJson.url = helpUrl + helpId + '&volunteerAvatarUrl='+volunteerAvatarUrl+'&volunteernickname='+volunteerNickName + '&volunteerOpenid=' + volunteerOpenid 
+             tmplateMessageJson.touser = volunteerOpenIds[i].openid
+             console.log('点击服务号模板消息跳转的url: '+  tmplateMessageJson.url)
+             console.log("openid: " + tmplateMessageJson.touser)
+             resolve(tmplateMessageJson)
+             })
+             var p1 = promise.then( function(value){
+             sendMsg(access_token, value)
+             return 'ok'
+             })
+             setTimeout(
+               () => {
+                   console.log(p1)
+             }, 500)
+      }); 
 }
 
 module.exports = async function (ctx, next) {
   // 随机挑出num名志愿者发送求助的模板消息
-  const num = 1 
+  const num = 2 
   var count = 0
+console.log("向志愿者发送模板消息")
 /*
  * 注：体验志愿者
  * openid			   名字
@@ -160,15 +200,21 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
 			      "oUkCajrAZqlqhW2eFb8D2KHyisQE"
 			] 
 */
-  // var volunteerOpenIdList = ["oUkCajhHYh4NOH25tXNq95WnhGMk",  "oUkCajh7RzYqZfzyHYVgNXuwRFGc", "oUkCajpr5S3MjyXN1Ey0Pu95ID_8"]
-  //var volunteerOpenIdList = ["oUkCajpr5S3MjyXN1Ey0Pu95ID_8", "oUkCajh7RzYqZfzyHYVgNXuwRFGc"]
-  var volunteerOpenIdList = [ "oUkCajpr5S3MjyXN1Ey0Pu95ID_8"]
-  const length = volunteerOpenIdList.length
+  var sql = "SELECT openid FROM volunteerInfo WHERE id >= round((SELECT MAX(id) FROM volunteerInfo)-(SELECT MIN(id) FROM volunteerInfo)+1) * RAND() + (SELECT MIN(id) FROM volunteerInfo)-0.5 AND is_volunteer = 1 LIMIT 2" 
+  var volunteerOpenIdsJson = {}
+  volunteerOpenIds = await selectVolunteerOpenid( sql, num ).then(function(res){
+
+    for(var i = 0; i < res.length; i++ ){
+        volunteerOpenIdsJson[res[i].openid] = 0;
+        console.log(res[i].openid)
+    }
+    console.log(volunteerOpenIdsJson)
+    return res
+  })
+  const length = volunteerOpenIds.length
   // 随机取出num名志愿者发送模板消息
-  var volunteerOpenIds = await getVolunteerIds( num, count, volunteerOpenIdList, length)
   console.log("OpenidList: \n") // ----------debug--------
   console.log(volunteerOpenIds) // ----------debug--------
-  // process.exit()
   console.log('postdata: '+ JSON.stringify(ctx.request.body))
   // 获取用于发送模板消息的微信服务号access_token
   var access_token = await getAccessToken();
@@ -189,6 +235,7 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
   var img_url = ctx.request.body.data.imgurl
   var formid = ctx.request.body.data.formid
   var blindman_avatar_url = ctx.request.body.data.avatarurl
+  var volunteers = JSON.stringify(volunteerOpenIdsJson)
   // 引入sql构建器：knex模块
   const DB = require('knex')({
     client: 'mysql',
@@ -204,21 +251,24 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
   })
   // 构建入库sql语句
   const cnt = DB.insert({
-    volunteer_open_id: volunteerOpenId,
+    volunteer_open_id: '',
     blindman_open_id: blindman_open_id,
     blindman_nickname: blindman_nickname,
-    volunteer_nickname: '周宽宁',
+    volunteer_nickname: '',
     supply_help_content: '',
     ask_for_help_content: ask_for_help_content,
     img_url: img_url,
     formid: formid,
     blindman_avatar_url: blindman_avatar_url,
+    volunteers: volunteers,
+    status: 0,
   }).into('helpInfo').returning('*').toString()
   console.log("insert helpInfo sql: " + cnt)// ------debug-------
-  DB.raw(cnt).then(res => {
+
+  DB.raw(cnt).then(async function(res) {
     console.log('入库成功')
     console.log(res)
-    global.helpId = Object.values(res[0])[2]
+    var helpId = Object.values(res[0])[2]
   //  process.exit(0)
     var  tmplateMessageJson = require('../template_message');
     // 获取求助者昵称
@@ -227,35 +277,18 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
     tmplateMessageJson.data.keyword3.value = ctx.request.body.data.help
     // 获取求助时间
     tmplateMessageJson.data.keyword4.value = ctx.request.body.data.time
-    tmplateMessageJson.url = helpUrl + global.helpId
+    tmplateMessageJson.url = helpUrl + helpId
     //tmplateMessageJson.touser = volunteerOpenId 
     console.log('url: ' + tmplateMessageJson.url)//  -----debug------
     console.log('msg: '+ JSON.stringify(tmplateMessageJson))//  -----debug------
 
     //遍历随机取出的志愿者openid，向他们发送盲人求助的服务号模板消息
     for(var i=0; i<length; i++){
-         (function(i) {
-           url = "https://api.weixin.qq.com/cgi-bin/user/info?access_token="+access_token+"&openid="+volunteerOpenIds[i]
-           tmplateMessageJson.touser = volunteerOpenIds[i]
-           getVolunteerWeChatInfoBy(tmplateMessageJson.touser, access_token, url, async function(result){
-             var info = result
-             //获取志愿者昵称
-             let volunteerNickName = info.nickname
-             //获取志愿者头像
-             let volunteerAvatarUrl = info.headimgurl
-             tmplateMessageJson.url = helpUrl + global.helpId + '&volunteerAvatarUrl='+volunteerAvatarUrl+'&volunteernickname='+volunteerNickName
-             //console.log('volunteeropenid: '+ value) // --------debug-------
-             //resolve(tmplateMessageJson)
-             console.log('点击服务号模板消息跳转的url: '+  tmplateMessageJson.url)
-             await sendMsg(access_token, tmplateMessageJson)
-      }); 
-           tmplateMessageJson.touser = volunteerOpenIds[i]
-           //sendMsg(access_token, tmplateMessageJson)
-         })(i);
-
-   }
+        await send(i, tmplateMessageJson, access_token, volunteerOpenIds, helpUrl, helpId)
+       }
   }, err => {
     throw new Error(err)
   })
+
   ctx.state.data = { msg: '发送求助模板消息成功'}
 };
