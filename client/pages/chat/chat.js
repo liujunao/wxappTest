@@ -374,6 +374,7 @@ Page({
       util.showModel('提示', '不能发送空消息，请重试')
       return
     }
+    var help = that.data.askWord
     that.addChat(that.data.askWord, 'r');
     that.setData({
       askWord: ''
@@ -400,7 +401,7 @@ Page({
                 data: {
                   imgurl: that.data.imgUrl,
                   openid: that.data.openId,
-                  help: that.data.askWord,
+                  help: help,
                   formid: e.detail.formId,
                   time: time,
                   nickName: that.data.nickName,
