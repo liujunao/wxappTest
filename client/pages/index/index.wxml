@@ -24,13 +24,13 @@
       <cover-view class='title-text' style='left: 78%;' bindtap='checkDevice'>切换摄像头</cover-view>
 
       <cover-image src='../image/album.png' mode='aspectFit' style='position: absolute;width: 30%;height: 205rpx;left: 4%;bottom: 10%;'></cover-image>
-      <cover-view class="camera-text" style='position: absolute;width: 40%;hight:400rpx;left:6%;bottom: 12%;color: white' bindtap='doUpload'>相册</cover-view>
+      <cover-view class="camera-text" style='position: absolute;width: 25%;hight:400rpx;left:6%;bottom: 12%;color: white' bindtap='doUpload'>相册</cover-view>
 
-      <cover-image src='../image/photograph.png' bindtap='takePhoto' mode='aspectFit' style='position: absolute;width: 30%;height: 215rpx;left: 37%;bottom: 10%;' alt="拍照"></cover-image>
-      <cover-view class="camera-text" style='position: absolute;width: 40%; hight:400rpx; left: 37%;bottom: 12%;color: white' bindtap='takePhoto'>拍照</cover-view>
+      <cover-image src='../image/photograph.png' mode='aspectFit' style='position: absolute;width: 30%;height: 215rpx;left: 37%;bottom: 10%;' alt="拍照"></cover-image>
+      <cover-view class="camera-text" style='position: absolute;width: 25%; hight:400rpx; left: 37%;bottom: 12%;color: white' bindtap='takePhoto'>拍照</cover-view>
 
-      <cover-image src='../image/video.png' bindtap='videoHelp' mode='aspectFit' style='position: absolute;width: 30%;height: 245rpx;left: 67%;bottom: 9%;'></cover-image>
-      <cover-view class="camera-text" style='position: absolute;width: 40%; hight:400rpx; left: 70%;bottom: 12%;color: white' bindtap='takePhoto'>视频</cover-view>
+      <cover-image src='../image/video.png' mode='aspectFit' style='position: absolute;width: 30%;height: 245rpx;left: 67%;bottom: 9%;'></cover-image>
+      <cover-view class="camera-text" style='position: absolute;width: 25%; hight:400rpx; left: 70%;bottom: 12%;color: white' bindtap='videoHelp'>视频</cover-view>
 
     </camera>
   </view>

@@ -57,7 +57,7 @@ image {
 }
 
  .scrool-view {
-  height: 980rpx;
+  height: 950rpx;
   width: 750rpx;
   float: fixed;
 }  
