@@ -188,6 +188,22 @@ Page({
     this.setData({
       indexSet: 'indexSet3_con'
     })
+  },
+  //吐个槽客服系统接入
+  tucao: function(){
+    console.log('tucao')
+    wx.navigateToMiniProgram({
+      appId: 'wx8abaf00ee8c3202e',
+      // 目标为吐个槽社区小程序AppID(固定)
+      path: "/pages/index-v2/index-v2",
+      extraData: {
+        id: config.tucao.id,  // 来源为吐个槽上申请的产品ID ，查看路径：tucao.qq.com ->产品管理->ID
+        customData: {
+          clientInfo: '',
+          imei: ''
+        }
+      }
+    });
   }
 
 })
