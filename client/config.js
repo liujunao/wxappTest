@@ -33,6 +33,9 @@ var config = {
         //发送请求到微信公众号
         sendhelpinformation: `${host}/weapp/sendhelpinformation`
 
+    },
+    tucao: {
+      id: 30778,
     }
 };
 

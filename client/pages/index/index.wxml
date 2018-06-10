@@ -1,5 +1,4 @@
 <!--pages/main/index/index.wxml-->
-
 <view wx:if='{{cameraOn}}'>
   <view style='width: 750rpx; height:1180rpx;'>
 
@@ -10,8 +9,8 @@
       <!-- </navigator>  -->
 
       <cover-image src='../image/forum.png' mode='aspectFit' style='position: absolute;width: 14%;height: 120rpx;left: 16%;bottom: 87%;'></cover-image>
-      <cover-view class='title-text' style='left: 14.5%;'>联系客服</cover-view>
-
+      <cover-view class='title-text' style='left: 14.5%;' bindtap='tucao' >联系客服</cover-view>
+      
       <cover-image src='../image/ocr.png' mode='aspectFit' style='position: absolute;width: 14%;height: 120rpx;left: 32%;bottom: 87%;'></cover-image>
       <cover-view class='title-text' style='left: 30%;' bindtap='indexSet1'>印刷体识别</cover-view>
 
@@ -36,3 +35,4 @@
     </camera>
   </view>
 </view>
+
