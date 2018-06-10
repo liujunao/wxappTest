@@ -12,6 +12,8 @@ var indexSet;
 
 Page({
   data: {
+    //手机高宽比
+    hiTowi: '',
     defaultCorpus: '你都会什么',
     //用户的输入
     askWord: '',
@@ -68,7 +70,14 @@ Page({
   },
 
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '我是你的眼聊天求助页面',
+    })
     that = this;
+    let sysInfo = wx.getStorageSync('sysInfo')
+    that.setData({
+      hiTowi: sysInfo.windowHeight / sysInfo.windowWidth
+    })
     indexSet = options.indexSet;
     app.getUserInfo(function (userInfo) {
       var aUrl = userInfo.avatarUrl;

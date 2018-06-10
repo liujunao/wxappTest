@@ -23,6 +23,9 @@ Page({
    * 生命周期函数--监听页面加载
    */
   onLoad: function (options) {
+    wx.setNavigationBarTitle({
+      title: '我是你的眼个人信息页面',
+    })
     let code = wx.getStorageSync('code')
     let val = wx.getStorageSync('loginMsg');
     this.setData({
@@ -30,6 +33,11 @@ Page({
       code: code,
       logged: true
     })
+   
+  },
+
+  clickTip: function () {
+    util.showModel('提示', '正在开发，敬请期待')
   },
 
   //实现绑定的formSubmit 将formId传给服务器

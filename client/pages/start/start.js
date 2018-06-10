@@ -75,6 +75,9 @@ Page({
    */
   onLoad: function (options) {
     let val = wx.getStorageSync('loginMsg');
+    wx.setNavigationBarTitle({
+      title: '我是你的眼登陆页面',
+    })
 
     if (val) {
       wx.reLaunch({

@@ -43,12 +43,20 @@ Page({
   },
 
   onLoad: function (options){
+    wx.setNavigationBarTitle({
+      title: '我是你的眼主页面',
+    })
     this.setData({
       indexSet: ''
     })
     if(options.tmp){
       this.doUpload();
     }
+  },
+
+  //视频求助接口
+  videoHelp: function(){
+    util.showModel('提示','该功能正在开发，敬请期待')
   },
 
   //拍照接口

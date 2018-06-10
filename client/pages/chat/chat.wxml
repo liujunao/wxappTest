@@ -20,7 +20,6 @@
   <image class='bottom-item' src='{{mineImg}}'>我的页面</image>
   <cover-view class='bottom-view' style='left: 78%' bindtap='doMine'>我的页面</cover-view>
 </view>
-
 <view class="container">
   <scroll-view class="scrool-view" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrolltop}}" enable-back-to-top="true">
     <view class="chat-list">
@@ -70,11 +69,11 @@
       </block>
     </view>
   </scroll-view>
-
 </view>
+
 <form bindsubmit="sendChat">
   <view class="ask-input-word" style='left: 10rpx;'>
-    <input class="input-big" confirm-type="send" name="ask_word" type="text" bindconfirm="sendChat" bindinput="Typing" placeholder="请点击此处输入文字" value="{{askWord}}" focus='true' adjust-position="false"></input>
+    <input confirm-type="send" name="ask_word" type="text" bindconfirm="sendChat" bindinput="Typing" placeholder="请点击此处输入文字" value="{{askWord}}" focus='true' adjust-position="false"></input>
     <form bindsubmit="submitInfo" report-submit='true'>
       <button form-type="submit" class="button-send">求助志愿者</button>
     </form>

@@ -9,11 +9,11 @@
       <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
     </view>
     <view>
-      <button type='primary' style='left: 50rpx;width: 350rpx;height: 100rpx; bottom: 7rpx;'>我的名片</button>
+      <button type='primary' style='left: 50rpx;width: 350rpx;height: 100rpx; bottom: 7rpx;' bindtap='clickTip'>我的名片</button>
     </view>
   </view>
 
-  <view style='background: #FFFF66;width: 750rpx;height: 150rpx;'>
+  <view style='background: #FFFF66;width: 750rpx;height: 150rpx;' bindtap='clickTip'>
     <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>个人信息</text>
     <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
       <view style='float: left;'>进入</view>
@@ -21,7 +21,7 @@
     </view>
   </view>
 
-  <view style='background: #FF6600;width: 750rpx;height: 150rpx;'>
+  <view style='background: #FF6600;width: 750rpx;height: 150rpx;' bindtap='clickTip'>
     <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>设置</text>
     <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
       <view style='float: left;'>进入</view>
@@ -29,7 +29,7 @@
     </view>
   </view>
 
-  <view style=' background: #FF3300;width: 750rpx;height: 150rpx;'>
+  <view style=' background: #FF3300;width: 750rpx;height: 150rpx;' bindtap='clickTip'>
     <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>帮助</text>
     <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
       <view style='float: left;'>进入</view>
@@ -37,7 +37,7 @@
     </view>
   </view>
 
-  <view style='background: #CC0000;width: 750rpx;height: 150rpx;'>
+  <view style='background: #CC0000;width: 750rpx;height: 150rpx;' bindtap='clickTip'>
     <text style='bottom: 30rpx;font-size: 120%;left: 100rpx;float: left; margin-top: 40rpx;margin-left: 50rpx;'>设备管理</text>
     <view style='left: 600rpx;float: right; margin-top: 40rpx;'>
       <view style='float: left;'>进入</view>
