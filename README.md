@@ -10,10 +10,10 @@
 
 2. 通过微信扫描下面二维码关注“**我是你的眼**”微信小程序 （盲人使用端）
 
-   ![](D:\workCode\wxapp\wxappTest\wxapp.jpg)
+   ![](wxapp.jpg) 
 
 3.  通过下面二维码关注"**我能帮帮忙**" 志愿者服务号（志愿者服务端）
 
-   ![wx](D:\workCode\wxapp\wxappTest\wx.jpg)
+   ![wx](wx.jpg) 
 
    ​
