@@ -46,7 +46,7 @@ Page({
     conImg: '../image/content.png',
     descImg: '../image/describe.png',
     mineIng: '../image/mine.png',
-
+    
     // 印刷体识别
     ocrImgUrl: '',
     ocrResult: [],

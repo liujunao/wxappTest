@@ -3,22 +3,22 @@
 <view class='bottom-content'>
   <!--相册-->
   <image class='bottom-item' src="{{picImg}}">相册</image>
-  <cover-view class='bottom-view' style='left: 3%' bindtap='checkPic'>相册</cover-view>
+  <cover-view class='bottom-view' style='left: 4%' bindtap='checkPic'>相册</cover-view>
   <!-- 相机 -->
   <image class='bottom-item' src="{{caremaImg}}">相机</image>
-  <cover-view class='bottom-view' style='left: 18%' bindtap='openCamera'>相机</cover-view>
+  <cover-view class='bottom-view' style='left: 20%' bindtap='openCamera'>相机</cover-view>
   <!-- ocr -->
   <image class='bottom-item' src='{{ocrImg}}'>印刷体识别</image>
-  <cover-view class='bottom-view' style='left: 33%' bindtap='doWordIndentify'>印刷体识别</cover-view>
+  <cover-view class='bottom-view' style='left: 38%' bindtap='doWordIndentify'>印刷体识别</cover-view>
   <!-- 图片描述 -->
   <image class='bottom-item' src='{{descImg}}'>图片描述</image>
-  <cover-view class='bottom-view' style='left: 48%' bindtap='doDescribe'>图片描述</cover-view>
+  <cover-view class='bottom-view' style='left: 56%' bindtap='doDescribe'>图片描述</cover-view>
   <!-- 图片内容 -->
   <image class='bottom-item' src='{{conImg}}'>图片内容</image>
-  <cover-view class='bottom-view' style='left: 63%' bindtap='doConIndentity'>图片内容</cover-view>
+  <cover-view class='bottom-view' style='left: 74%' bindtap='doConIndentity'>图片内容</cover-view>
   <!-- 我的页面 -->
-  <image class='bottom-item' src='{{mineImg}}'>我的页面</image>
-  <cover-view class='bottom-view' style='left: 78%' bindtap='doMine'>我的页面</cover-view>
+  <!--image class='bottom-item' src='{{mineImg}}'>我的页面</image>
+  <cover-view class='bottom-view' style='left: 78%' bindtap='doMine'>我的页面</cover-view-->
 </view>
 <view class="container">
   <scroll-view class="scrool-view" scroll-y="true" scroll-with-animation="true" scroll-into-view="{{scrolltop}}" enable-back-to-top="true">
@@ -73,7 +73,7 @@
 
 <form bindsubmit="sendChat">
   <view class="ask-input-word" style='left: 10rpx;'>
-    <input confirm-type="send" name="ask_word" type="text" bindconfirm="sendChat" bindinput="Typing" placeholder="请点击此处输入文字" value="{{askWord}}" focus='true' adjust-position="false"></input>
+    <input confirm-type="send" name="ask_word" type="text" bindconfirm="sendChat" bindinput="Typing" placeholder="请点击此处输入文字" value="{{askWord}}"  adjust-position="false"></input>
     <form bindsubmit="submitInfo" report-submit='true'>
       <button form-type="submit" class="button-send">求助志愿者</button>
     </form>

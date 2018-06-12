@@ -126,7 +126,7 @@ page {
 
 .camera-text {
   padding: 0 0 0 20rpx;
-  font-size: 1rpx;
+  font-size: 5rpx;
   line-height: 200rpx;
   justify-content: center;
   word-break: break-all;
@@ -137,7 +137,7 @@ page {
 
 .title-text {
   padding: 0 0 0 9rpx;
-  font-size: 1rpx;
+  font-size: 5rpx;
   line-height: 200rpx;
   justify-content: center;
   word-break: break-all;
