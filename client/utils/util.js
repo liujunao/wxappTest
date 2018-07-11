@@ -67,13 +67,14 @@ var showCon = () => {
         return
       }
       let des = info.tags
-      let tmp = []
+      let result = []
+      let tmp = ""
       for (let i = 0; i < des.length; i++) {
         let con = des[i].tag_name + "正确率为百分之" + des[i].tag_confidence
-        tmp.push(con)
+        tmp += con + ","
       }
-      console.log('util: ' + tmp)
-      wx.setStorageSync('AiRes', tmp)
+      result.push(tmp)
+      wx.setStorageSync('AiRes', result)
     },
     fail: function (res) {
       console.log(e)

@@ -46,7 +46,7 @@ Page({
     conImg: '../image/content.png',
     descImg: '../image/describe.png',
     mineIng: '../image/mine.png',
-    
+
     // 印刷体识别
     ocrImgUrl: '',
     ocrResult: [],
@@ -91,12 +91,12 @@ Page({
     that.addChat(options.imgUrl, 'p');
     //自动进行内容识别
     util.showCon()
-    setTimeout(function(){
+    setTimeout(function () {
       let AIRes = wx.getStorageSync('AiRes')
       console.log('chat: ' + AIRes)
       that.addChat(AIRes, 'l')
-    },500)
-    
+    }, 500)
+
     if (indexSet) {
       if (indexSet == 'indexSet1_ocr') {
         that.doWordIndentify();
@@ -170,11 +170,14 @@ Page({
           ocrResult: info.data.items
         })
         let des = that.data.ocrResult
-        let tmp = []
+        let result = []
+        let tmp = ""
         for (let i = 0; i < des.length; i++) {
-          tmp.push(des[i].itemstring)
+          let con = des[i].itemstring
+          tmp += con + ","
         }
-        that.addChat(tmp, 'l');
+        result.push(tmp)
+        that.addChat(result, 'l');
       },
       fail: function (res) {
         console.log(e)
@@ -216,12 +219,14 @@ Page({
           conResult: info.tags
         })
         let des = that.data.conResult
-        let tmp = []
+        let result = []
+        let tmp = ""
         for (let i = 0; i < des.length; i++) {
           let con = des[i].tag_name + "正确率为百分之" + des[i].tag_confidence
-          tmp.push(con)
+          tmp += con + ","
         }
-        that.addChat(tmp, 'l');
+        result.push(tmp)
+        that.addChat(result, 'l');
       },
       fail: function (res) {
         console.log(e)
@@ -232,11 +237,11 @@ Page({
 
   //图片描述
   doDescribe: function () {
-    util.showModel('提示','该功能正在开发，敬请期待')
+    util.showModel('提示', '该功能正在开发，敬请期待')
   },
 
   //转到我的页面
-  doMine: function(){
+  doMine: function () {
     wx.navigateTo({
       url: '../mine/mine',
     })

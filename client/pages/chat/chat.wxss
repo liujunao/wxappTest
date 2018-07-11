@@ -86,17 +86,19 @@ image {
 
 .chat-text-left {
   /* flex: 1; */
-  margin-left: 10rpx;
+  margin-left: 100rpx;
+  margin-right: 100rpx;
   /* padding: 5rpx 10rpx; */
   background-color: #a0e959;
   border-radius: 11rpx;
   /* word-break: break-all; */
-  float: left;
+  /* float: left; */
   margin-bottom: 10rpx;
   line-height: 35rpx;
-  padding-left: 10rpx;
-  padding-right: 10rpx;
+  padding-left: 20rpx;
+  padding-right: 20rpx;
   padding-bottom: 30rpx;
+  padding-top: 30rpx;
 }
 
 .chat-right {
@@ -124,13 +126,14 @@ image {
 .chat-text-right {
   /* flex: 1; */
   margin-right: 45rpx;
-  margin-left: 30rpx;
-  padding: 5rpx 10rpx;
+  margin-left: 50rpx;
+  padding: 10rpx 10rpx;
   background-color: #a0e959;
   border-radius: 11rpx;
   word-break: break-all;
   float: right;
-  max-width: 75%;
+  max-width: 70%;
+  margin-bottom: 10rpx;
 }
 
 .avatar-img-left {

@@ -29,7 +29,7 @@
           <image class="avatar-img-left" src="../image/chat_logo.png" alt="头像"></image>
           <view wx:for="{{item.text}}" wx:key="ai" wx:for-item="tmp" wx:for-index="idx">
             <view class='chat-text-left'>
-              <text>{{tmp}}</text>
+              <text space='emsp'>{{tmp}}</text>
             </view>
           </view>
         </view>
@@ -42,11 +42,11 @@
             </view>
           </view>
           <!-- 点击识别方式按钮自动打印提示 -->
-          <view class='chat-text-right' wx:if="{{item.orientation == 'a'}}">
+          <view wx:if="{{item.orientation == 'a'}}">
             <!-- 用户头像 -->
             <image class="avatar-img-right" src="{{userLogoUrl}}"></image>
             <view class='chat-text-right'>
-              <text>{{item.text}}</text>
+              <text space='ensp'>{{item.text}}</text>
             </view>
           </view>
           <!-- 图片 -->
@@ -58,11 +58,11 @@
             </view>
           </view>
           <!-- 文本输入 -->
-          <view class='chat-text-right' wx:if="{{item.orientation == 'r'}}">
+          <view wx:if="{{item.orientation == 'r'}}">
             <!-- 用户头像 -->
             <image class="avatar-img-right" src="{{userLogoUrl}}"></image>
             <view class='chat-text-right'>
-              <text>{{item.text}}</text>
+              <text space='emsp'>{{item.text}}</text>
             </view>
           </view>
         </view>
