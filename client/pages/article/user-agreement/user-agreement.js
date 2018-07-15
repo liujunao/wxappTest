@@ -1,4 +1,4 @@
-// pages/video/video.js
+// pages/article/user-agreement/user-agreement.js
 Page({
 
   /**

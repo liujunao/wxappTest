@@ -1,12 +1,24 @@
 <!--pages/start/start.wxml-->
 
-<view class="container">
+<view>
   <!-- 用户登录测试 -->
-  <view class="userinfo" style='background: #000000;'>
+
+  <view class="image-section_center">
     <image class="userinfo-avatar" src="{{logged ? userInfo.avatarUrl : './user-unlogin.png'}}" background-size="cover"></image>
-    <view bindtouchstart="login">
-      <button style='bottom: 40rpx;color: #007AFF;' open-type="getUserInfo">{{logged ? userInfo.nickName : '点击登录'}}</button>
-      <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+  </view>
+  <view bindtouchstart="login">
+    <text class="userinfo-nickname" wx:if="{{logged}}">{{userInfo.lastLoginTime}}</text>
+    <view class="btn-area">
+      <button type="primary" open-type="getUserInfo" style='bottom: 40rpx;margin-left: 20rpx;margin-right:20rpx; margin-top:300rpx;'>{{logged ? userInfo.nickName : '登录'}}</button>
     </view>
+  </view>
+
+
+  <view class="weui-footer weui-footer_fixed-bottom">
+    <view class="weui-footer__links">
+      <navigator url="../article/user-agreement/user-agreement" class="weui-footer__link" hover-class="navigator-hover">用户协议</navigator>
+      <navigator url="" class="weui-footer__link">隐私声明</navigator>
+    </view>
+    <view class="weui-footer__text">Copyright © 2018-2025 BeMyeys.com.cn</view>
   </view>
 </view>

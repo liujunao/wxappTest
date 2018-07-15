@@ -2,6 +2,10 @@
 var qcloud = require('../../vendor/wafer2-client-sdk/index');
 var config = require('../../config');
 var util = require('../../utils/util.js');
+var ocr = require('../../utils/orcapi/ocr.js');
+var plugin = requirePlugin('WechatSI');
+var imgtotext_request = require('../../utils/orcapi/imgtotext_request.js');
+var image_tag = require('../../utils/orcapi/image_tag.js')
 
 var app = getApp();
 var that;
@@ -39,6 +43,10 @@ Page({
     contactFlag: true,
     imgUrl: "",
 
+    // canvas高宽
+    canvasWidth: 100,
+    canvasHeight: 100,
+
     /////////
     caremaImg: '../image/camera.png',
     picImg: '../image/album.png',
@@ -69,17 +77,17 @@ Page({
     avatarUrl: '',
   },
 
-  onLoad: function (options) {
+  onLoad: function(options) {
     wx.setNavigationBarTitle({
-      title: '我是你的眼聊天求助页面',
+      title: '求助',
     })
-    that = this;
+    let that = this;
     let sysInfo = wx.getStorageSync('sysInfo')
     that.setData({
       hiTowi: sysInfo.windowHeight / sysInfo.windowWidth
     })
     indexSet = options.indexSet;
-    app.getUserInfo(function (userInfo) {
+    app.getUserInfo(function(userInfo) {
       var aUrl = userInfo.avatarUrl;
       if (aUrl != null) {
         that.setData({
@@ -89,13 +97,6 @@ Page({
       }
     });
     that.addChat(options.imgUrl, 'p');
-    //自动进行内容识别
-    util.showCon()
-    setTimeout(function () {
-      let AIRes = wx.getStorageSync('AiRes')
-      console.log('chat: ' + AIRes)
-      that.addChat(AIRes, 'l')
-    }, 500)
 
     if (indexSet) {
       if (indexSet == 'indexSet1_ocr') {
@@ -109,39 +110,40 @@ Page({
   },
 
   //打开相机,实际是回到主页面
-  openCamera: function () {
+  openCamera: function() {
     wx.reLaunch({
       url: '../index/index',
     })
   },
 
   // 选择图片
-  checkPic: function () {
+  checkPic: function() {
     wx.reLaunch({
       url: '../index/index?tmp=picTmp',
     })
   },
 
-  //文字转语音;并未实现
-  textToSpeech: function () {
-    wx.request({
-      url: config.service.ciUrl,
-      data: {
-        text: "this.data.ocrResult"
+  //文字转语音
+  textToSpeech: function(words) {
+    var _this = this;
+    plugin.textToSpeech({
+      lang: 'zh_CN',
+      content: words,
+      success: function(res) {
+        _this.setData({
+          recordUrl: res.filename
+        });
       },
-      header: {
-        'content-type': 'application/json'
-      },
-      success: function (res) {
-        console.log('textToSpeech: ' + JSON.stringify(res));
+      fail: function(res) {
+        util.showModel('语音转换失败', res.msg);
       }
-    })
+    });
   },
 
-  //印刷体识别
-  doWordIndentify: function () {
+  //文字识别
+  doWordIndentify: function() {
     let that = this
-    that.addChat('印刷体识别', 'a');
+    that.addChat('文字识别', 'a');
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -153,16 +155,28 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         util.showSuccess('识别成功')
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
+          let tmp = "该图片中没有文字，请更换识别方式"
+          let result = []
+          result.push(tmp)
+          let words = result.join(' ');
+          that.addChat(result, 'l');
+          // tts语音转换
+          that.textToSpeech(words);
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
+          let tmp = "该图片中没有文字，请更换识别方式"
+          let result = []
+          result.push(tmp)
+          let words = result.join(' ');
+          that.addChat(result, 'l');
+          // tts语音转换
+          that.textToSpeech(words);
           return
         }
 
@@ -177,19 +191,28 @@ Page({
           tmp += con + ","
         }
         result.push(tmp)
+        let words = result.join(' ');
         that.addChat(result, 'l');
+        // tts语音转换
+        that.textToSpeech(words);
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(e)
-        util.showModel('识别失败', '请检查网络状态或更换识别方式')
+        let tmp = "网络异常，请重试"
+        let result = []
+        result.push(tmp)
+        let words = result.join(' ');
+        that.addChat(result, 'l');
+        // tts语音转换
+        that.textToSpeech(words);
       }
     })
   },
 
   //识别图片内容信息，并以标签的形式显示
-  doConIndentity: function () {
+  doConIndentity: function() {
     var that = this
-    that.addChat('图片标签识别', 'a');
+    that.addChat('图片识别', 'a');
     let img = wx.getStorageSync('imgUrl')
     wx.request({
       url: config.service.ciUrl,
@@ -201,17 +224,29 @@ Page({
       header: {
         'content-type': 'application/json' // 默认值
       },
-      success: function (res) {
+      success: function(res) {
         util.showSuccess('识别成功')
         // var data = JSON.parse(res.data)
         var data = res.data
         if (data.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
+          let tmp = "请求助志愿者，这次识别结果不理想！"
+          let result = []
+          result.push(tmp)
+          let words = result.join(' ');
+          that.addChat(result, 'l');
+          // tts语音转换
+          that.textToSpeech(words);
           return
         }
         var info = data.data
         if (info.code !== 0) {
-          util.showModel('识别失败', '请检查网络状态或更换识别方式')
+          let tmp = "请求助志愿者，这次识别结果不理想！"
+          let result = []
+          result.push(tmp)
+          let words = result.join(' ');
+          that.addChat(result, 'l');
+          // tts语音转换
+          that.textToSpeech(words);
           return
         }
 
@@ -226,39 +261,95 @@ Page({
           tmp += con + ","
         }
         result.push(tmp)
-        that.addChat(result, 'l');
+        let words = result.join(' ')
+        that.addChat(result, 'l')
+        // tts语音转换
+        that.textToSpeech(words)
       },
-      fail: function (res) {
+      fail: function(res) {
         console.log(e)
-        util.showModel('识别失败', '请检查网络状态或更换识别方式')
+        let tmp = "网络异常，请重试"
+        let result = []
+        result.push(tmp)
+        let words = result.join(' ');
+        that.addChat(result, 'l');
+        // tts语音转换
+        that.textToSpeech(words);
       }
     })
   },
 
   //图片描述
-  doDescribe: function () {
-    util.showModel('提示', '该功能正在开发，敬请期待')
+  doDescribe: function() {
+    let _this = this;
+    this.addChat('图片描述', 'a');
+
+    let img = this.data.imgUrl;
+    console.log("图片描述: " + img)
+    wx.getImageInfo({
+      src: img,
+      success(d) {
+        _this.setData({
+          canvasWidth: d.width,
+          canvasHeight: d.height,
+        });
+        util.toPNGBase64(img, d)
+          .then((base64) => {
+            return imgtotext_request.request(base64);
+          })
+          .then((res) => {
+            var data = res.data;
+            if (data.ret !== 0) {
+              let tmp = "请求助志愿者，这次识别结果不理想！"
+              let result = []
+              result.push(tmp)
+              let words = result.join(' ');
+              _this.addChat(result, 'l');
+              // tts语音转换
+              _this.textToSpeech(words);
+              console.log(res);
+              return;
+            }
+            var info = data.data;
+            console.log(info);
+            let result = []
+            result.push(info.text)
+            console.log("看图说话")
+            _this.addChat(result, 'l');
+            _this.textToSpeech(info.text);
+          })
+          .catch((err) => {
+            console.log(err);
+          });
+      },
+      fail(e) {
+        console.log(e)
+        reject({
+          code: 2,
+          reason: '获取图片信息失败'
+        });
+      }
+    });
   },
 
   //转到我的页面
-  doMine: function () {
+  doMine: function() {
     wx.navigateTo({
-      url: '../mine/mine',
+      url: '../my/my',
     })
   },
 
-  onReady: function () {
-  },
+  onReady: function() {},
 
   // 切换语音输入和文字输入
-  switchInputType: function () {
+  switchInputType: function() {
     this.setData({
       keyboard: !(this.data.keyboard),
     })
   },
 
   // 监控输入框输入
-  Typing: function (e) {
+  Typing: function(e) {
     var inputVal = e.detail.value;
     var buttDis = true;
     if (inputVal.length != 0) {
@@ -266,25 +357,25 @@ Page({
     }
     that.setData({
       askWord: inputVal,
-      sendButtDisable: buttDis,
+      sendButtDisable: btnDisabled,
     })
   },
 
   // 按钮按下
-  touchdown: function () {
+  touchdown: function() {
     var _this = this;
     this.setData({
       isSpeaking: true,
     })
     that.speaking.call();
     wx.startRecord({
-      success: function (res) {
+      success: function(res) {
         //临时路径,下次进入小程序时无法正常使用
         var tempFilePath = res.tempFilePath;
         //持久保存
         wx.saveFile({
           tempFilePath: tempFilePath,
-          success: function (res) {
+          success: function(res) {
             //持久路径
             //本地文件存储的大小限制为 100M
             var savedFilePath = res.savedFilePath;
@@ -303,7 +394,7 @@ Page({
   },
 
   // 按钮松开
-  touchup: function () {
+  touchup: function() {
     wx.stopRecord();
     this.setData({
       isSpeaking: false,
@@ -315,7 +406,7 @@ Page({
   },
 
   //点击播放录音
-  gotoPlay: function (e) {
+  gotoPlay: function(e) {
     var filePath = e.currentTarget.dataset.key;
     //点击开始播放
     wx.showToast({
@@ -325,7 +416,7 @@ Page({
     })
     wx.playVoice({
       filePath: filePath,
-      success: function () {
+      success: function() {
         wx.showToast({
           title: '播放结束',
           icon: 'success',
@@ -336,41 +427,40 @@ Page({
   },
 
   // 发送语料到语义平台
-  sendChat: function (e) {
+  sendChat: function(e) {
     let word = e.detail.value.ask_word ? e.detail.value.ask_word : e.detail.value;
-    that.setData({
+    this.setData({
       askWord: word,
       sendButtDisable: true,
     });
   },
 
   // 增加对话到显示界面（scrolltopFlag为True）
-  addChat: function (word, orientation) {
-    that.addChatWithFlag(word, orientation, true);
+  addChat: function(word, orientation) {
+    this.addChatWithFlag(word, orientation, true);
   },
 
   // 增加对话到显示界面（scrolltopFlag为是否滚动标志）
-  addChatWithFlag: function (word, orientation, scrolltopFlag) {
-    let ch = { 'text': word, 'time': new Date().getTime(), 'orientation': orientation };
+  addChatWithFlag: function(word, orientation, scrolltopFlag) {
+    let ch = {
+      'text': word,
+      'time': new Date().getTime(),
+      'orientation': orientation
+    };
     chatListData.push(ch);
     var charlenght = chatListData.length;
-    if (scrolltopFlag) {
-      that.setData({
-        chatList: chatListData,
-        scrolltop: "roll" + charlenght,
-      });
-    } else {
-      that.setData({
-        chatList: chatListData,
-      });
-    }
+    let data = {
+      chatList: chatListData
+    };
+    if (scrolltopFlag) data.scrolltop = 'roll' + charlenght;
+    this.setData(data);
   },
 
   // 麦克风帧动画 
-  speaking: function () {
+  speaking: function() {
     //话筒帧动画 
     var i = 0;
-    that.speakerInterval = setInterval(function () {
+    that.speakerInterval = setInterval(function() {
       i++;
       i = i % 7;
       that.setData({
@@ -381,8 +471,8 @@ Page({
 
   /*
    * 通过“我能帮帮忙”服务号向志愿者发送模板消息
-  */
-  submitInfo: function (e) {
+   */
+  submitInfo: function(e) {
     var that = this
     if (!that.data.askWord) {
       util.showModel('提示', '不能发送空消息，请重试')
@@ -395,7 +485,7 @@ Page({
     })
     wx.getStorage({
       key: 'loginMsg',
-      success: function (res) {
+      success: function(res) {
         that.setData({
           nickName: JSON.parse(res.data).nickName,
           openId: JSON.parse(res.data).openId,
@@ -403,7 +493,7 @@ Page({
         })
         wx.getStorage({
           key: 'imgUrl',
-          success: function (res) {
+          success: function(res) {
             that.setData({
               imgUrl: res.data
             })
@@ -426,7 +516,7 @@ Page({
                 'content-type': 'application/json'
               },
               method: "POST",
-              success: function (res) {
+              success: function(res) {
                 // console.log("res: " + JSON.stringify(res.data));
                 //console.log(this.data.imgUrl);
                 //console.log(this.data.inputValue);

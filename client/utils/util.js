@@ -1,3 +1,7 @@
+let Promise = require('./promise.js');
+let upng = require('./upng-js/UPNG.js');
+let config = require('../config.js');
+
 const formatTime = date => {
   const year = date.getFullYear()
   const month = date.getMonth() + 1
@@ -13,8 +17,6 @@ const formatNumber = n => {
   n = n.toString()
   return n[1] ? n : '0' + n
 }
-
-const config = require('../config.js')
 
 // 显示繁忙提示
 var showBusy = text => wx.showToast({
@@ -83,4 +85,38 @@ var showCon = () => {
   })
 }
 
-module.exports = { formatTime, showBusy, showSuccess, showModel, showCon }
+const canvasID = 'pngCanvas';
+var toPNGBase64 = (imgPath, img) => {
+  return new Promise((resolve, reject) => {
+    let ctx = wx.createCanvasContext(canvasID);
+    // 1. 绘制图片至canvas
+    ctx.drawImage(imgPath, 0, 0, img.width, img.height);
+    // 绘制完成后执行回调，API 1.7.0
+    ctx.draw(false, () => {
+      // 2. 获取图像数据， API 1.9.0
+      wx.canvasGetImageData({
+        canvasId: canvasID,
+        x: 0,
+        y: 0,
+        width: img.width,
+        height: img.height,
+        success(res) {
+          // 3. png编码
+          let pngData = upng.encode([res.data.buffer], res.width, res.height)
+          // 4. base64编码
+          resolve(wx.arrayBufferToBase64(pngData));
+        },
+        fail(e) {
+          console.log(e)
+          showModel('失败', 'canvas获取图片信息失败')
+          reject({
+            code: 2,
+            reason: 'canvas获取图片信息失败'
+          });
+        }
+      });
+    });
+  });
+}
+
+module.exports = { formatTime, showBusy, showSuccess, showModel, showCon, toPNGBase64 }

@@ -26,7 +26,7 @@
       <block wx:for="{{chatList}}" wx:key="time">
         <!-- 回复输出 -->
         <view id="roll{{index + 1}}" class="chat-left" wx:if="{{item.orientation == 'l'}}">
-          <image class="avatar-img-left" src="../image/chat_logo.png" alt="头像"></image>
+          <image class="avatar-img-left" src="../image/ic_ai.png" alt="头像"></image>
           <view wx:for="{{item.text}}" wx:key="ai" wx:for-item="tmp" wx:for-index="idx">
             <view class='chat-text-left'>
               <text space='emsp'>{{tmp}}</text>
@@ -80,3 +80,5 @@
   </view>
 </form>
 <image class="speaker" hidden="{{!isSpeaking}}" src="{{speakerUrl}}"></image>
+<canvas canvas-id="pngCanvas" id="pngCanvas" style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;"></canvas>
+<video src="{{recordUrl}}" autoplay="autoplay"></video>

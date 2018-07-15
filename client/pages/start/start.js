@@ -50,7 +50,6 @@ Page({
                 userInfo: result.data.data,
                 logged: true
               })
-              // app.loginMsg = JSON.stringify(that.data.userInfo);
               //将登陆信息存入缓存中
               wx.setStorageSync('loginMsg', JSON.stringify(that.data.userInfo));
             },
@@ -75,8 +74,10 @@ Page({
    */
   onLoad: function (options) {
     let val = wx.getStorageSync('loginMsg');
+    console.log("startVal: " + val)
+    console.log("startLogged: " + this.data.logged)
     wx.setNavigationBarTitle({
-      title: '我是你的眼登陆页面',
+      title: '登录',
     })
 
     if (val) {
