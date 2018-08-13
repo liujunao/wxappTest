@@ -1,0 +1,112 @@
+<!--pages/picture/picture.wxml-->
+
+<!--pages/main/picture/picture.wxml-->
+
+<!-- 上传图片测试 -->
+<view class="uploader">
+  <view class="uploader-text" bindtap="doUpload">
+    <text>上传图片</text>
+  </view>
+  <view class="uploader-container" wx:if="{{imgUrl}}">
+    <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+  </view>
+</view>
+
+
+<!--index.wxml-->
+<view>
+
+  <!-- 印刷体识别 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doWordIndentify">
+      <text>印刷体识别</text>
+    </view>
+    <view class="uploader-container" wx:if="{{ocrImgUrl}}">
+      <image class="uploader-image" src="{{ocrImgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view wx:if="{{showOcrResult}}">
+        <text wx:for="{{ocrResult}}" wx:for-item="item" wx:for-index="idx">
+                    {{idx}}：{{item.itemstring}}
+                </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 身份证识别 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doIdCardIdentify">
+      <text>身份证识别</text>
+    </view>
+    <view class="uploader-container" wx:if="{{imgUrl}}">
+      <image class="uploader-image" src="{{imgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view wx:if="{{showResult}}">
+        <text>姓名：{{ idCardInfo.name }}</text>
+        <text>性别：{{ idCardInfo.sex }}</text>
+        <text>民族：{{ idCardInfo.nation }}</text>
+        <text>生日：{{ idCardInfo.birth }}</text>
+        <text>住址：{{ idCardInfo.address }}</text>
+        <text>身份证号：{{ idCardInfo.id }}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 营业执照识别 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doWordIndentify">
+      <text>营业执照识别</text>
+    </view>
+    <view class="uploader-container" wx:if="{{busImgUrl}}">
+      <image class="uploader-image" src="{{busImgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view wx:if="{{showBusResult}}">
+        <text wx:for="{{busResult}}" wx:for-item="item" wx:for-index="idx">
+                    {{idx}}：{{item.item}}
+                </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 名片识别 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doIdIndentify">
+      <text>名片识别</text>
+    </view>
+    <view class="uploader-container" wx:if="{{idImgUrl}}">
+      <image class="uploader-image" src="{{idImgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view wx:if="{{showidResult}}">
+        <text wx:for="{{idInfo}}" wx:for-item="item">
+                    {{item.item}}：{{item.value}}
+                </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 识别图片内容信息，并以标签的形式显示 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="doConIndentity">
+      <text>识别图片内容信息</text>
+    </view>
+    <view class="uploader-container" wx:if="{{conImgUrl}}">
+      <image class="uploader-image" src="{{conImgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view wx:if="{{showConResult}}">
+        <text wx:for="{{conResult}}" wx:for-item="item">
+                    {{item.tag_name}}：{{item.tag_confidence}}
+                </text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 看图说话 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="picToSpeech">
+      <text>看图说话</text>
+    </view>
+    <view class="uploader-container" wx:if="{{picImgUrl}}">
+      <image class="uploader-image" src="{{picImgUrl}}" mode="aspectFit" bindtap="previewImg"></image>
+      <view wx:if="{{showPicResult}}">
+        <text wx:for="{{picResult}}" wx:for-item="item">
+          {{item.text}}
+        </text>
+      </view>
+    </view>
+  </view>
+
+</view>

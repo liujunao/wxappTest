@@ -2,11 +2,12 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
-    <meta http-equiv="Access-Control-Allow-Origin" content="*" />
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <meta http-equiv="Access-Control-Allow-Origin" content="*"/>
     <title>求助信息</title>
     <link rel=stylesheet type=text/css href="helpDetail.css">
-
+    <link rel=stylesheet type=text/css href="dist/style/weui.css">
 </head>
 <body>
 <!--
@@ -18,7 +19,6 @@
         <p id="request-content" class="">这张图片里有什么？我该怎么走？这张图片里有什么？我该怎么走？这张图片里有什么？我该怎么走？这张图片里有什么？我该怎么走？</p>
     </div>
     <div style=" clear:both "></div>
-
 </div>
 <div class="user-img-wrapper">
     <div class="wrapper">
@@ -29,7 +29,6 @@
     </div>
     <div style=" clear:both "></div>
 </div>
-
 <div class="user-img-wrapper">
     <div class="response-wrapper">
         <img data-id="user-img" class="user-img" src="3.jpg">
@@ -39,7 +38,6 @@
     </div>
     <div style=" clear:both "></div>
 </div>
-
 <div class="user-img-wrapper">
     <div class="wrapper">
         <img data-id="user-img" class="user-img" src="2.jpg">
@@ -55,16 +53,39 @@
     <div class="submit-button" id="submit-button">发送</div>
     <div style=" clear:both "></div>
 </div>
+<!--BEGIN toast-->
+<div id="toast" style="display: none;">
+    <div class="weui-mask_transparent"></div>
+    <div class="weui-toast">
+        <i class="weui-icon-info weui-icon_toast weui-icon_msg"></i>
+        <p class="weui-toast__content">输入内容不能为空！</p>
+    </div>
+</div>
+<!--end toast-->
+<div id="dialogs">
+    <div class="js_dialog" id="iosDialog1" style="display: none;">
+        <div class="weui-mask"></div>
+        <div class="weui-dialog">
+            <div class="weui-dialog__hd"><strong class="weui-dialog__title">帮助提醒</strong></div>
+            <div class="weui-dialog__bd" id="bd">是否继续提供帮助</div>
+            <div class="weui-dialog__ft">
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_default" id="leave">否</a>
+                <a href="javascript:;" class="weui-dialog__btn weui-dialog__btn_primary" id="left">继续帮助</a>
+            </div>
+        </div>
+    </div>
+</div>
 <script type="text/javascript" src="zepto.js"></script>
+<script type="text/javascript" src="zepto.animate.alias.js"></script>
+<script type="text/javascript" src="animate.js"></script>
 <script>
     $(function () {
+        var startTime = new Date();
         //动态设置viewport的scale
         var scale = 1 / devicePixelRatio;
         document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ', maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
-
         //动态计算html的font-size
         document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
-
         //布局的时候，各元素的css尺寸=设计稿标注尺寸/设计稿横向分辨率/10
         var btn = document.getElementById("submit-button");
         btn.ontouchstart = function () {
@@ -79,48 +100,57 @@
         btn.ontouchend = function () {
             this.className = "submit-button";
         }
-
+        console.log(window.location.href);
         if (window.location.href.indexOf("?") != -1) {
-            var data=window.location.href.split("?")[1];//helpId=**&volunteerAvatarUrl=***&volunteernickname=***
-            var data_arr=data.split("&");//[,,]
+            var data = window.location.href.split("?")[1];//helpId=**&volunteerAvatarUrl=***&volunteernickname=***&volunteerOpenid=***
+            var data_arr = data.split("&");//[,,]
             var helpId = data_arr[0].split("=")[1];
-            var volunteerAvatarUrl=data_arr[1].split("=")[1];
-            var volunteernickname=decodeURI(data_arr[2].split("=")[1]);
-        }else{
-            var helpId="59";
+            var volunteerAvatarUrl = data_arr[1].split("=")[1];
+            var volunteernickname = decodeURI(data_arr[2].split("=")[1]);
+            var volunteerOpenid = data_arr[3].split("=")[1];
+        } else {
+            var helpId = "59";
         }
-function getTime(today) {
-    var year = today.getFullYear();
-    var month = today.getMonth() + 1;
-    var day = today.getDate();
-    var hour = today.getHours();
-    var min = today.getMinutes();
-    var sec = today.getSeconds();
-    var time=year+"-"+month+"-"+day+" "+hour+min+sec;//"2018-5-18 09:56:13";
-    return time;
-}
-        var formid,blindman_open_id,supplyhelpcontent,askforhelpcontent;
+
+        function getTime(today) {
+            var year = today.getFullYear();
+            var month = today.getMonth() + 1;
+            var day = today.getDate();
+            var hour = today.getHours();
+            var min = today.getMinutes();
+            var sec = today.getSeconds();
+            var time = year + "-" + month + "-" + day + " " + hour + min + sec;//"2018-5-18 09:56:13";
+            return time;
+        }
+
+        var formid, blindman_open_id, supplyhelpcontent, askforhelpcontent;
         $.ajax({
-            type: 'get',
-            url: "https://www.bemyeyes.com.cn/weapp/supplyhelp/supplybindmanhelp",
+            type: 'post',
+            url: "https://www.bemyeyes.com.cn/weapp/gethelpinformation",
+            // url: 'firstRequest.json',
             data: {
+                volunteeropenid: volunteerOpenid,
                 helpId: helpId
             },
             dataType: 'json',
             success: function (data) {
                 console.log(data);
-                if(data.code===0){
+                if (data.code === 0) {
                     var message = data.data;
-                    if (message != null) {
-                        formid=message.formid;
-                        blindman_open_id=message.blindman_open_id;
-                        askforhelpcontent=message.askforhelpcontent;
 
+                    if (message != null) {
+                        formid = message.formid;
+                        blindman_open_id = message.blindman_open_id;
+                        askforhelpcontent = message.askforhelpcontent;
                         var blindmannickname = message.blindmannickname;
-                        document.title=blindmannickname+"-求助信息";
+                        document.title = blindmannickname + "-求助信息";
+                    }
+                    if (message.status != 0) {
+                        window.location.href = "expire.html?" + "status=" + message.status + "&helpId=" + helpId +
+                            "&openId=" + volunteerOpenid +
+                            "&volunteerAvatarUrl=" + volunteerAvatarUrl + "&volunteernickname=" + volunteernickname;
                     }
                     var body = $("body");
-
                     var node1 = '<div class="user-img-wrapper">' +
                         '<div class="wrapper">' +
                         '<img data-id="user-img" class="user-img" src=' + message.blindmanavatarurl + '>' +
@@ -148,44 +178,101 @@ function getTime(today) {
             },
         })
 
-        $("#submit-button").click(function () {
+        //对话框
+        var $iosDialog1 = $('#iosDialog1');
+        $('#dialogs').on('click', '.weui-dialog__btn', function () {
+            $(this).parents('.js_dialog').fadeOut(200);
+        });
+        pushHistory();
+        window.addEventListener("popstate", function (e) {  //回调函数中实现需要的功能
+            $iosDialog1.fadeIn(200);
+        }, false);
+
+        function pushHistory() {
+            var state = {
+                title: "title",
+                url: "helpDetail.html?"+"helpId="+helpId+"&volunteerAvatarUrl="+volunteerAvatarUrl+"&volunteernickname="+volunteernickname+"&volunteerOpenid="+volunteerOpenid
+            };
+            window.history.pushState(state, state.title, state.url);
+        }
+
+        $("#leave").click(function () {
+            WeixinJSBridge.call('closeWindow');
+        });
+
+        $("#left").click(function () {
+            window.history.pushState(state, state.title, state.url);
+        })
+        // window.onbeforeunload=blank();
+        // WeixinJSBridge.on('closeWindow',{},function(res){
+        //     $iosDialog1.fadeIn(200);
+        // });
+        // $(document).on('visibilitychange', function () {
+        //
+        //     if (document.visibilityState == 'hidden') {
+        //         //资源销毁代码
+        //         $iosDialog1.fadeIn(200);
+        //     }
+        // });
+        // window.onload=function (ev) {  };
+        // window.onbeforeunload = function(){
+        //     alert("haha");
+        //     event.returnValue = "真的要退出吗？";
+        //     $iosDialog1.fadeIn(200);
+        // }
+        // window.onunload= function(){
+        //     // return text;
+        //     $iosDialog1.fadeIn(200);
+        // }
+        // window.unload=blank();
+        function blank() {
+            $iosDialog1.fadeIn(200);
+        }
+
+            $("#submit-button").click(function () {
+            var endTime = new Date();
+            var gapTime = Math.floor((endTime.getTime() - startTime.getTime()) / 1000);
+            console.log(gapTime);
             var input = $("#input-text").val();
-            supplyhelpcontent=input;
-            var now=new Date();
-            supplyhelptime=getTime(now);
-            if(formid&&blindman_open_id&&volunteernickname&&supplyhelpcontent&&askforhelpcontent){
-                var params={
-                    "formid":formid,
-                    "blindman_open_id":blindman_open_id,
-                    "volunteernickname":volunteernickname,
-                    "supplyhelpcontent":supplyhelpcontent,
-                    "supplyhelptime":supplyhelptime,
-                    "askforhelpcontent":askforhelpcontent,
+            var now = new Date();
+            supplyhelptime = getTime(now);
+            if (input === "") {
+                // toast
+                var $toast = $('#toast');
+                if ($toast.css('display') != 'none') return;
+                $toast.fadeIn(100);
+                setTimeout(function () {
+                    $toast.fadeOut(100);
+                }, 2000);
+            } else {
+                supplyhelpcontent = input;
+                if (formid && blindman_open_id && volunteernickname && supplyhelpcontent && askforhelpcontent) {
+                    var params = {
+                        "formid": formid,
+                        "blindman_open_id": blindman_open_id,
+                        "volunteernickname": volunteernickname,
+                        "supplyhelpcontent": supplyhelpcontent,
+                        "supplyhelptime": supplyhelptime,
+                        "askforhelpcontent": askforhelpcontent,
+                        "helpId": helpId,
+                        "volunteer_open_id": volunteerOpenid,
+                        "timebankincr": gapTime,
+                        "pointincr": 2.5
+                    }
                 }
-            }
-            $("#input-text").val("");
-            $.ajax({
-                type: 'post',
-                url: 'https://www.bemyeyes.com.cn/weapp/supplyhelp',//'response.json',
-                data: params,
-                dataType: 'json',
-                success: function (data) {
-                    console.log(data);
-                    var message=data.data;
-                    if (message.errcode == '0' && input != "") {
-                        var node2 = '<div class="user-img-wrapper">' +
-                            '<div class="response-wrapper">' +
-                            '<img data-id="user-img" class="user-img" src=' + volunteerAvatarUrl + '>' +
-                            '</div>' +
-                            '<div class="response-text-wrapper">' +
-                            '<p id="response-content" class="">' + input + '</p>' +
-                            '</div>' +
-                            '<div style=" clear:both "></div>' +
-                            '</div>'
-                        var body = $("body");
-                        body.append(node2);
-                    }else {
-                        if(input != ""){
+                console.log(params);
+                $("#input-text").val("");
+
+                $.ajax({
+                    type: 'post',
+                    url: 'https://www.bemyeyes.com.cn/weapp/supplyhelp',//'response.json',
+                    // url: 'response.json',
+                    data: params,
+                    dataType: 'json',
+                    success: function (data) {
+                        console.log(data);
+                        var message = data.data;
+                        if (message.errcode == '0' && input != "") {
                             var node2 = '<div class="user-img-wrapper">' +
                                 '<div class="response-wrapper">' +
                                 '<img data-id="user-img" class="user-img" src=' + volunteerAvatarUrl + '>' +
@@ -197,16 +284,36 @@ function getTime(today) {
                                 '</div>'
                             var body = $("body");
                             body.append(node2);
+                        } else {
+                        //     if (input != "") {
+                        //         var node2 = '<div class="user-img-wrapper">' +
+                        //             '<div class="response-wrapper">' +
+                        //             '<img data-id="user-img" class="user-img" src=' + volunteerAvatarUrl + '>' +
+                        //             '</div>' +
+                        //             '<div class="response-text-wrapper">' +
+                        //             '<p id="response-content" class="">' + input + '</p>' +
+                        //             '</div>' +
+                        //             '<div style=" clear:both "></div>' +
+                        //             '</div>'
+                        //         var body = $("body");
+                        //         body.append(node2);
+                        //     }
+                            window.location.reload();
                         }
-                    }
-                },
-                error: function (data) {
-                    console.log("获取志愿者内容失败！");
-                },
-            })
+                        window.location.reload();
+                    },
+                    error: function (data) {
+                        console.log("获取志愿者内容失败！");
+                    },
+                });
+            }
+
+            // setTimeout(function () {
+            //     window.location.reload()
+            // window.location.href="expire.html?status="+status+"&helpId="+helpId;;
+            // },2000)
         })
     });
-
 </script>
 </body>
 </html>

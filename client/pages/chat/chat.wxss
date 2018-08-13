@@ -55,9 +55,7 @@ image {
   bottom: 1%;
   opacity: 0;
 }
-
 /* //opacity: 0; */
-
 .container {
   height: 100%;
   width: 750rpx;
@@ -65,7 +63,7 @@ image {
   display: flex;
   flex-direction: column;
   flex-wrap: wrap;
-  padding: 15rpx;
+  padding: 15rpx 15rpx;
   background-color: #d9d9d9;
 }
 
@@ -74,35 +72,31 @@ image {
   padding-bottom: 80rpx;
 }
 
-.scrool-view {
+ .scrool-view {
   height: 950rpx;
   width: 750rpx;
   float: fixed;
-}
+}  
 
 .chat-left {
   margin-top: 20rpx;
   width: 100%;
-  float: left;
-}
-
-.avatar-img-left {
-  width: 80rpx;
-  height: 80rpx;
-  margin-left: 20rpx;
-  float: left;
+  float: right;
 }
 
 .chat-text-left {
-  margin-left: 110rpx;
-  margin-right: 110rpx;
-  /* flex: 1; *//* padding: 5rpx 10rpx; */
+  /* flex: 1; */
+  margin-left: 10rpx;
+  /* padding: 5rpx 10rpx; */
   background-color: #a0e959;
   border-radius: 11rpx;
-  /* word-break: break-all; *//* float: left; */
+  /* word-break: break-all; */
+  float: left;
   margin-bottom: 10rpx;
-  line-height: 40rpx;
-  padding: 25rpx 25rpx 25rpx 25rpx;
+  line-height: 35rpx;
+  padding-left: 10rpx;
+  padding-right: 10rpx;
+  padding-bottom: 30rpx;
 }
 
 .chat-right {
@@ -111,32 +105,13 @@ image {
   float: right;
   width: 100%;
 }
-.chat-text-right {
-  /* flex: 1; */
-  margin-right: 10rpx;
-  margin-left: 50rpx;
-  background-color: #fff;
-  border-radius: 11rpx;
-  word-break: break-all;
-  float: right;
-  max-width: 70%;
-  margin-bottom: 10rpx;
-  padding: 10rpx;
-}
-
-.avatar-img-right {
-  width: 80rpx;
-  height: 80rpx;
-  margin-right: 20rpx;
-  float: right;
-}
 
 .request-img-wrapper {
   width: 240px;
   height: 240px;
   border-radius: 5px;
   float: right;
-  margin-right: 26rpx;
+  margin-right: 45rpx;
 }
 
 .request-img {
@@ -146,13 +121,37 @@ image {
   height: 100%;
 }
 
+.chat-text-right {
+  /* flex: 1; */
+  margin-right: 45rpx;
+  margin-left: 30rpx;
+  padding: 5rpx 10rpx;
+  background-color: #a0e959;
+  border-radius: 11rpx;
+  word-break: break-all;
+  float: right;
+  max-width: 75%;
+}
 
+.avatar-img-left {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 70rpx;
+  float: left;
+}
+
+.avatar-img-right {
+  width: 70rpx;
+  height: 70rpx;
+  border-radius: 70rpx;
+  float: right;
+}
 
 .text-video-img {
   width: 70rpx;
   height: 70rpx;
   border-radius: 60rpx;
-  margin-left: 5px;
+  margin-right: 5px;
 }
 
 .camera-album {

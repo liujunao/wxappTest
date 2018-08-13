@@ -124,30 +124,26 @@ if (  ctx.request.method === 'GET' ) {
   ctx.state.data = await getData(requestmethod ,userGetSql) 
 console.log(ctx.state)
   if( ctx.state.data.status === 0){
-      //let volunteers = JSON.parse(ctx.state.data.volunteers)
-      //volunteers[volunteeropenid] = 
       var sd = require('silly-datetime');
       var time=sd.format(new Date(), 'YYYY-MM-DD HH:mm:ss');
       var askForHelpTime = new Date(ctx.state.data.ask_for_help_time);
       var nowTime = new Date(time)
       var status
-      if( (nowTime.getTime() - askForHelpTime.getTime())/1000 > 601200){
+      if( (nowTime.getTime() - askForHelpTime.getTime())/1000 > 601200 ){
       // 用于给盲人端小程序发送模板消息的formid有效期为7天，这里有效期设置为601200，6天零23个小时。超过有效期，志愿者将无法帮助盲人
           status = 1
           ctx.state.data.status = 1
-      }else{
-          status = 4
+          var updatesql = DB.update({
+            update_time: time,
+            status: status,
+          }).where({id: id}).from('helpInfo').toString()
+            DB.raw(updatesql).then(res => {
+            console.log('status更新成功')
+            console.log(res)
+          }, err => {
+            throw new Error(err)
+          }) 
       }
-        var updatesql = DB.update({
-          update_time: time,
-          status: status,
-        }).where({id: id}).from('helpInfo').toString() 
-        DB.raw(updatesql).then(res => {
-          console.log('status更新成功')
-          console.log(res)
-        }, err => {
-          throw new Error(err)
-        })
   }else if(ctx.state.data.status === 2){
     if(volunteeropenid ===  ctx.state.data.volunteer_open_id){
       ctx.state.data.status = 3
@@ -172,8 +168,8 @@ console.log(ctx.state)
         }) 
       }
     }   	
-  }else if(ctx.state.data.status === 4){
-
+  }else if(ctx.state.data.status === 1){
+     // 求助信息已经过期
   }
   if( timeBankIncr != 0 && pointIncr != 0){
     var sd = require('silly-datetime');

@@ -26,10 +26,10 @@
       <block wx:for="{{chatList}}" wx:key="time">
         <!-- 回复输出 -->
         <view id="roll{{index + 1}}" class="chat-left" wx:if="{{item.orientation == 'l'}}">
-          <image class="avatar-img-left" src="../image/ic_ai.png" alt="头像"></image>
+          <image class="avatar-img-left" src="../image/chat_logo.png" alt="头像"></image>
           <view wx:for="{{item.text}}" wx:key="ai" wx:for-item="tmp" wx:for-index="idx">
             <view class='chat-text-left'>
-              <text space='emsp'>{{tmp}}</text>
+              <text>{{tmp}}</text>
             </view>
           </view>
         </view>
@@ -42,11 +42,11 @@
             </view>
           </view>
           <!-- 点击识别方式按钮自动打印提示 -->
-          <view wx:if="{{item.orientation == 'a'}}">
+          <view class='chat-text-right' wx:if="{{item.orientation == 'a'}}">
             <!-- 用户头像 -->
             <image class="avatar-img-right" src="{{userLogoUrl}}"></image>
             <view class='chat-text-right'>
-              <text space='ensp'>{{item.text}}</text>
+              <text>{{item.text}}</text>
             </view>
           </view>
           <!-- 图片 -->
@@ -58,11 +58,11 @@
             </view>
           </view>
           <!-- 文本输入 -->
-          <view wx:if="{{item.orientation == 'r'}}">
+          <view class='chat-text-right' wx:if="{{item.orientation == 'r'}}">
             <!-- 用户头像 -->
             <image class="avatar-img-right" src="{{userLogoUrl}}"></image>
             <view class='chat-text-right'>
-              <text space='emsp'>{{item.text}}</text>
+              <text>{{item.text}}</text>
             </view>
           </view>
         </view>
@@ -80,5 +80,3 @@
   </view>
 </form>
 <image class="speaker" hidden="{{!isSpeaking}}" src="{{speakerUrl}}"></image>
-<canvas canvas-id="pngCanvas" id="pngCanvas" style="width: {{canvasWidth}}px; height: {{canvasHeight}}px;"></canvas>
-<video src="{{recordUrl}}" autoplay="autoplay"></video>

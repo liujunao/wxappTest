@@ -12,13 +12,13 @@
       <cover-view class='title-text' style='left: 14.5%;' bindtap='tucao' >联系客服</cover-view>
       
       <cover-image src='../image/ocr.png' mode='aspectFit' style='position: absolute;width: 14%;height: 120rpx;left: 32%;bottom: 87%;'></cover-image>
-      <cover-view class='title-text' style='left: 30%;' bindtap='indexSet1'>文字识别</cover-view>
+      <cover-view class='title-text' style='left: 30%;' bindtap='indexSet1'>印刷体识别</cover-view>
 
       <cover-image src='../image/describe.png' mode='aspectFit' style='position: absolute;width: 14%;height: 120rpx;left: 48%;bottom: 87%;'></cover-image>
       <cover-view class='title-text' style='left: 46%;' bindtap='indexSet2'>图片描述</cover-view>
 
       <cover-image src='../image/content.png' mode='aspectFit' style='position: absolute;width: 14%;height: 120rpx;left: 64%;bottom: 87%;'></cover-image>
-      <cover-view class='title-text' style='left: 62%;' bindtap='indexSet3'>图片识别</cover-view>
+      <cover-view class='title-text' style='left: 62%;' bindtap='indexSet3'>图片内容识别</cover-view>
 
       <cover-image src='../image/camera.png' mode='aspectFit' style='position: absolute;width: 14%;height: 120rpx;left: 80%;bottom: 87%;'></cover-image>
       <cover-view class='title-text' style='left: 78%;' bindtap='checkDevice'>切换摄像头</cover-view>

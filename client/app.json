@@ -2,11 +2,13 @@
   "pages": [
     "pages/start/start",
     "pages/index/index",
+    "pages/picture/picture",
+    "pages/addCgi/addCgi",
     "pages/chat/chat",
+    "pages/mine/mine",
+    "pages/video/video",
     "pages/voiceDemo/voiceDemo",
-    "vendor/modelMsg/modelMsg",
-    "pages/article/user-agreement/user-agreement",
-    "pages/my/my"
+    "vendor/modelMsg/modelMsg"
   ],
   "window": {
     "backgroundColor": "#F6F6F6",
@@ -14,11 +16,5 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "我是你的眼",
     "navigationBarTextStyle": "black"
-  },
-  "plugins": {
-    "WechatSI": {
-      "version": "0.0.9",
-      "provider": "wx069ba97219f66d99"
-    }
   }
 }

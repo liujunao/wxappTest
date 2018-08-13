@@ -27,7 +27,7 @@ Page({
   /**
    * 生命周期函数--监听页面加载
    */
-  onShow: function() {
+  onShow: function () {
     this.setData({
       cameraOn: true
     })
@@ -36,31 +36,31 @@ Page({
   /**
    * 生命周期函数--监听页面隐藏
    */
-  onHide: function() {
+  onHide: function () {
     this.setData({
       cameraOn: false
     })
   },
 
-  onLoad: function(options) {
+  onLoad: function (options){
     wx.setNavigationBarTitle({
       title: '我是你的眼主页面',
     })
     this.setData({
       indexSet: ''
     })
-    if (options.tmp) {
+    if(options.tmp){
       this.doUpload();
     }
   },
 
   //视频求助接口
-  videoHelp: function() {
-    util.showModel('提示', '该功能正在开发，敬请期待')
+  videoHelp: function(){
+    util.showModel('提示','该功能正在开发，敬请期待')
   },
 
   //拍照接口
-  takePhoto: function() {
+  takePhoto: function () {
     let that = this;
     const ctx = wx.createCameraContext();
     ctx.takePhoto({
@@ -74,7 +74,7 @@ Page({
           url: config.service.uploadUrl,
           filePath: filePath,
           name: 'file',
-          success: function(res) {
+          success: function (res) {
             util.showSuccess('上传图片成功')
             res = JSON.parse(res.data)
             that.setData({
@@ -86,7 +86,7 @@ Page({
             })
           },
 
-          fail: function(e) {
+          fail: function (e) {
             console.error(e)
           }
         })
@@ -98,17 +98,18 @@ Page({
   },
 
   //用户不允许使用摄像头时触发
-  error(e) {},
+  error(e) {
+  },
 
   // 上传图片接口
-  doUpload: function() {
+  doUpload: function () {
     var that = this;
     // 选择图片
     wx.chooseImage({
       count: 1,
       sizeType: ['compressed'],
       sourceType: ['album'],
-      success: function(res) {
+      success: function (res) {
         util.showBusy('正在上传')
         var filePath = res.tempFilePaths[0]
         //跳转到聊天室页面
@@ -116,7 +117,7 @@ Page({
           url: config.service.uploadUrl,
           filePath: filePath,
           name: 'file',
-          success: function(res) {
+          success: function (res) {
             util.showSuccess('上传图片成功')
             res = JSON.parse(res.data)
             console.log(res)
@@ -129,24 +130,24 @@ Page({
             })
           },
 
-          fail: function(e) {
+          fail: function (e) {
             console.error(e)
           }
         })
-
+        
         //console.log(res)
         wx.navigateTo({
           url: '../chat/chat?imgUrl=' + filePath + '&indexSet=' + that.data.indexSet,
         })
       },
-      fail: function(e) {
+      fail: function (e) {
         console.error(e)
       }
     })
   },
 
   // 预览图片
-  previewImg: function() {
+  previewImg: function () {
     wx.previewImage({
       current: this.data.imgUrl,
       urls: [this.data.imgUrl]
@@ -154,14 +155,14 @@ Page({
   },
 
   //转到我的页面
-  toMine: function() {
+  toMine: function () {
     wx.navigateTo({
-      url: '../my/my',
+      url: '../mine/mine',
     })
   },
 
   //切换摄像头
-  checkDevice: function() {
+  checkDevice: function () {
     if (this.data.device == 'back') {
       this.setData({
         device: 'front'
@@ -173,33 +174,30 @@ Page({
     }
   },
 
-  //文字识别
-  indexSet1: function() {
+  indexSet1: function(){
     this.setData({
       indexSet: 'indexSet1_ocr'
     })
   },
-  //图片描述
-  indexSet2: function() {
+  indexSet2:function(){
     this.setData({
       indexSet: 'indexSet2_rec'
     })
   },
-  //图片识别
-  indexSet3: function() {
+  indexSet3:function(){
     this.setData({
       indexSet: 'indexSet3_con'
     })
   },
   //吐个槽客服系统接入
-  tucao: function() {
+  tucao: function(){
     console.log('tucao')
     wx.navigateToMiniProgram({
       appId: 'wx8abaf00ee8c3202e',
       // 目标为吐个槽社区小程序AppID(固定)
       path: "/pages/index-v2/index-v2",
       extraData: {
-        id: config.tucao.id, // 来源为吐个槽上申请的产品ID ，查看路径：tucao.qq.com ->产品管理->ID
+        id: config.tucao.id,  // 来源为吐个槽上申请的产品ID ，查看路径：tucao.qq.com ->产品管理->ID
         customData: {
           clientInfo: '',
           imei: ''

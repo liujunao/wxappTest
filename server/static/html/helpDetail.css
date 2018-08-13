@@ -44,15 +44,25 @@ body *{
 }
 
 .user-img{
-    border-radius:50%;
-    -webkit-border-radius:50%;
-    -moz-border-radius:50%;
+    /*border-radius:50%;*/
+    /*-webkit-border-radius:50%;*/
+    /*-moz-border-radius:50%;*/
     width:100%;
     height:100%;
 }
 /*求助者文字*/
+.arrow-left
+{
+    float: left;
+    width:0;
+    height:0;
+    font-size:0;
+    border:solid 0.285714rem;
+    border-color:#ebebeb #ffffff #ebebeb #ebebeb;
+    margin-top: 0.3rem;
+}
 .request-text-wrapper{
-    max-width: 80%;
+    max-width: 75%;
     padding-left: 0.142857rem;
     border-radius:0.142857rem;
     -webkit-border-radius:0.142857rem;
@@ -61,8 +71,17 @@ body *{
     float: left;
 }
 /*回复文字*/
+.arrow-right{
+    float: right;
+    width:0;
+    height:0;
+    font-size:0;
+    border:solid 0.285714rem;
+    border-color:#ebebeb #ebebeb #ebebeb #a0e959;
+    margin-top: 0.3rem;
+}
 .response-text-wrapper{
-    max-width: 80%;
+    max-width: 75%;
     padding-left: 0.142857rem;
     border-radius:0.142857rem;
     -webkit-border-radius:0.142857rem;
@@ -128,3 +147,19 @@ body *{
     /*border-color: aqua;*/
     background-color: #e5e5e5;
 }
+.weui-icon_msg{
+    font-size: 2.857143rem !important;
+}
+.weui-dialog__title{
+    font-size: 25px !important;
+}
+#leave{
+    font-size: 25px !important;
+}
+#left{
+    font-size: 25px !important;
+}
+#bd{
+    font-size: 25px !important;
+}
+

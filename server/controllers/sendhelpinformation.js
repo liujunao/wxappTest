@@ -1,8 +1,8 @@
 const        request = require('request'),
                 post = require('../request/post'),
                   fs = require('fs'); //引入 fs 模块
-//const helpUrl = 'https://www.bemyeyes.com.cn/helpDetail.html?helpId='
-const helpUrl = 'http://192.168.0.149:3000/helpDetail.html?helpId='
+const helpUrl = 'https://www.bemyeyes.com.cn/helpDetail.html?helpId='
+//const helpUrl = 'http://10.10.70.84:3000/helpDetail.html?helpId='
 const { mysql: config } = require('../config')
 const { query } = require('../model/async-db')
 
@@ -179,7 +179,7 @@ function send(i, tmplateMessageJson, access_token, volunteerOpenIds, helpUrl, he
 
 module.exports = async function (ctx, next) {
   // 随机挑出num名志愿者发送求助的模板消息
-  const num = 2 
+  const num = 3 
   var count = 0
 console.log("向志愿者发送模板消息")
 /*
@@ -190,7 +190,8 @@ console.log("向志愿者发送模板消息")
  * oUkCajpr5S3MjyXN1Ey0Pu95ID_8    周江南
  * oUkCajh7RzYqZfzyHYVgNXuwRFGc    严宽宁
  * oUkCajrAZqlqhW2eFb8D2KHyisQE    少帅
- * 
+ * oUkCajo6YvQhbxyh0zAiHIet2US8	   周胜男
+ * oUkCajteqKmrvu2c3lNZaBG7gAJ8    无障碍科技
  */
 /*
 var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
@@ -200,7 +201,7 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
 			      "oUkCajrAZqlqhW2eFb8D2KHyisQE"
 			] 
 */
-  var sql = "SELECT openid FROM volunteerInfo WHERE id >= round((SELECT MAX(id) FROM volunteerInfo)-(SELECT MIN(id) FROM volunteerInfo)+1) * RAND() + (SELECT MIN(id) FROM volunteerInfo)-0.5 AND is_volunteer = 1 LIMIT 2" 
+  var sql = "SELECT openid FROM volunteerInfo WHERE id >= round((SELECT MAX(id) FROM volunteerInfo)-(SELECT MIN(id) FROM volunteerInfo)+1) * RAND() + (SELECT MIN(id) FROM volunteerInfo)-0.5 AND is_volunteer = 1 LIMIT " + num 
   var volunteerOpenIdsJson = {}
   volunteerOpenIds = await selectVolunteerOpenid( sql, num ).then(function(res){
 
@@ -211,11 +212,22 @@ var volunteerOpenIdList = [   "oUkCajhHYh4NOH25tXNq95WnhGMk",
     console.log(volunteerOpenIdsJson)
     return res
   })
-  const length = volunteerOpenIds.length
   // 随机取出num名志愿者发送模板消息
   console.log("OpenidList: \n") // ----------debug--------
   console.log(volunteerOpenIds) // ----------debug--------
   console.log('postdata: '+ JSON.stringify(ctx.request.body))
+  // 为了方便长沙现场测试，添加周胜男和无障碍科技两个微信号为必发账号
+  var addedForTestOpenIds = [  { openid: "oUkCajo6YvQhbxyh0zAiHIet2US8" },
+			       { openid: "oUkCajteqKmrvu2c3lNZaBG7gAJ8" }
+                            ]
+  addedForTestOpenIds.forEach(function(element) {
+      if( volunteerOpenIds.indexOf(element) === -1 ) 
+      {
+          volunteerOpenIds.push(element)
+      }
+  });
+  console.log(volunteerOpenIds) // ----------debug--------
+  const length = volunteerOpenIds.length
   // 获取用于发送模板消息的微信服务号access_token
   var access_token = await getAccessToken();
   console.log("wxserver_access_token: " + access_token)

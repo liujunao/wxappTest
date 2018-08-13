@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0"/>
+    <title>图片求助</title>
+    <link rel=stylesheet type=text/css href="expire.css">
+    <link rel=stylesheet type=text/css href="dist/style/weui.css">
+</head>
+<body>
+<div class="wrapper">
+    <div class="icon-box">
+        <!--成功  weui-icon-success weui-icon_msg  -->
+        <!--钟表  weui-icon-waiting weui-icon_msg  -->
+        <i class="weui-icon-info weui-icon_msg" id="weui-icon"></i>
+        <h3 class="h3-01" id="weui-icon-info">求助已经过期</h3>
+        <p class="icon-box__desc" id="icon-box__desc">亲，非常感谢你的帮助。该求助已经过期。但是为你帮助的举动点赞，积分+1分，时间银行+2秒。</p>
+    </div>
+    <div class="panel-wrapper">
+        <div class="weui-panel__hd">
+            <img src="star.png">
+            <span class="credits-text">公益积分</span>
+            <span class="credits-score" id="credits-score-1">+1</span>
+        </div>
+        <div class="divide"></div>
+        <div class="weui-panel__hd">
+            <img src="clock.png">
+            <span class="credits-text">时间银行</span>
+            <span class="credits-score" id="credits-score-2">+2</span>
+        </div>
+    </div>
+    <div class="weui-btn-area">
+        <div class="weui-btn weui-btn_primary" id="close-btn">
+            <!--weui-btn weui-btn_primary weui-btn_loading 倒计时10s-->
+            <span class="text-18" id="close-btn-text">关闭</span>
+        </div>
+        <!--div class="weui-btn weui-btn_default text-18" id="close-btn-1">
+            <span class="text-18" id="score-detail-text">积分详情</span>
+        </div-->
+    </div>
+
+    <div class="weui-footer">
+        <!--p class="weui-footer__links">
+            <a class="weui-footer__link" href="javascript:void(0);">
+                <span class="text-14">积分规则</span></a>
+        </p-->
+        <p class="weui-footer__text"><span class="text-12">Copyright © 2018-2022 BeMyeyes</span></p>
+    </div>
+</div>
+
+<script type="text/javascript" src="zepto.js"></script>
+<script>
+    $(function () {
+        var scale = 1 / devicePixelRatio;
+        document.querySelector('meta[name="viewport"]').setAttribute('content', 'initial-scale=' + scale + ',maximum-scale=' + scale + ', minimum-scale=' + scale + ', user-scalable=no');
+        document.documentElement.style.fontSize = document.documentElement.clientWidth / 10 + 'px';
+        //init();
+
+        if (window.location.href.indexOf("?") != -1) {
+            var data = window.location.href.split("?")[1];//status=**&helpId=**&openId=**&volunteerAvatarUrl=*&volunteernickname=*
+            var data_arr = data.split("&")
+            var status = data_arr[0].split("=")[1];
+            var helpId = data_arr[1].split("=")[1];
+            var volunteeropenid = data_arr[2].split("=")[1];
+            var volunteerAvatarUrl = data_arr[3].split("=")[1];
+            var volunteernickname = decodeURI(data_arr[4].split("=")[1]);
+            console.log(status);
+        }
+        init();
+        function init() {
+            $.ajax({
+                type: 'post',
+                url: 'https://www.bemyeyes.com.cn/weapp/gettimebankandpoint',
+                // url:'expire.json',
+                data: {
+                    "helpId": helpId
+                },
+                dataType: 'json',
+                success: function (data) {
+                    var node1;
+                    var message = data.data;
+                    if (status === "1") {
+                        node1 = document.getElementById("weui-icon");
+                        node1.className = "weui-icon-info weui-icon_msg";
+                        $("#weui-icon-info").text("求助已经过期");
+                        var test_0 = "亲，非常感谢你的帮助。该求助已经过期。但是为你帮助的举动点赞，积分+" + message.point + "分，时间银行+" + message.timebank + "秒。"
+                        $("#icon-box__desc").text(test_0);
+                        $("#credits-score-1").text("+1");
+                        $("#credits-score-2").text("+2");
+
+                    } else if (status === "2") {
+                        node1 = document.getElementById("weui-icon");
+                        node1.className = "weui-icon-success weui-icon_msg";
+                        $("#weui-icon-info").text("求助已经答复");
+                        var test_0 = "亲，非常感谢你的帮助。该求助已经被其他人答复。但是为你帮助的举动点赞，积分+" + "1" + "分，时间银行+" + "2" + "秒。"
+                        $("#icon-box__desc").text(test_0);
+                        $("#credits-score-1").text("+1");
+                        $("#credits-score-2").text("+2");
+
+                    } else if (status === "3") {
+                        node1 = document.getElementById("weui-icon");
+                        node1.className = "weui-icon-success weui-icon_msg";
+                        $("#weui-icon-info").text("你已经答复了");
+                        var test_0 = "亲，非常感谢你的帮助。你这次服务的公益积分+" + message.point + "分，时间银行+" + message.timebank + "秒。"
+                        $("#icon-box__desc").text(test_0);
+                        $("#credits-score-1").text("+" + message.point);
+                        $("#credits-score-2").text("+" + message.timebank);
+
+                    } else// if(data.status===4)
+                    {
+                        node1 = document.getElementById("weui-icon");
+                        node1.className = "weui-icon-waiting weui-icon_msg";
+                        $("#weui-icon-info").text("等待");
+                        var test_0 = "亲，非常感谢你的帮助。已经有人提前一步试图在帮助他，如果前面志愿者不能提供帮助，" +
+                            "你仍然有机会帮助到他。本次等待公益赛积分+" + message.point + "分，时间银行+" + message.timebank + "秒。"
+                        $("#icon-box__desc").text(test_0);
+                        $("#credits-score-1").text("+2");
+                        $("#credits-score-2").text("+10");
+                        var node2 = document.getElementById("close-btn");
+                        node2.className = "weui-btn weui-btn_primary weui-btn_loading";
+                        var i = 11;
+
+                        function countDown() {
+                            i--;
+                            $("#close-btn-text").text("倒计时" + i + "s");
+                            if (i <= 0) {
+                                $.ajax({
+                                    type: 'post',
+                                    url: 'https://www.bemyeyes.com.cn/weapp/timebankandpointincr',
+                                    dataType: 'json',
+                                    data: {
+                                        "volunteeropenid": volunteeropenid,
+                                        "timebankincr": 10,//message.timebank,
+                                        "pointincr": 2//message.point
+                                    },
+                                    success: function (data) {
+                                        if (data.code === 0) {
+                                            //$("#credits-score-1").text("+4");
+                                            //$("#credits-score-2").text("+20");
+                                        }
+                                    },
+                                    error: function () {
+                                        console.log("出问题啦！");
+                                    }
+                                });
+                                // window.location.href="helpDetail.html?"+"helpId="+helpId+"&volunteerAvatarUrl="+volunteerAvatarUrl
+                                // +"&volunteernickname="+encodeURI(volunteernickname)+"&volunteerOpenid="+volunteeropenid;
+                                return;
+                            }
+                            setTimeout(countDown, 1000);
+                        }
+
+                        countDown();
+
+                        $("#score-detail-text").text("退出");
+                    }
+                },
+                error: function (data) {
+                    console.log("获取信息失败！");
+                },
+            })
+
+        }
+        if (status!== '4') {
+            $("#close-btn").click(function () {
+                WeixinJSBridge.call('closeWindow');
+            });
+        } else {
+            $("#close-btn-1").click(function () {
+                WeixinJSBridge.call('closeWindow');
+            });
+        }
+
+    })
+</script>
+</body>
+</html>
