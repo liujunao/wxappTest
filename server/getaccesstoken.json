@@ -1,0 +1,10 @@
+{
+    "token":"weapp",
+    "appID":"wx0f5b1a78e6acfa49",
+    "appScrect":"ae4ecd76ffabc2e30449b207a1609e28",
+    "apiDomain":"https://api.weixin.qq.com/",
+    "apiURL":{
+        "accessTokenApi":"%scgi-bin/token?grant_type=client_credential&appid=%s&secret=%s",
+        "templateMessageApi":"%scgi-bin/message/template/send?access_token=%s"
+    }
+}

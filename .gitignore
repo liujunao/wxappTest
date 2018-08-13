@@ -1,4 +1,2 @@
 /server/node_modules/
-/server/config.js
-/server/getaccesstoken.json
 /server/package-lock.json
